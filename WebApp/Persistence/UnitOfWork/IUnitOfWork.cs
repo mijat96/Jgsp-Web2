@@ -9,6 +9,8 @@ namespace WebApp.Persistence.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
+        //IProductRepository Products;
+        //IRepositoryVozlio Vozilo; ?????
         int Complete();
     }
 }

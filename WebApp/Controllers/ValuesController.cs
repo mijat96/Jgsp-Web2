@@ -12,6 +12,12 @@ namespace WebApp.Controllers
     [Authorize]
     public class ValuesController : ApiController
     {
+        //public IUnitOfWork Db {get; set;}
+        //public ValuesController(IUnitOfWork db)
+        //{
+               //Db = db;
+               //db.Products
+        //}
         public ValuesController()
         {
         }

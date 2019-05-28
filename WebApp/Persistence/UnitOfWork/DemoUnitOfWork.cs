@@ -17,6 +17,11 @@ namespace WebApp.Persistence.UnitOfWork
             _context = context;
         }
 
+        //[Dependency]
+        //instanca interfejsa
+        [Dependency]
+        IRepositoryVozlio IUnitOfWork.Vozila { get; set; }
+
         public int Complete()
         {
             return _context.SaveChanges();

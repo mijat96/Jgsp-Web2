@@ -11,6 +11,11 @@ namespace WebApp.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Vozilo> Vozila { get; set; }
+        public DbSet<Karta> Karte { get; set; }
+        public DbSet<Cenovnik> Cenovnici { get; set; }
+        public DbSet<CenaKarte> CeneKarti { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -20,5 +25,7 @@ namespace WebApp.Persistence
         {
             return new ApplicationDbContext();
         }
+
+        //Karte.Include(p => p.Category).Where(p => p.Id == 1) nalazi proizvod sa id 1 i radi join sa drugim tabelama da bi popunio sve propertije od proizvoda koji su iz drugih tabela
     }
 }
