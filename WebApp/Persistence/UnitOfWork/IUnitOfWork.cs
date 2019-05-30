@@ -11,6 +11,13 @@ namespace WebApp.Persistence.UnitOfWork
     {
         //IProductRepository Products;
         IRepositoryVozlio Vozila { get; set; }
+        IRepositoryCenaKarte CenaKarte { get; set; }
+        IRepositoryCenovnik Cenovnik { get; set; }
+        IRepositoryKarta Karta { get; set; }
+        IRepositoryLinija Linija { get; set; }
+        IRepositoryRedVoznje RedVoznje { get; set; }
+        IRepositoryStanica Stanica { get; set; }
+        IRepositoryTipKorisnika TipKorisnika { get; set; }
         int Complete();
     }
 }
