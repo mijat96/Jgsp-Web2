@@ -259,13 +259,39 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905300954002_M1.cs" />
+    <Compile Include="Migrations\201905300954002_M1.Designer.cs">
+      <DependentUpon>201905300954002_M1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905301034466_M2.cs" />
+    <Compile Include="Migrations\201905301034466_M2.Designer.cs">
+      <DependentUpon>201905301034466_M2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905301036382_M3.cs" />
+    <Compile Include="Migrations\201905301036382_M3.Designer.cs">
+      <DependentUpon>201905301036382_M3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905301048360_M4.cs" />
+    <Compile Include="Migrations\201905301048360_M4.Designer.cs">
+      <DependentUpon>201905301048360_M4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\CenaKarte.cs" />
+    <Compile Include="Models\Cenovnik.cs" />
+    <Compile Include="Models\Karta.cs" />
+    <Compile Include="Models\Linija.cs" />
+    <Compile Include="Models\RedVoznje.cs" />
+    <Compile Include="Models\Stanica.cs" />
+    <Compile Include="Models\TipKorisnika.cs" />
+    <Compile Include="Models\Vozilo.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryVozlio.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
+    <Compile Include="Persistence\Repository\VoziloRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -368,6 +394,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300954002_M1.resx">
+      <DependentUpon>201905300954002_M1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301034466_M2.resx">
+      <DependentUpon>201905301034466_M2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301036382_M3.resx">
+      <DependentUpon>201905301036382_M3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301048360_M4.resx">
+      <DependentUpon>201905301048360_M4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

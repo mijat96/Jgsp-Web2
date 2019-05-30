@@ -43,7 +43,7 @@ namespace WebApp
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),   //token za registrovanje traje jedan dan
                 Provider = new CustomOAuthProvider(),
                 AccessTokenFormat = new CustomJwtFormat(ISSUER)
             };

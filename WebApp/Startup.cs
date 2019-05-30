@@ -13,7 +13,7 @@ namespace WebApp
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseCors(CorsOptions.AllowAll);
+            app.UseCors(CorsOptions.AllowAll);  //podesavanje da mogu klijenti sa drugih adresa da koriste server
             ConfigureAuth(app);
             app.MapSignalR();
         }
