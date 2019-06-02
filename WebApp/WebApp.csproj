@@ -259,21 +259,13 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905300954002_M1.cs" />
-    <Compile Include="Migrations\201905300954002_M1.Designer.cs">
-      <DependentUpon>201905300954002_M1.cs</DependentUpon>
+    <Compile Include="Migrations\201906021431135_Mig1.cs" />
+    <Compile Include="Migrations\201906021431135_Mig1.Designer.cs">
+      <DependentUpon>201906021431135_Mig1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905301034466_M2.cs" />
-    <Compile Include="Migrations\201905301034466_M2.Designer.cs">
-      <DependentUpon>201905301034466_M2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905301036382_M3.cs" />
-    <Compile Include="Migrations\201905301036382_M3.Designer.cs">
-      <DependentUpon>201905301036382_M3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905301048360_M4.cs" />
-    <Compile Include="Migrations\201905301048360_M4.Designer.cs">
-      <DependentUpon>201905301048360_M4.cs</DependentUpon>
+    <Compile Include="Migrations\201906021435032_Mig2.cs" />
+    <Compile Include="Migrations\201906021435032_Mig2.Designer.cs">
+      <DependentUpon>201906021435032_Mig2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -285,12 +277,23 @@
     <Compile Include="Models\Linija.cs" />
     <Compile Include="Models\RedVoznje.cs" />
     <Compile Include="Models\Stanica.cs" />
-    <Compile Include="Models\TipKorisnika.cs" />
     <Compile Include="Models\Vozilo.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repository\CenaKarteRepository.cs" />
+    <Compile Include="Persistence\Repository\CenovnikRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryCenaKarte.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryCenovnik.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryKarta.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryLinija.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryRedVoznje.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryStanica.cs" />
     <Compile Include="Persistence\Repository\IRepositoryVozlio.cs" />
+    <Compile Include="Persistence\Repository\KartaRepository.cs" />
+    <Compile Include="Persistence\Repository\LinijaRepository.cs" />
+    <Compile Include="Persistence\Repository\RedVoznjeRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
+    <Compile Include="Persistence\Repository\StanicaRepository.cs" />
     <Compile Include="Persistence\Repository\VoziloRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
@@ -395,17 +398,11 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905300954002_M1.resx">
-      <DependentUpon>201905300954002_M1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021431135_Mig1.resx">
+      <DependentUpon>201906021431135_Mig1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905301034466_M2.resx">
-      <DependentUpon>201905301034466_M2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905301036382_M3.resx">
-      <DependentUpon>201905301036382_M3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905301048360_M4.resx">
-      <DependentUpon>201905301048360_M4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021435032_Mig2.resx">
+      <DependentUpon>201906021435032_Mig2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

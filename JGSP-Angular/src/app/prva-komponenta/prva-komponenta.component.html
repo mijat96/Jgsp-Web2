@@ -1,0 +1,14 @@
+<p>
+  prva-komponenta works!{{name}}
+  <button (click)="clickCounter()">Click</button>
+</p>
+<h2>Clicks: {{clicks}}</h2>
+<h2>Name: {{osoba.name}}</h2>
+<h2>Surname: {{osoba.surname}}</h2>
+
+<input [(ngModel)]="unos"/>
+{{unos}}
+
+<p *ngFor="let value of values">
+  {{value}}
+</p>

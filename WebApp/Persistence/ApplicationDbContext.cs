@@ -15,7 +15,6 @@ namespace WebApp.Persistence
         public DbSet<Karta> Karte { get; set; }
         public DbSet<Cenovnik> Cenovnici { get; set; }
         public DbSet<CenaKarte> CeneKarti { get; set; }
-        public DbSet<TipKorisnika> TipKorisnika { get; set; }
         public DbSet<Stanica> Stanice { get; set; }
         public DbSet<RedVoznje> RedoviVoznje { get; set; }
         public DbSet<Linija> Linije { get; set; }
