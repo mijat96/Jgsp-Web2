@@ -16,6 +16,11 @@ namespace WebApp.Models
     public class ApplicationUser : IdentityUser
     {
         public string Tip { get; set; }
+        public string Datum { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string ConfirmPassword { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {

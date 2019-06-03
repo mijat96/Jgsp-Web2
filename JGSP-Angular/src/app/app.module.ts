@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router'
@@ -11,11 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthHttpService } from './services/auth.service';
 import { PrvaKomponentaComponent } from 'src/app/prva-komponenta/prva-komponenta.component';
+import { RegistracijaComponent } from './registracija/registracija.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
+  {path: "registracija", component: RegistracijaComponent},
   {path: "**", redirectTo: "home"}
 ]
 
@@ -24,12 +26,14 @@ const routes: Routes = [
     AppComponent,
     PrvaKomponentaComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegistracijaComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService],

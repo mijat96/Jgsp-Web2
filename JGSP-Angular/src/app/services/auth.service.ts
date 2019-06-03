@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RegUser } from 'src/app/osoba';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
 export class AuthHttpService{
@@ -21,5 +23,9 @@ export class AuthHttpService{
         this.http.post<any>(this.base_url + "/oauth/token", data, httpOptions).subscribe(data => {
             localStorage.jwt = data.access_token;
         });
+    }
+
+    reg(data: RegUser) : Observable<any>{
+     return this.http.post<any>(this.base_url + "/api/Account/Register", data).subscribe();
     }
 }

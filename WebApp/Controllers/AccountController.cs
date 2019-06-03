@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
 using WebApp.Providers;
 using WebApp.Results;
+using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
@@ -23,6 +24,8 @@ namespace WebApp.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        WebApp.Persistence.ApplicationDbContext adb;
+        public IUnitOfWork Db { get; set; }
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -328,7 +331,7 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Tip = "student", Name= model.Name, Surname = model.Surname, Datum = model.Date, Password= model.Password, ConfirmPassword= model.ConfirmPassword };
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
             //UserManager.AddToRole();
 

@@ -1,0 +1,10 @@
+<form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
+Ime:<input type="text" formControlName="name" required> <br>
+Prezime:<input type="text" formControlName="surname" required><br>
+Korisnicko ime:<input type="text" formControlName="username" required> <br>  
+Sifra:<input type="password" formControlName="password" required> <br>
+Sifra potvrda:<input type="password" formControlName="confirmPassword" required> <br>
+E-mail:<input type="email" formControlName="email" required> <br>
+Datum rodjenja:<input type="date" formControlName="date" required> <br>
+<button type="submit">Submit</button>
+</form>
