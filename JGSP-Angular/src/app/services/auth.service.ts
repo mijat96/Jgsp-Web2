@@ -25,7 +25,7 @@ export class AuthHttpService{
         });
     }
 
-    reg(data: RegUser) : Observable<any>{
+    reg(data: RegUser){
      return this.http.post<any>(this.base_url + "/api/Account/Register", data).subscribe();
     }
 }

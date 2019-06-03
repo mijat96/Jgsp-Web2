@@ -1,4 +1,4 @@
-<form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
 Ime:<input type="text" formControlName="name" required> <br>
 Prezime:<input type="text" formControlName="surname" required><br>
 Korisnicko ime:<input type="text" formControlName="username" required> <br>  
@@ -7,4 +7,64 @@ Sifra potvrda:<input type="password" formControlName="confirmPassword" required>
 E-mail:<input type="email" formControlName="email" required> <br>
 Datum rodjenja:<input type="date" formControlName="date" required> <br>
 <button type="submit">Submit</button>
-</form>
+</form> -->
+
+
+<!-- <form #f="ngForm" (submit)="login(f.value, f)">
+  <input name="username" ngModel/>
+  <input name="password" type="password" ngModel/>
+  <input type="submit">
+</form> -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<div class="main">
+    
+    
+  <div class="container">
+
+<div class="middle">
+    <div id="login">
+
+      <form #f="ngForm" (submit)="login(f.value, f)">
+
+        <fieldset class="clearfix">
+
+          <p ><span class="fa fa-user"></span><input Placeholder="Name" type="text" formControlName="name" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+          <p><span class="fa fa-user"></span><input Placeholder="Surname" type="text" formControlName="surname" required></p> 
+          <p><span class="fa fa-user"></span><input Placeholder="Username" type="text" formControlName="username" required></p> 
+          <p><span class="fa fa-lock"></span><input Placeholder="Password" type="password" formControlName="password" required></p> 
+          <p ><span class="fa fa-lock"></span><input Placeholder="Password" type="password" formControlName="confirmPassword" required></p>
+          <p ><span class="fa fa-user"></span><input Placeholder="Email" type="email" formControlName="email" required></p><br>
+          <p><span class="fa fa-user"></span><input Placeholder="Date" type="date" formControlName="date" required></p><br>
+           <div>
+
+                              <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Register"></span>
+                          </div>
+
+        </fieldset>
+<div class="clearfix"></div>
+      </form>
+
+      <div class="clearfix"></div>
+
+    </div> <!-- end login -->
+    <div class="logo">JGSP
+        
+        <div class="clearfix"></div>
+    </div>
+    
+    </div>
+
+  </div>
+
+</div>
