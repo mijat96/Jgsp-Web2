@@ -35,7 +35,7 @@ Datum rodjenja:<input type="date" formControlName="date" required> <br>
 <div class="middle">
     <div id="login">
 
-      <form #f="ngForm" (submit)="login(f.value, f)">
+      <form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
 
         <fieldset class="clearfix">
 

@@ -12,7 +12,7 @@ namespace WebApp.Models
         public ICollection<Stanica> Stanice { get; set; }
         public ICollection<RedVoznje> RedoviVoznje { get; set; }
         public ICollection<Vozilo> Vozila { get; set; }
-
+        public string Polasci { get; set; }
         public Linija() { }
     }
 }

@@ -271,6 +271,10 @@
     <Compile Include="Migrations\201906031030368_Mig3.Designer.cs">
       <DependentUpon>201906031030368_Mig3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906041411077_PolasciULinijji.cs" />
+    <Compile Include="Migrations\201906041411077_PolasciULinijji.Designer.cs">
+      <DependentUpon>201906041411077_PolasciULinijji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031030368_Mig3.resx">
       <DependentUpon>201906031030368_Mig3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906041411077_PolasciULinijji.resx">
+      <DependentUpon>201906041411077_PolasciULinijji.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
