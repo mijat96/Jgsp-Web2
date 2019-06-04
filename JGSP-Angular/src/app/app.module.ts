@@ -12,12 +12,14 @@ import { LoginComponent } from './login/login.component';
 import { AuthHttpService } from './services/auth.service';
 import { PrvaKomponentaComponent } from 'src/app/prva-komponenta/prva-komponenta.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
+import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
   {path: "registracija", component: RegistracijaComponent},
+  {path: "redVoznje", component: RedVoznjeComponent},
   {path: "**", redirectTo: "home"}
 ]
 
@@ -27,7 +29,8 @@ const routes: Routes = [
     PrvaKomponentaComponent,
     HomeComponent,
     LoginComponent,
-    RegistracijaComponent
+    RegistracijaComponent,
+    RedVoznjeComponent
   ],
   imports: [
     BrowserModule,

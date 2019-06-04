@@ -26,6 +26,13 @@ export class AuthHttpService{
     }
 
     reg(data: RegUser){
-     return this.http.post<any>(this.base_url + "/api/Account/Register", data).subscribe();
+        return this.http.post<any>(this.base_url + "/api/Account/Register", data).subscribe();
+    }
+
+    logOut() : Observable<any>{
+        return this.http.post<any>(this.base_url + "/api/Account/Logout", null);
+    }
+    GetPolasci(id: number) : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/RedVoznjes/" + id);
     }
 }

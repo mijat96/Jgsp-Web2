@@ -66,6 +66,18 @@ namespace WebApp.Migrations
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
             }
+            if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == 1))
+            {
+                RedVoznje red = new RedVoznje();
+                red.Id = 1;
+                Linija lin = new Linija();
+                lin.RedniBroj = 1;
+                lin.Polasci = "19:00 20:21";
+                red.Linija = lin;
+                context.Linije.Add(lin);
+                context.RedoviVoznje.Add(red);
+                context.SaveChanges();
+            }
         }
     }
 }

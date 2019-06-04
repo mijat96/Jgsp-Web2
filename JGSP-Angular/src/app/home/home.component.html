@@ -1,5 +1,13 @@
 <p>
   home works!
 </p>
-<a routerLink="/login">Login</a> <br>
-<a routerLink="/registracija">Registracija</a>
+<div *ngIf="!jwtIsUndefined(); else logOut">
+  <a routerLink="/login">Login</a>
+  <a routerLink="/registracija">Registracija</a>
+</div>
+<ng-template #logOut>
+  <a (click)="LogOut()">LogOut</a>
+<br>
+</ng-template>
+<a routerLink="/redVoznje">redVoznje</a>
+<br>
