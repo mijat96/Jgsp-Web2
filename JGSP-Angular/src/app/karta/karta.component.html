@@ -1,0 +1,8 @@
+<p>
+    <select [(ngModel)]="tip" >
+        <option *ngFor="let t of tipovi">
+          {{t}} 
+        </option>
+    </select>
+    <button (click)="CenaKarte()" >Prikazi cene</button>
+</p>

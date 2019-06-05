@@ -61,6 +61,27 @@ namespace WebApp.Migrations
                 userManager.AddToRole(user.Id, "Admin");
             }
 
+            //if (!context.Karte.Any(u => u.IdKarte == 1))
+            //{
+            //    Karta k = new Karta() { IdKarte = 1, Tip = TipKarte.Godisnja };
+            //    Karta k1 = new Karta() { IdKarte = 2, Tip = TipKarte.Dnevna };
+            //    Karta k2 = new Karta() { IdKarte = 3, Tip = TipKarte.Mesecna };
+            //    Karta k3 = new Karta() { IdKarte = 4, Tip = TipKarte.Vremenska };
+            //    Cenovnik c = new Cenovnik() { IdCenovnik = 1, VaziOd = DateTime.Now, VaziDo = DateTime.Now .AddDays(30) };
+            //    CenaKarte cenak = new CenaKarte() { Karta = k, Cenovnik = c};
+            //    CenaKarte cenak1 = new CenaKarte() { Karta = k2, Cenovnik = c };
+            //    CenaKarte cenak2 = new CenaKarte() { Karta = k3, Cenovnik = c };
+            //    context.Karte.Add(k);
+            //    context.Karte.Add(k1);
+            //    context.Karte.Add(k2);
+            //    context.Karte.Add(k3);
+            //    context.Cenovnici.Add(c);
+            //    context.CeneKarti.Add(cenak);
+            //    context.CeneKarti.Add(cenak1);
+            //    context.CeneKarti.Add(cenak2);
+            //    context.SaveChanges();
+            //}
+
             if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
             { 
                 var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), Tip = "student", Name = "dasdas", Surname = "dasdasda" };

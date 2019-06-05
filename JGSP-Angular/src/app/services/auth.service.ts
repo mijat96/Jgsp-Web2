@@ -33,7 +33,12 @@ export class AuthHttpService{
     GetPolasci(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id +"/" + dan);
     }
+
     GetLinije() : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/");
+    }
+
+    GetCenaKarte(tip: string): Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip);
     }
 }

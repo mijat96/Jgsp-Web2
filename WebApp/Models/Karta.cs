@@ -12,6 +12,8 @@ namespace WebApp.Models
         public int IdKarte { get; set; }
         public TipKarte Tip { get; set; }
         public DateTime VaziDo { get; set; }
+        public int ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<CenaKarte> CeneKarti { get; set; }
 

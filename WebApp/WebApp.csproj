@@ -251,6 +251,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KartasController.cs" />
     <Compile Include="Controllers\LinijasController.cs" />
     <Compile Include="Controllers\RedVoznjesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -292,6 +293,10 @@
     <Compile Include="Migrations\201906051252182_mig9.cs" />
     <Compile Include="Migrations\201906051252182_mig9.Designer.cs">
       <DependentUpon>201906051252182_mig9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906051431480_mig10.cs" />
+    <Compile Include="Migrations\201906051431480_mig10.Designer.cs">
+      <DependentUpon>201906051431480_mig10.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -447,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906051252182_mig9.resx">
       <DependentUpon>201906051252182_mig9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051431480_mig10.resx">
+      <DependentUpon>201906051431480_mig10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

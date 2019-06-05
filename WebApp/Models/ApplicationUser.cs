@@ -21,6 +21,7 @@ namespace WebApp.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string ConfirmPassword { get; set; }
+        public virtual ICollection<Karta> Karte { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {

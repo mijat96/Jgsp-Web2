@@ -14,14 +14,16 @@ import { PrvaKomponentaComponent } from 'src/app/prva-komponenta/prva-komponenta
 import { RegistracijaComponent } from './registracija/registracija.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { LinijeComponent } from './linije/linije.component';
+import { KartaComponent } from './karta/karta.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "home", component: HomeComponent},
-  {path: "login", component: LoginComponent},
-  {path: "registracija", component: RegistracijaComponent},
-  {path: "redVoznje", component: RedVoznjeComponent},
-  {path: "**", redirectTo: "home"}
+  { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "registracija", component: RegistracijaComponent },
+  { path: "redVoznje", component: RedVoznjeComponent },
+  { path: "kupiKartu", component: KartaComponent },
+  { path: "**", redirectTo: "home" }
 ]
 
 @NgModule({
@@ -32,7 +34,8 @@ const routes: Routes = [
     LoginComponent,
     RegistracijaComponent,
     RedVoznjeComponent,
-    LinijeComponent
+    LinijeComponent,
+    KartaComponent
   ],
   imports: [
     BrowserModule,
