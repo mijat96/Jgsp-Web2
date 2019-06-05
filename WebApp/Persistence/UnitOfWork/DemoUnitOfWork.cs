@@ -19,22 +19,21 @@ namespace WebApp.Persistence.UnitOfWork
 
         //[Dependency]
         //instanca interfejsa
+        
         [Dependency]
-        IRepositoryVozlio IUnitOfWork.Vozilo { get; set; }
+        public IRepositoryVozlio Vozila { get; set; }
         [Dependency]
-        IRepositoryVozlio IUnitOfWork.Vozila { get; set; }
+        public IRepositoryCenaKarte CenaKarte { get; set; }
         [Dependency]
-        IRepositoryCenaKarte IUnitOfWork.CenaKarte { get; set; }
+        public IRepositoryCenovnik Cenovnik { get; set; }
         [Dependency]
-        IRepositoryCenovnik IUnitOfWork.Cenovnik { get; set; }
+        public IRepositoryKarta Karta { get; set; }
         [Dependency]
-        IRepositoryKarta IUnitOfWork.Karta { get; set; }
+        public IRepositoryLinija Linija { get; set; }
         [Dependency]
-        IRepositoryLinija IUnitOfWork.Linija { get; set; }
+        public IRepositoryRedVoznje RedVoznje { get; set; }
         [Dependency]
-        IRepositoryRedVoznje IUnitOfWork.RedVoznje { get; set; }
-        [Dependency]
-        IRepositoryStanica IUnitOfWork.Stanica { get; set; }
+        public IRepositoryStanica Stanica { get; set; }
         
 
         public int Complete()

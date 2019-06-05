@@ -9,10 +9,10 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         public int RedniBroj { get; set; }
-        public ICollection<Stanica> Stanice { get; set; }
-        public ICollection<RedVoznje> RedoviVoznje { get; set; }
-        public ICollection<Vozilo> Vozila { get; set; }
-        public string Polasci { get; set; }
+        public virtual ICollection<Stanica> Stanice { get; set; }
+        public virtual ICollection<RedVoznje> RedoviVoznje { get; set; }
+        public virtual ICollection<Vozilo> Vozila { get; set; }
+       
         public Linija() { }
     }
 }

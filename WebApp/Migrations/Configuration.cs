@@ -3,6 +3,7 @@ namespace WebApp.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -69,13 +70,41 @@ namespace WebApp.Migrations
             if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == 1))
             {
                 RedVoznje red = new RedVoznje();
+                RedVoznje red2 = new RedVoznje();
+           
+          
                 red.Id = 1;
+                red2.Id = 2;
+               
+              
                 Linija lin = new Linija();
+                Linija lin2 = new Linija();
+                Linija lin3 = new Linija();
+                lin.Id = 1;
                 lin.RedniBroj = 1;
-                lin.Polasci = "19:00 20:21";
-                red.Linija = lin;
-                context.Linije.Add(lin);
+                red.DanUNedelji = "Nedelja";
+                red.Polasci = "11:00 12:21";
+                red2.DanUNedelji = "Subota";
+                red2.Polasci = "12:00 15:21";
+
+                lin.RedoviVoznje = new List<RedVoznje>();
+
+                lin2.RedoviVoznje = new List<RedVoznje>();
+                lin3.RedoviVoznje = new List<RedVoznje>();
+                lin.RedoviVoznje.Add(red);
+                lin.RedoviVoznje.Add(red2);
+                lin2.RedniBroj = 2;
+                lin2.Id = 2;
+               
+                lin3.RedniBroj = 3;
+                lin3.Id = 3;
+
                 context.RedoviVoznje.Add(red);
+                context.RedoviVoznje.Add(red2);
+                context.Linije.Add(lin);
+                context.Linije.Add(lin2);
+                context.Linije.Add(lin3);
+              
                 context.SaveChanges();
             }
         }

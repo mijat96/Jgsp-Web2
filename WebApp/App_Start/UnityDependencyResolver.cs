@@ -71,7 +71,13 @@ namespace WebApp.App_Start
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
             container.RegisterType<IRepositoryVozlio, VoziloRepository>();
             container.RegisterType<IRepositoryLinija, LinijaRepository>();
+            container.RegisterType<IRepositoryCenaKarte, CenaKarteRepository>();
+            container.RegisterType<IRepositoryKarta, KartaRepository>();
+            container.RegisterType<IRepositoryStanica, StanicaRepository>();
             container.RegisterType<IRepositoryRedVoznje, RedVoznjeRepository>();
+            container.RegisterType<IRepositoryCenovnik, CenovnikRepository>();
+      
+
             //container.RegisterType<IProductRepositry, ProductRepository>();
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
         }

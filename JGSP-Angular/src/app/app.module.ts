@@ -13,6 +13,7 @@ import { AuthHttpService } from './services/auth.service';
 import { PrvaKomponentaComponent } from 'src/app/prva-komponenta/prva-komponenta.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
+import { LinijeComponent } from './linije/linije.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     RegistracijaComponent,
-    RedVoznjeComponent
+    RedVoznjeComponent,
+    LinijeComponent
   ],
   imports: [
     BrowserModule,

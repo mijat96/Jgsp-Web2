@@ -9,7 +9,7 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         public string DanUNedelji { get; set; }
-
+        public string Polasci { get; set; }
         public int LinijaId { get; set; }
         public Linija Linija { get; set; }
 

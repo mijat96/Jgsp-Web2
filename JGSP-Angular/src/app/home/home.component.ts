@@ -17,12 +17,11 @@ export class HomeComponent implements OnInit {
   }
 
   LogOut(){
-    this.service.logOut().subscribe(
-      data => {
+    
         localStorage.setItem('jwt', undefined);
         this.ruter.navigate(['home']);
-      }
-    );
+    
+ 
   }
   ngOnInit() {
   }

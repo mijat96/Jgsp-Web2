@@ -30,10 +30,14 @@ export class RegistracijaComponent implements OnInit {
 
   onSubmit(){
     let regModel: RegUser = this.registacijaForm.value;
-    this.http.reg(regModel);
+    this.http.reg(regModel).subscribe(
+      
+    )
     
     this.router.navigate(["/login"])
     //form.reset();
   }
+
+
 
 }

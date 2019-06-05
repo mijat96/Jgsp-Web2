@@ -1,4 +1,19 @@
-<p>
 
-  <button (click)="OnGetPolasci()">Polasci keca</button>>
+  <select [(ngModel)]="selectedLine" >
+    <option *ngFor="let lin of linijeZaView">
+      {{lin}} 
+    </option>
+  </select>
+  <select [(ngModel)]="dan" >
+      <option *ngFor="let d of dani">
+        {{d}} 
+      </option>
+    </select>
+<p>
+<button (click)="OnGetLinije()" >Prikazi linije</button>
+<button (click)="OnGetPolasci()" >Prikazi</button>
+ iz baze:<br>
+  {{linija.linije}}
+  Polasci sa stanice:<br>
+  {{ras.polasci}}
 </p>

@@ -34,17 +34,8 @@ namespace WebApp.Controllers
         [ResponseType(typeof(string))]
         public IHttpActionResult GetRedVoznje(int id)
         {
-            Linija linija = new Linija();
-            RedVoznje redVoznje = Db.RedVoznje.Get(id);
 
-            linija = Db.Linija.Get(redVoznje.LinijaId);
-
-            if (redVoznje == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(linija.Polasci);
+            return Ok();
         }
 
         // PUT: api/RedVoznjes/5

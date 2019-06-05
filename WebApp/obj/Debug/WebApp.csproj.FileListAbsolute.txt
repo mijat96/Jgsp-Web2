@@ -1052,3 +1052,7 @@ C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.csproj.Gen
 C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.pdb
+C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.Mig6.resources
+C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.mig7.resources
+C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.mig8.resources
+C:\Users\e321-2015\Documents\GitHub\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.mig9.resources
