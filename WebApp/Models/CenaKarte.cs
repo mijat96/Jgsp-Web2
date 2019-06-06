@@ -12,14 +12,14 @@ namespace WebApp.Models
         [Key]
         public int IdCenaKarte { get; set; }
         public float Cena { get; set; }
-
+        public string TipKarte { get; set; }
+        public string TipKupca { get; set; }
         [ForeignKey("Cenovnik")]
         public int CenovnikId { get; set; }
         public Cenovnik Cenovnik {get; set;}
-        [ForeignKey("Karta")]
-        public int KartaId { get; set; }
-        public Karta Karta { get; set; }
+       
 
+        public virtual ICollection<Karta> Karte { get; set; }
         public CenaKarte() { }
 
     }

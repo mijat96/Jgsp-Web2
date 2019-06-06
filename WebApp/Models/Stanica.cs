@@ -16,6 +16,6 @@ namespace WebApp.Models
         public int X { get; set; }
         public int Y { get; set; }
 
-        public ICollection<Linija> Linije { get; set; }
+        public virtual ICollection<Linija> Linije { get; set; }
     }
 }

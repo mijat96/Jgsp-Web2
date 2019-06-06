@@ -38,7 +38,7 @@ Datum rodjenja:<input type="date" formControlName="date" required> <br>
       <form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
 
         <fieldset class="clearfix">
-
+      
           <p ><span class="fa fa-user"></span><input Placeholder="Name" type="text" formControlName="name" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
           <p><span class="fa fa-user"></span><input Placeholder="Surname" type="text" formControlName="surname" required></p> 
           <p><span class="fa fa-user"></span><input Placeholder="Username" type="text" formControlName="username" required></p> 
@@ -46,9 +46,17 @@ Datum rodjenja:<input type="date" formControlName="date" required> <br>
           <p ><span class="fa fa-lock"></span><input Placeholder="Password" type="password" formControlName="confirmPassword" required></p>
           <p ><span class="fa fa-user"></span><input Placeholder="Email" type="email" formControlName="email" required></p><br>
           <p><span class="fa fa-user"></span><input Placeholder="Date" type="date" formControlName="date" required></p><br>
+          <p>
+            <select [(ngModel)]="tip" >
+              <option *ngFor="let t of tipovi">
+                {{t}} 
+              </option>
+          </select>
+          <br>
+          </p>
            <div>
 
-                              <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Register"></span>
+                              <span style="width:100%; text-align:right;  display: inline-block;"><input type="submit" value="Register"></span>
                           </div>
 
         </fieldset>

@@ -24,7 +24,8 @@ export class RegistracijaComponent implements OnInit {
   });
 
   constructor(private http: AuthHttpService, private fb: FormBuilder, private router: Router) { }
-
+  tipovi: string[] = ["Admin", "Studemt", "Penzioner", "Obican"];
+  tip: string;
   ngOnInit() {
   }
 

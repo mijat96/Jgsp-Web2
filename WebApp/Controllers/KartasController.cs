@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -14,6 +16,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [RoutePrefix("api/Kartas")]
     public class KartasController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -36,22 +39,59 @@ namespace WebApp.Controllers
         [Route("GetKarta/{tip}")]
         public IHttpActionResult GetKartaCena(string tip)
         {
-            List<CenaKarte> cene = Db.CenaKarte.GetAll().ToList();
+            List<Karta> karte = Db.Karta.GetAll().ToList();
+            CenaKarte c = new CenaKarte();
             float cena = 0;
-            foreach(CenaKarte c in cene)
+            foreach(Karta k in karte)
             {
-                if(tip == c.Karta.Tip.ToString())
+                if(tip == k.Tip)
                 {
+                    c= Db.CenaKarte.Get(k.CenaKarteId);
                     cena = c.Cena;
                 }
             }
 
-            if (cene == null)
+            if (karte == null)
             {
                 return NotFound();
             }
 
             return Ok(cena);
+        }
+        [Authorize(Roles = "Admin")]
+        [ResponseType(typeof(string))]
+        [Route("GetKartaKupi2/{tipKarte}/{tipKorisnika}/{user}")]
+        public IHttpActionResult GetKarta(string tipKarte, string tipKorisnika, string user)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            List<CenaKarte> ceneKarata = Db.CenaKarte.GetAll().ToList();
+
+            var id = User.Identity.GetUserId();
+
+            float cena;
+            string povratna = "";
+            foreach (CenaKarte ck in ceneKarata)
+            {
+                if (ck.TipKarte == tipKarte && ck.TipKupca == tipKorisnika)
+                {
+                    Karta novaKarta = new Karta();
+                    novaKarta.CenaKarte = ck;
+                    novaKarta.Tip = tipKarte;
+                    novaKarta.ApplicationUserId = User.Identity.GetUserId();
+                    novaKarta.VaziDo = DateTime.UtcNow;
+                    cena = ck.Cena;
+                    povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
+                    
+                }
+            }
+
+            if (ceneKarata == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(povratna);
         }
 
         // PUT: api/Kartas/5

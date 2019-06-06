@@ -21,7 +21,7 @@ namespace WebApp.Persistence
 
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=DefaultConnection", throwIfV1Schema: false)
         {
         }
         

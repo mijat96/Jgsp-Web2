@@ -60,27 +60,8 @@ namespace WebApp.Migrations
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "Admin");
             }
+        
 
-            //if (!context.Karte.Any(u => u.IdKarte == 1))
-            //{
-            //    Karta k = new Karta() { IdKarte = 1, Tip = TipKarte.Godisnja };
-            //    Karta k1 = new Karta() { IdKarte = 2, Tip = TipKarte.Dnevna };
-            //    Karta k2 = new Karta() { IdKarte = 3, Tip = TipKarte.Mesecna };
-            //    Karta k3 = new Karta() { IdKarte = 4, Tip = TipKarte.Vremenska };
-            //    Cenovnik c = new Cenovnik() { IdCenovnik = 1, VaziOd = DateTime.Now, VaziDo = DateTime.Now .AddDays(30) };
-            //    CenaKarte cenak = new CenaKarte() { Karta = k, Cenovnik = c};
-            //    CenaKarte cenak1 = new CenaKarte() { Karta = k2, Cenovnik = c };
-            //    CenaKarte cenak2 = new CenaKarte() { Karta = k3, Cenovnik = c };
-            //    context.Karte.Add(k);
-            //    context.Karte.Add(k1);
-            //    context.Karte.Add(k2);
-            //    context.Karte.Add(k3);
-            //    context.Cenovnici.Add(c);
-            //    context.CeneKarti.Add(cenak);
-            //    context.CeneKarti.Add(cenak1);
-            //    context.CeneKarti.Add(cenak2);
-            //    context.SaveChanges();
-            //}
 
             if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
             { 
@@ -127,6 +108,52 @@ namespace WebApp.Migrations
                 context.Linije.Add(lin3);
               
                 context.SaveChanges();
+            }
+            if (!context.CeneKarti.Any(u => u.Cena==200))
+            {
+                //var user1 = new ApplicationUser() { Id = "appu1", UserName = "appu1@yahoo.com", Email = "appu1@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu1123!"), Tip = "student", Name = "dasdas", Surname = "dasdasda" };
+                //userManager.Create(user1);
+                //userManager.AddToRole(user1.Id, "AppUser");
+
+
+
+                Cenovnik cenovnik = new Cenovnik();
+                cenovnik.CeneKarti = new List<CenaKarte>();
+
+                CenaKarte cenaKarte = new CenaKarte();
+           
+                cenaKarte.Karte = new List<Karta>();
+                cenaKarte.Cena = 100;
+
+                cenovnik.VaziDo = DateTime.UtcNow;
+                cenovnik.VaziOd = DateTime.UtcNow;
+
+               
+
+
+
+
+                cenaKarte.Cenovnik = cenovnik;
+                cenaKarte.TipKarte = "Dnevna";
+                cenaKarte.TipKupca = "Student";
+                cenovnik.CeneKarti.Add(cenaKarte);
+                Karta kartaDnevna = new Karta();
+                kartaDnevna.Tip = "Dnevna";
+                kartaDnevna.IdKarte = 1;
+                //user1.Karte = new List<Karta>();
+                //user1.Karte.Add(kartaDnevna);
+                //kartaDnevna.ApplicationUser = user1;
+                //kartaDnevna.CekiranaUTrenutku = DateTime.UtcNow;
+
+                //kartaDnevna.CenaKarteId = cenaKarte.IdCenaKarte;
+                kartaDnevna.CenaKarte = cenaKarte;
+
+                cenaKarte.Karte.Add(kartaDnevna);
+
+                context.Karte.Add(kartaDnevna);
+                context.CeneKarti.Add(cenaKarte);
+                
+                context.Cenovnici.Add(cenovnik);
             }
         }
     }
