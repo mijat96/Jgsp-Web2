@@ -14,8 +14,7 @@ export class TokenInterceptor implements HttpInterceptor{
             
             req = req.clone({
                 setHeaders:{
-                    "Authorization": "Bearer " + jwt,
-                    "Content-Type": "application/json"
+                    "Authorization": "Bearer " + jwt
                 }
             });
         }

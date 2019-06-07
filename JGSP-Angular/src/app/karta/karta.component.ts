@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthHttpService } from 'src/app/services/auth.service';
-import { user } from 'src/app/services/auth.service';
+//import { user } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-karta',
@@ -25,17 +25,15 @@ export class KartaComponent implements OnInit {
     });
   }
   KupiKartu(){
-     let jwtData = localStorage.jwt.split('.')[1]
-        let decodedJwtJsonData = window.atob(jwtData)
-        let decodedJwtData = JSON.parse(decodedJwtJsonData)
-
-
-       
-        this.user = decodedJwtData.nameid;
+      let jwtData = localStorage.jwt.split('.')[1]
+      let decodedJwtJsonData = window.atob(jwtData)
+      let decodedJwtData = JSON.parse(decodedJwtJsonData)
+  
+      this.user = decodedJwtData.nameid;
       this.http.GetKupiKartu(this.tip, "Student", this.user).subscribe((vaziDo)=>
-    {
-      this.vaziDo1 = vaziDo;
-      err => console.log(err);
+      {
+        this.vaziDo1 = vaziDo;
+        err => console.log(err);
       });
 
   }

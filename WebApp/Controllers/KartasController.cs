@@ -80,9 +80,11 @@ namespace WebApp.Controllers
                     novaKarta.Tip = tipKarte;
                     novaKarta.ApplicationUserId = User.Identity.GetUserId();
                     novaKarta.VaziDo = DateTime.UtcNow;
+                    novaKarta.ApplicationUser = userManager.FindById(id);
+                    novaKarta.ApplicationUserId = id;
                     cena = ck.Cena;
                     povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
-                    
+                    break;                    
                 }
             }
 
