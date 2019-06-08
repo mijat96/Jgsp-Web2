@@ -20,6 +20,7 @@ export class RedVoznjeComponent implements OnInit {
   linijeZaView : number[];
   dani: string[]=["Radni","Subota","Nedelja"];
   dan: string;
+  text: string = "Klisa";
 
   ngOnInit() {
       

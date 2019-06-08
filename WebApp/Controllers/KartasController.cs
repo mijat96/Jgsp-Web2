@@ -68,6 +68,7 @@ namespace WebApp.Controllers
             List<CenaKarte> ceneKarata = Db.CenaKarte.GetAll().ToList();
 
             var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(id);
 
             float cena;
             string povratna = "";
@@ -78,11 +79,25 @@ namespace WebApp.Controllers
                     Karta novaKarta = new Karta();
                     novaKarta.CenaKarte = ck;
                     novaKarta.Tip = tipKarte;
-                    novaKarta.ApplicationUserId = User.Identity.GetUserId();
-                    novaKarta.VaziDo = DateTime.UtcNow;
-                    novaKarta.ApplicationUser = userManager.FindById(id);
+                    //novaKarta.ApplicationUserId = User.Identity.GetUserId();
                     novaKarta.ApplicationUserId = id;
+                    novaKarta.VaziDo = DateTime.UtcNow;
+                    novaKarta.ApplicationUser = u;
+                    //novaKarta.ApplicationUser = userManager.FindById(id);
+                    u.Karte.Add(novaKarta);
                     cena = ck.Cena;
+                    //Dodavanje novih karata
+                    //CenaKarte cenaKarte = new CenaKarte();
+
+                    //cenaKarte.Karte = new List<Karta>();
+                    //cenaKarte.Cena = 60;
+                    //cenaKarte.Cenovnik = Db.Cenovnik.Get(1);
+                    //cenaKarte.TipKarte = "vremenska";
+                    //Karta vremenska = new Karta() { Tip = "Vremenska", CenaKarte = cenaKarte, IdKarte = 2, VaziDo = DateTime.Now };
+                    //Db.CenaKarte.Add(cenaKarte);
+                    //Db.Karta.Add(vremenska);
+                    //Db.Complete();
+                    //kraj dodavanja
                     povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
                     break;                    
                 }

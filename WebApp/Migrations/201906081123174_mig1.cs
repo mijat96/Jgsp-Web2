@@ -13,6 +13,8 @@ namespace WebApp.Migrations
                     {
                         IdCenaKarte = c.Int(nullable: false, identity: true),
                         Cena = c.Single(nullable: false),
+                        TipKarte = c.String(),
+                        TipKupca = c.String(),
                         CenovnikId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCenaKarte)
@@ -34,17 +36,17 @@ namespace WebApp.Migrations
                 c => new
                     {
                         IdKarte = c.Int(nullable: false, identity: true),
-                        Tip = c.Int(nullable: false),
+                        Cekirana = c.Boolean(nullable: false),
+                        Tip = c.String(),
                         VaziDo = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        ApplicationUserId = c.Int(nullable: false),
+                        ApplicationUserId = c.String(maxLength: 128),
                         CenaKarteId = c.Int(nullable: false),
-                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.IdKarte)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
                 .ForeignKey("dbo.CenaKartes", t => t.CenaKarteId, cascadeDelete: true)
-                .Index(t => t.CenaKarteId)
-                .Index(t => t.ApplicationUser_Id);
+                .Index(t => t.ApplicationUserId)
+                .Index(t => t.CenaKarteId);
             
             CreateTable(
                 "dbo.Linijas",
@@ -122,14 +124,14 @@ namespace WebApp.Migrations
             DropForeignKey("dbo.StanicaLinijas", "Stanica_Id", "dbo.Stanicas");
             DropForeignKey("dbo.RedVoznjes", "LinijaId", "dbo.Linijas");
             DropForeignKey("dbo.Kartas", "CenaKarteId", "dbo.CenaKartes");
-            DropForeignKey("dbo.Kartas", "ApplicationUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Kartas", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CenaKartes", "CenovnikId", "dbo.Cenovniks");
             DropIndex("dbo.StanicaLinijas", new[] { "Linija_Id" });
             DropIndex("dbo.StanicaLinijas", new[] { "Stanica_Id" });
             DropIndex("dbo.Voziloes", new[] { "LinijaId" });
             DropIndex("dbo.RedVoznjes", new[] { "LinijaId" });
-            DropIndex("dbo.Kartas", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.Kartas", new[] { "CenaKarteId" });
+            DropIndex("dbo.Kartas", new[] { "ApplicationUserId" });
             DropIndex("dbo.CenaKartes", new[] { "CenovnikId" });
             DropColumn("dbo.AspNetUsers", "ConfirmPassword");
             DropColumn("dbo.AspNetUsers", "Surname");

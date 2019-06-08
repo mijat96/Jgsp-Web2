@@ -262,37 +262,9 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906061138004_mig1.cs" />
-    <Compile Include="Migrations\201906061138004_mig1.Designer.cs">
-      <DependentUpon>201906061138004_mig1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061145405_mig12.cs" />
-    <Compile Include="Migrations\201906061145405_mig12.Designer.cs">
-      <DependentUpon>201906061145405_mig12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061205352_mig123.cs" />
-    <Compile Include="Migrations\201906061205352_mig123.Designer.cs">
-      <DependentUpon>201906061205352_mig123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061220313_mig1234.cs" />
-    <Compile Include="Migrations\201906061220313_mig1234.Designer.cs">
-      <DependentUpon>201906061220313_mig1234.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061249113_mig12345.cs" />
-    <Compile Include="Migrations\201906061249113_mig12345.Designer.cs">
-      <DependentUpon>201906061249113_mig12345.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061255230_mig123456.cs" />
-    <Compile Include="Migrations\201906061255230_mig123456.Designer.cs">
-      <DependentUpon>201906061255230_mig123456.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061304193_mig1234561.cs" />
-    <Compile Include="Migrations\201906061304193_mig1234561.Designer.cs">
-      <DependentUpon>201906061304193_mig1234561.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061308319_mig1234567.cs" />
-    <Compile Include="Migrations\201906061308319_mig1234567.Designer.cs">
-      <DependentUpon>201906061308319_mig1234567.cs</DependentUpon>
+    <Compile Include="Migrations\201906081123174_mig1.cs" />
+    <Compile Include="Migrations\201906081123174_mig1.Designer.cs">
+      <DependentUpon>201906081123174_mig1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -425,29 +397,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061138004_mig1.resx">
-      <DependentUpon>201906061138004_mig1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061145405_mig12.resx">
-      <DependentUpon>201906061145405_mig12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061205352_mig123.resx">
-      <DependentUpon>201906061205352_mig123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061220313_mig1234.resx">
-      <DependentUpon>201906061220313_mig1234.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061249113_mig12345.resx">
-      <DependentUpon>201906061249113_mig12345.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061255230_mig123456.resx">
-      <DependentUpon>201906061255230_mig123456.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061304193_mig1234561.resx">
-      <DependentUpon>201906061304193_mig1234561.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061308319_mig1234567.resx">
-      <DependentUpon>201906061308319_mig1234567.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906081123174_mig1.resx">
+      <DependentUpon>201906081123174_mig1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

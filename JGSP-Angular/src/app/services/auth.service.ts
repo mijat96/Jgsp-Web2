@@ -10,8 +10,8 @@ export class AuthHttpService{
       
     }
   user: string
-    logIn(username: string, password: string){
-
+    logIn(username: string, password: string): Observable<boolean> | boolean{
+        let isDone: boolean = false;
         let data = `username=${username}&password=${password}&grant_type=password`;
         let httpOptions = {
             headers: {
@@ -29,6 +29,16 @@ export class AuthHttpService{
             let role = decodedJwtData.role
             this.user = decodedJwtData.unique_name;
         });
+
+        if(localStorage.jwt != "undefined"){
+            isDone = true;
+        }
+        else{
+            isDone = false;
+        }
+
+        return isDone;
+        
     }
 
     reg(data: RegUser) : Observable<any>{
@@ -44,9 +54,10 @@ export class AuthHttpService{
         return this.http.get<any>(this.base_url + "/api/Linijas/");
     }
 
-    GetCenaKarte(tip: string): Observable<any>{
+    GetCenaKarte(tip: string, tipPutnika: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip);
     }
+    
     GetKupiKartu(tipKarte: string, tipKorisnika: string, user : string): Observable<any>{
        
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte + "/" + tipKorisnika + "/" + user);

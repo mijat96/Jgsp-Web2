@@ -11,7 +11,9 @@ export class KartaComponent implements OnInit {
 
   constructor(private http: AuthHttpService) { }
   tipovi: string[] = ["Dnevna", "mesecna", "godisnja", "vremenska"];
+  tipoviPutnika: string[] = ["Djacka", "Penzionerska", "Regularna"];
   tip: string;
+  tipPutnika: string;
   cena1: number;
   vaziDo1 : string;
   user: string;
@@ -19,7 +21,7 @@ export class KartaComponent implements OnInit {
   }
 
   CenaKarte(){
-    this.http.GetCenaKarte(this.tip).subscribe((cena)=>{
+    this.http.GetCenaKarte(this.tip, this.tipPutnika).subscribe((cena)=>{
       this.cena1 = cena;
       err => console.log(err);
     });
