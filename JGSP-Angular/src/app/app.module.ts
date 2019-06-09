@@ -15,6 +15,8 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { LinijeComponent } from './linije/linije.component';
 import { KartaComponent } from './karta/karta.component';
+import { MapComponent } from './map/map.component';
+import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -35,13 +37,15 @@ const routes: Routes = [
     RegistracijaComponent,
     RedVoznjeComponent,
     LinijeComponent,
-    KartaComponent
+    KartaComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'}),
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService],
