@@ -56,7 +56,7 @@ namespace WebApp.Migrations
             
             if (!context.Users.Any(u => u.UserName == "admin@yahoo.com"))
             {
-                var user = new ApplicationUser() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!"), Tip = "student", Name = "dasdas", Surname = "dasdasda" };
+                var user = new ApplicationUser() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!"), Tip = "Student", Name = "dasdas", Surname = "dasdasda" };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "Admin");
             }
@@ -65,11 +65,11 @@ namespace WebApp.Migrations
 
             if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
             { 
-                var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), Tip = "student", Name = "dasdas", Surname = "dasdasda" };
+                var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), Tip = "Penzioner", Name = "dasdas", Surname = "dasdasda" };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
             }
-            if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == 1))
+            if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == "1"))
             {
                 RedVoznje red = new RedVoznje();
                 RedVoznje red2 = new RedVoznje();
@@ -83,7 +83,7 @@ namespace WebApp.Migrations
                 Linija lin2 = new Linija();
                 Linija lin3 = new Linija();
                 lin.Id = 1;
-                lin.RedniBroj = 1;
+                lin.RedniBroj = "1";
                 red.DanUNedelji = "Nedelja";
                 red.Polasci = "11:00 12:21";
                 red2.DanUNedelji = "Subota";
@@ -95,10 +95,10 @@ namespace WebApp.Migrations
                 lin3.RedoviVoznje = new List<RedVoznje>();
                 lin.RedoviVoznje.Add(red);
                 lin.RedoviVoznje.Add(red2);
-                lin2.RedniBroj = 2;
+                lin2.RedniBroj = "2";
                 lin2.Id = 2;
                
-                lin3.RedniBroj = 3;
+                lin3.RedniBroj = "3";
                 lin3.Id = 3;
 
                 context.RedoviVoznje.Add(red);
@@ -109,7 +109,7 @@ namespace WebApp.Migrations
               
                 context.SaveChanges();
             }
-            if (!context.CeneKarti.Any(u => u.Cena==200))
+            if (!context.CeneKarti.Any(u => u.Cena==210312))
             {
                 //var user1 = new ApplicationUser() { Id = "appu1", UserName = "appu1@yahoo.com", Email = "appu1@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu1123!"), Tip = "student", Name = "dasdas", Surname = "dasdasda" };
                 //userManager.Create(user1);
@@ -121,10 +121,15 @@ namespace WebApp.Migrations
                 cenovnik.CeneKarti = new List<CenaKarte>();
 
                 CenaKarte cenaKarte = new CenaKarte();
+                CenaKarte cenaKarteVre = new CenaKarte();
+                CenaKarte cenaKarteVre1 = new CenaKarte();
+                CenaKarte cenaKarteVre2 = new CenaKarte();
                 CenaKarte cenaKarte2 = new CenaKarte();
                 CenaKarte cenaKarte3 = new CenaKarte();
                 CenaKarte cenaKarte4 = new CenaKarte();
-
+                CenaKarte cenaKarte5 = new CenaKarte();
+                CenaKarte cenaKarte6 = new CenaKarte();
+                CenaKarte cenaKarte7 = new CenaKarte();
                 cenaKarte.Karte = new List<Karta>();
                 cenaKarte2.Karte = new List<Karta>();
                 cenaKarte3.Karte = new List<Karta>();
@@ -133,7 +138,11 @@ namespace WebApp.Migrations
                 cenaKarte2.Cena = 4500;
                 cenaKarte3.Cena = 900;
                 cenaKarte4.Cena = 100;
-
+                cenaKarte5.Cena = 5000;
+                cenaKarte6.Cena = 1000;
+                cenaKarteVre2.Cena = 50;
+                cenaKarteVre1.Cena = 45;
+                cenaKarteVre.Cena = 40;
                 cenovnik.VaziDo = DateTime.UtcNow;
                 cenovnik.VaziOd = DateTime.UtcNow;
 
@@ -151,10 +160,25 @@ namespace WebApp.Migrations
                 cenaKarte3.TipKupca = "Student";
                 cenaKarte4.TipKarte = "Dnevna";
                 cenaKarte4.TipKupca = "Obican";
+                cenaKarte5.TipKarte = "Godisnja";
+                cenaKarte5.TipKupca = "Obican";
+                cenaKarte6.TipKarte = "Mesecna";
+                cenaKarte6.TipKupca = "Obican";
+                cenaKarteVre.TipKarte = "Vremenska";
+                cenaKarteVre.TipKupca = "Obican";
+                cenaKarteVre1.TipKarte = "Vremenska";
+                cenaKarteVre1.TipKupca = "Student";
+                cenaKarteVre2.TipKarte = "Vremenska";
+                cenaKarteVre2.TipKupca = "Penzioner";
                 cenovnik.CeneKarti.Add(cenaKarte);
                 cenovnik.CeneKarti.Add(cenaKarte2);
                 cenovnik.CeneKarti.Add(cenaKarte3);
                 cenovnik.CeneKarti.Add(cenaKarte4);
+                cenovnik.CeneKarti.Add(cenaKarte5);
+                cenovnik.CeneKarti.Add(cenaKarte6);
+                cenovnik.CeneKarti.Add(cenaKarteVre);
+                cenovnik.CeneKarti.Add(cenaKarteVre1);
+                cenovnik.CeneKarti.Add(cenaKarteVre2);
                 Karta kartaDnevna = new Karta();
                 kartaDnevna.Tip = "Dnevna";
                 kartaDnevna.IdKarte = 1;
@@ -173,7 +197,11 @@ namespace WebApp.Migrations
                 context.CeneKarti.Add(cenaKarte2);
                 context.CeneKarti.Add(cenaKarte3);
                 context.CeneKarti.Add(cenaKarte4);
-
+                context.CeneKarti.Add(cenaKarte5);
+                context.CeneKarti.Add(cenaKarte6);
+                context.CeneKarti.Add(cenaKarteVre);
+                context.CeneKarti.Add(cenaKarteVre1);
+                context.CeneKarti.Add(cenaKarteVre2);
                 context.Cenovnici.Add(cenovnik);
             }
         }

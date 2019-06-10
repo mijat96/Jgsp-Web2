@@ -1,3 +1,6 @@
-<p>
-  kontrolor works!
-</p>
+
+<form [formGroup]="kontrolorGroup" (ngSubmit)="ProveriKartu()">
+<input Placeholder="IdKorisnika" type="text" formControlName="IdKorisnika">
+  <button (click)="ProveriKartu()" >Proveri kartu!</button>
+</form>
+  {{Odgovor}}
