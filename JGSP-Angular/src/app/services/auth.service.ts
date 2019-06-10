@@ -71,5 +71,9 @@ export class AuthHttpService{
     GetStanicaCord(idStanice: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Stanicas/GetStanica/" + idStanice);
     }
+    GetProveriKartu(idKorisnika: string): Observable<any>{
+       
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetProveri/" + idKorisnika );
+    }
  
 }
