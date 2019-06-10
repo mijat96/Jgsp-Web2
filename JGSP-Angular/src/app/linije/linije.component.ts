@@ -13,6 +13,7 @@ export class LinijeComponent implements OnInit {
   linija: linja = new linja();
   ngOnInit() {
   }
+  
   OnGetLinije(){
     this.http.GetLinije().subscribe((linijesabekenda)=>{
       this.linija.linije = linijesabekenda;
