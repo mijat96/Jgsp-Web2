@@ -91,20 +91,16 @@ namespace WebApp.Controllers
         }
         // GET: api/Kartas/5
         [AllowAnonymous]
-        [ResponseType(typeof(float))]
+        [ResponseType(typeof(string))]
         [Route("GetKarta/{tip}")]
         public IHttpActionResult GetKartaCena(string tip)
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
-           
-            float cena = 0;
+
+            string odg = "";
             foreach(CenaKarte k in karte)
             {
-                if(tip == k.TipKarte)
-                {
-                   
-                    cena = k.Cena;
-                }
+                odg += k.TipKupca + " " + k.TipKarte + " " + k.Cena + "rsd. ------" ;
             }
 
             if (karte == null)
@@ -112,7 +108,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            return Ok(cena);
+            return Ok(odg);
         }
        
         [ResponseType(typeof(string))]

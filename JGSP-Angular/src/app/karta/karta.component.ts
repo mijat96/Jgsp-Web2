@@ -23,6 +23,7 @@ export class KartaComponent implements OnInit {
   CenaKarte(){
     this.http.GetCenaKarte(this.tip, this.tipPutnika).subscribe((cena)=>{
       this.cena1 = cena;
+     
       err => console.log(err);
     });
   }
