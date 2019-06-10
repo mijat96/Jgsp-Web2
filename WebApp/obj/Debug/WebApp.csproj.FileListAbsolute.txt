@@ -1205,7 +1205,6 @@ C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.csproj.CoreCompileInput
 C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.pdb
-C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.mig1.resources
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\bin\WebApp.dll.config
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\bin\WebApp.dll
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\bin\WebApp.pdb
@@ -1356,3 +1355,4 @@ C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.pdb
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.novamigracija.resources
+C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.novamigracija.resources
