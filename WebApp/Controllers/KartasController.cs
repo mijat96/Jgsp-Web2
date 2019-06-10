@@ -8,6 +8,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -96,10 +97,12 @@ namespace WebApp.Controllers
         {
             var userStore = new UserStore<ApplicationUser>(db);
             var userManager = new UserManager<ApplicationUser>(userStore);
-            List<CenaKarte> ceneKarata = Db.CenaKarte.GetAll().ToList();
+     
+            Karta novaKarta = new Karta();
             string tipKorisnika;
             var id = User.Identity.GetUserId();
             ApplicationUser u = userManager.FindById(id);
+          
             if (u == null)
             {
                 tipKorisnika = "Obican";
@@ -110,45 +113,59 @@ namespace WebApp.Controllers
             }
             float cena;
             string povratna = "";
-            foreach (CenaKarte ck in ceneKarata)
+      
+           
+            CenaKarte ck = Db.CenaKarte.GetAll().Where(t => t.TipKarte == tipKarte && t.TipKupca == tipKorisnika).FirstOrDefault();
+           // novaKarta.CenaKarte = ck;
+            novaKarta.CenaKarteId = ck.IdCenaKarte;
+
+            novaKarta.Tip = tipKarte;
+       
+     
+            //novaKarta.ApplicationUserId = User.Identity.GetUserId();
+            novaKarta.VaziDo = DateTime.UtcNow;
+            if (u != null)
             {
-                if (ck.TipKarte == tipKarte && ck.TipKupca == tipKorisnika)
+                novaKarta.ApplicationUserId = id;
+               // novaKarta.ApplicationUser = u;
+                //novaKarta.ApplicationUser = userManager.FindById(id);
+                // u.Karte.Add(novaKarta);
+            }
+            else
+            {
+                MailMessage mail = new MailMessage("andrejs0901@gmail.com", "andrejs0901@gmail.com");
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = true;
+                client.Credentials = new NetworkCredential("andrejs0901@gmail.com", "andrej996");
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Host = "smtp.gmail.com";
+             
+                mail.Subject = "Public City Transport Serbia";
+                mail.Body = $"You successfully bought ticket at {DateTime.Now}. {Environment.NewLine} Your ticket id is: {novaKarta.IdKarte} {Environment.NewLine}Thank you!";
+                try
                 {
-                    Karta novaKarta = new Karta();
-                    novaKarta.CenaKarte = ck;
-                    novaKarta.Tip = tipKarte;
-                    //novaKarta.ApplicationUserId = User.Identity.GetUserId();
-                    novaKarta.VaziDo = DateTime.UtcNow;
-                    if (u != null)
-                    {
-                        novaKarta.ApplicationUserId = id;
-                        novaKarta.ApplicationUser = u;
-                        //novaKarta.ApplicationUser = userManager.FindById(id);
-                       // u.Karte.Add(novaKarta);
-                    }
-                    cena = ck.Cena;
-                    //Dodavanje novih karata
-                    //CenaKarte cenaKarte = new CenaKarte();
-
-                    //cenaKarte.Karte = new List<Karta>();
-                    //cenaKarte.Cena = 60;
-                    //cenaKarte.Cenovnik = Db.Cenovnik.Get(1);
-                    //cenaKarte.TipKarte = "vremenska";
-                    //Karta vremenska = new Karta() { Tip = "Vremenska", CenaKarte = cenaKarte, IdKarte = 2, VaziDo = DateTime.Now };
-                    //Db.CenaKarte.Add(cenaKarte);
-                    //Db.Karta.Add(vremenska);
-                    //Db.Complete();
-                    //kraj 
-                    Db.Karta.Add(novaKarta);
-                    Db.Complete();
-
-
-                    povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
-                    break;                    
+                    client.Send(mail);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return InternalServerError(e);
                 }
             }
+            cena = ck.Cena;
+            povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
 
-            if (ceneKarata == null)
+            
+            novaKarta.Cekirana = true;
+            db.Dispose();
+            
+            Db.Karta.Add(novaKarta);
+            
+            Db.Complete();
+            if (ck == null)
             {
                 return NotFound();
             }
