@@ -39,15 +39,15 @@ namespace WebApp.Controllers
         [Route("GetKarta/{tip}")]
         public IHttpActionResult GetKartaCena(string tip)
         {
-            List<Karta> karte = Db.Karta.GetAll().ToList();
-            CenaKarte c = new CenaKarte();
+            List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
+           
             float cena = 0;
-            foreach(Karta k in karte)
+            foreach(CenaKarte k in karte)
             {
-                if(tip == k.Tip)
+                if(tip == k.TipKarte)
                 {
-                    c= Db.CenaKarte.Get(k.CenaKarteId);
-                    cena = c.Cena;
+                   
+                    cena = k.Cena;
                 }
             }
 
@@ -58,18 +58,25 @@ namespace WebApp.Controllers
 
             return Ok(cena);
         }
-        [Authorize(Roles = "Admin")]
+       
         [ResponseType(typeof(string))]
-        [Route("GetKartaKupi2/{tipKarte}/{tipKorisnika}/{user}")]
-        public IHttpActionResult GetKarta(string tipKarte, string tipKorisnika, string user)
+        [Route("GetKartaKupi2/{tipKarte}")]
+        public IHttpActionResult GetKarta(string tipKarte)
         {
             var userStore = new UserStore<ApplicationUser>(db);
             var userManager = new UserManager<ApplicationUser>(userStore);
             List<CenaKarte> ceneKarata = Db.CenaKarte.GetAll().ToList();
-
+            string tipKorisnika;
             var id = User.Identity.GetUserId();
             ApplicationUser u = userManager.FindById(id);
-
+            if (u == null)
+            {
+                tipKorisnika = "Obican";
+            }
+            else
+            {
+                tipKorisnika = u.Tip;
+            }
             float cena;
             string povratna = "";
             foreach (CenaKarte ck in ceneKarata)
@@ -82,9 +89,12 @@ namespace WebApp.Controllers
                     //novaKarta.ApplicationUserId = User.Identity.GetUserId();
                     novaKarta.ApplicationUserId = id;
                     novaKarta.VaziDo = DateTime.UtcNow;
-                    novaKarta.ApplicationUser = u;
-                    //novaKarta.ApplicationUser = userManager.FindById(id);
-                    u.Karte.Add(novaKarta);
+                    if (u != null)
+                    {
+                        novaKarta.ApplicationUser = u;
+                        //novaKarta.ApplicationUser = userManager.FindById(id);
+                        u.Karte.Add(novaKarta);
+                    }
                     cena = ck.Cena;
                     //Dodavanje novih karata
                     //CenaKarte cenaKarte = new CenaKarte();

@@ -10,7 +10,7 @@ import { AuthHttpService } from 'src/app/services/auth.service';
 export class KartaComponent implements OnInit {
 
   constructor(private http: AuthHttpService) { }
-  tipovi: string[] = ["Dnevna", "mesecna", "godisnja", "vremenska"];
+  tipovi: string[] = ["Dnevna", "Mesecna", "Godisnja", "Vremenska"];
   tipoviPutnika: string[] = ["Djacka", "Penzionerska", "Regularna"];
   tip: string;
   tipPutnika: string;
@@ -27,12 +27,8 @@ export class KartaComponent implements OnInit {
     });
   }
   KupiKartu(){
-      let jwtData = localStorage.jwt.split('.')[1]
-      let decodedJwtJsonData = window.atob(jwtData)
-      let decodedJwtData = JSON.parse(decodedJwtJsonData)
-  
-      this.user = decodedJwtData.nameid;
-      this.http.GetKupiKartu(this.tip, "Student", this.user).subscribe((vaziDo)=>
+    
+      this.http.GetKupiKartu(this.tip).subscribe((vaziDo)=>
       {
         this.vaziDo1 = vaziDo;
         err => console.log(err);

@@ -121,9 +121,18 @@ namespace WebApp.Migrations
                 cenovnik.CeneKarti = new List<CenaKarte>();
 
                 CenaKarte cenaKarte = new CenaKarte();
-           
+                CenaKarte cenaKarte2 = new CenaKarte();
+                CenaKarte cenaKarte3 = new CenaKarte();
+                CenaKarte cenaKarte4 = new CenaKarte();
+
                 cenaKarte.Karte = new List<Karta>();
-                cenaKarte.Cena = 100;
+                cenaKarte2.Karte = new List<Karta>();
+                cenaKarte3.Karte = new List<Karta>();
+                cenaKarte4.Karte = new List<Karta>();
+                cenaKarte.Cena = 90;
+                cenaKarte2.Cena = 4500;
+                cenaKarte3.Cena = 900;
+                cenaKarte4.Cena = 100;
 
                 cenovnik.VaziDo = DateTime.UtcNow;
                 cenovnik.VaziOd = DateTime.UtcNow;
@@ -136,7 +145,16 @@ namespace WebApp.Migrations
                 cenaKarte.Cenovnik = cenovnik;
                 cenaKarte.TipKarte = "Dnevna";
                 cenaKarte.TipKupca = "Student";
+                cenaKarte2.TipKarte = "Godisnja";
+                cenaKarte2.TipKupca = "Student";
+                cenaKarte3.TipKarte = "Mesecna";
+                cenaKarte3.TipKupca = "Student";
+                cenaKarte4.TipKarte = "Dnevna";
+                cenaKarte4.TipKupca = "Obican";
                 cenovnik.CeneKarti.Add(cenaKarte);
+                cenovnik.CeneKarti.Add(cenaKarte2);
+                cenovnik.CeneKarti.Add(cenaKarte3);
+                cenovnik.CeneKarti.Add(cenaKarte4);
                 Karta kartaDnevna = new Karta();
                 kartaDnevna.Tip = "Dnevna";
                 kartaDnevna.IdKarte = 1;
@@ -152,7 +170,10 @@ namespace WebApp.Migrations
 
                 context.Karte.Add(kartaDnevna);
                 context.CeneKarti.Add(cenaKarte);
-                
+                context.CeneKarti.Add(cenaKarte2);
+                context.CeneKarti.Add(cenaKarte3);
+                context.CeneKarti.Add(cenaKarte4);
+
                 context.Cenovnici.Add(cenovnik);
             }
         }
