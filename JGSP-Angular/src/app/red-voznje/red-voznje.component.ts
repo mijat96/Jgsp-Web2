@@ -33,7 +33,8 @@ export class RedVoznjeComponent implements OnInit {
       err => console.log(err);
     }
     );
-}
+  }
+
   OnGetPolasci(){
       this.http.GetPolasci(this.selectedLine, this.dan).subscribe((raspored1)=>{
         this.ras.polasci = raspored1;
@@ -41,5 +42,10 @@ export class RedVoznjeComponent implements OnInit {
       }
       );
   }
+  
+  JsonParsiranje(){
+    this.http.ParsiranjeJson(this.selectedLine, this.dan).subscribe();
+  }
+
   
 }

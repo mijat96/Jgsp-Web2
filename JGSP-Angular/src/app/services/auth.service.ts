@@ -54,6 +54,11 @@ export class AuthHttpService{
         return this.http.get<any>(this.base_url + "/api/Linijas/");
     }
 
+    //samo da se iscita json na serveru i popuni baza
+    ParsiranjeJson(id: number, dan : string) : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id + "/" + dan + "/" + "str");
+    }
+
     GetCenaKarte(tip: string, tipPutnika: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip);
     }
