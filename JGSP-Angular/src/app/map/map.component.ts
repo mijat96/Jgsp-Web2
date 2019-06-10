@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input, NgZone, Injectable } from '@angular/core';
 import { GeoLocation } from './map-model/geolocation';
 import { Polyline } from './map-model/polyline';
 import { MarkerInfo } from './map-model/marker-info.model';
@@ -9,6 +9,7 @@ import { MarkerInfo } from './map-model/marker-info.model';
   styleUrls: ['./map.component.css'],
   styles: ['agm-map {height: 500px; width: 700px;}'] //postavljamo sirinu i visinu mape
 })
+
 export class MapComponent implements OnInit {
 
   markerInfo: MarkerInfo;
