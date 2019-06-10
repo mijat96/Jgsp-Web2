@@ -15,6 +15,7 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { LinijeComponent } from './linije/linije.component';
 import { KartaComponent } from './karta/karta.component';
+
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { KontrolorComponent } from './kontrolor/kontrolor.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "registracija", component: RegistracijaComponent },
   { path: "redVoznje", component: RedVoznjeComponent },
   { path: "kupiKartu", component: KartaComponent },
+  { path: "kontrolor", component: KontrolorComponent },
   { path: "**", redirectTo: "home" }
 ]
 

@@ -32,7 +32,38 @@ namespace WebApp.Controllers
         {
             return db.Karte;
         }
-
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetProveri/{IdKorisnika}")]
+        public IHttpActionResult GetProveri(string IdKorisnika)
+        {
+            Karta karta = new Karta();
+            List<Karta> karte = Db.Karta.GetAll().ToList();
+            string odgovor = "";
+            foreach(Karta k1 in karte)
+            {
+                if(k1.ApplicationUserId == IdKorisnika)
+                {
+                    karta = k1;
+                }
+            }
+            if (karta == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                if (karta.Tip == "Dnevna" && (DateTime.UtcNow < karta.VaziDo.AddDays(1)))
+                {
+                    odgovor = "vazi vam karta";
+                }
+                else
+                {
+                    odgovor = "ne vazi vam karta";
+                }
+            }
+            return Ok(odgovor);
+        }
         // GET: api/Kartas/5
         [AllowAnonymous]
         [ResponseType(typeof(float))]
@@ -87,13 +118,13 @@ namespace WebApp.Controllers
                     novaKarta.CenaKarte = ck;
                     novaKarta.Tip = tipKarte;
                     //novaKarta.ApplicationUserId = User.Identity.GetUserId();
-                    novaKarta.ApplicationUserId = id;
                     novaKarta.VaziDo = DateTime.UtcNow;
                     if (u != null)
                     {
+                        novaKarta.ApplicationUserId = id;
                         novaKarta.ApplicationUser = u;
                         //novaKarta.ApplicationUser = userManager.FindById(id);
-                        u.Karte.Add(novaKarta);
+                       // u.Karte.Add(novaKarta);
                     }
                     cena = ck.Cena;
                     //Dodavanje novih karata
@@ -107,7 +138,11 @@ namespace WebApp.Controllers
                     //Db.CenaKarte.Add(cenaKarte);
                     //Db.Karta.Add(vremenska);
                     //Db.Complete();
-                    //kraj dodavanja
+                    //kraj 
+                    Db.Karta.Add(novaKarta);
+                    Db.Complete();
+
+
                     povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
                     break;                    
                 }
@@ -117,7 +152,7 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-
+       
             return Ok(povratna);
         }
 

@@ -48,5 +48,4 @@ export class RedVoznjeComponent implements OnInit {
   }
 
   
-  
 }

@@ -92,85 +92,28 @@ namespace WebApp.Controllers
                     s.Y = double.Parse(json.Split('|')[2]);
                     s.Naziv = s.Adresa = json.Split('|')[3];
                     List<Linija> stanLinije = new List<Linija>();
-                    List<Stanica> stanLinijeUBazi = Db.Stanica.GetAll().ToList();
-                    bool stanicaPostojiUBazi = false;
-
-                    foreach (var st in stanLinijeUBazi)
-                    {
-                        if (st.Naziv == s.Naziv && st.X == s.X && st.Y == s.Y)
-                        {
-                            stanicaPostojiUBazi = true;
-                            s = st;
-                            break;
-                        }
-                    }
-
                     foreach (var lin in linijaNiz)
                     {
                         if (lin != "" && lin != "    \"")
                         {
-                            Linija l = new Linija() { RedniBroj = lin };
-                            List<Linija> listaLinijaUBazi = Db.Linija.GetAll().ToList();
-                            bool linijaPostojiUBazi = false;
-
-                            foreach(var ll in listaLinijaUBazi)
+                            List<Stanica> stan = new List<Stanica>();
+                            stan.Add(s);
+                            Linija l = new Linija() { RedniBroj = lin, Stanice = stan };
+                            stanLinije.Add(l);
+                            List<Linija> sveLinije = Db.Linija.GetAll().ToList();
+                            if (!sveLinije.Contains(l))
                             {
-                                if (ll.RedniBroj == lin)
-                                {
-                                    l = ll;
-                                    linijaPostojiUBazi = true;
-                                    break;
-                                }
-                            }
-
-                            if (!linijaPostojiUBazi)
-                            {
-                                l.Stanice = new List<Stanica>();
-                                l.Stanice.Add(s);
                                 Db.Linija.Add(l);
-                                linijaPostojiUBazi = false;
-                                //Db.Complete();
                             }
-                            else
-                            {
-                                l.Stanice.Add(s);
-                                Db.Linija.Update(l);
-                                linijaPostojiUBazi = false;
-                                //Db.Complete();
-                            }
-
-                            if (!stanicaPostojiUBazi)
-                            {
-                                s.Linije = new List<Linija>();
-                                s.Linije.Add(l);
-                                Db.Stanica.Add(s);
-                                stanicaPostojiUBazi = false;
-                                //Db.Complete();
-                            }
-                            else
-                            {
-                                s.Linije.Add(l);
-                                Db.Stanica.Update(s);
-                                stanicaPostojiUBazi = false;
-                                //Db.Complete();
-                            }
-                            Db.Complete();
                         }
                     }
-                    
-                    //if (!stanicaPostojiUBazi)
-                    //{
-                    //    Db.Stanica.Add(s);
-                    //    stanicaPostojiUBazi = false;
-                    //    Db.Complete();
-                    //}
-                    //else
-                    //{
-                    //    Db.Stanica.Update(s);
-                    //    stanicaPostojiUBazi = false;
-                    //    Db.Complete();
-                    //}
+                    List<Stanica> sveStanice = Db.Stanica.GetAll().ToList();
+                    if (!sveStanice.Contains(s))
+                    {
+                        Db.Stanica.Add(s);
+                    }
                 }
+                Db.Complete();
                 
                 
             }

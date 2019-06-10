@@ -42,7 +42,7 @@ namespace WebApp.Controllers
         [Route("GetStanica/{linija}")]
         public IHttpActionResult GetStanica(string linija)
         {
-            
+            db.
 
             string retvalue = "n";
 
