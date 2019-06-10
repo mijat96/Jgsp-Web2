@@ -13,8 +13,8 @@ namespace WebApp.Models
         public string Naziv { get; set; }
 
         public string Adresa { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public virtual ICollection<Linija> Linije { get; set; }
     }

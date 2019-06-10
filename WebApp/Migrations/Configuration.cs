@@ -69,7 +69,7 @@ namespace WebApp.Migrations
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
             }
-            if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == "1"))
+            if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == 1))
             {
                 RedVoznje red = new RedVoznje();
                 RedVoznje red2 = new RedVoznje();
@@ -83,7 +83,7 @@ namespace WebApp.Migrations
                 Linija lin2 = new Linija();
                 Linija lin3 = new Linija();
                 lin.Id = 1;
-                lin.RedniBroj = "1";
+                lin.RedniBroj = 1;
                 red.DanUNedelji = "Nedelja";
                 red.Polasci = "11:00 12:21";
                 red2.DanUNedelji = "Subota";
@@ -95,10 +95,10 @@ namespace WebApp.Migrations
                 lin3.RedoviVoznje = new List<RedVoznje>();
                 lin.RedoviVoznje.Add(red);
                 lin.RedoviVoznje.Add(red2);
-                lin2.RedniBroj = "2";
+                lin2.RedniBroj = 2;
                 lin2.Id = 2;
                
-                lin3.RedniBroj = "3";
+                lin3.RedniBroj = 3;
                 lin3.Id = 3;
 
                 context.RedoviVoznje.Add(red);

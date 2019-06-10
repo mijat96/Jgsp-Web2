@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -28,10 +27,10 @@ namespace WebApp.Controllers
         }
         // GET: api/Linijas
         [AllowAnonymous]
-        public List<string> GetLinije()
+        public List<int> GetLinije()
         {
             IQueryable<Linija> linije = Db.Linija.GetAll().AsQueryable();
-            List<string> BrojeviLinija = new List<string>();
+            List<int> BrojeviLinija = new List<int>();
             foreach (Linija l in linije) {
                 BrojeviLinija.Add(l.RedniBroj);
             }
@@ -42,7 +41,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         [ResponseType(typeof(string))]
         [Route("GetLinija/{id}/{dan}")]
-        public IHttpActionResult GetLinija(string id, string dan)
+        public IHttpActionResult GetLinija(int id, string dan)
         {
             IQueryable<Linija> linije = Db.Linija.GetAll().AsQueryable();
            
@@ -66,66 +65,6 @@ namespace WebApp.Controllers
             }
          
         
-            return Ok(retvalue);
-        }
-
-        // GET: api/Linijas/5   
-        [AllowAnonymous]
-        [ResponseType(typeof(string))]
-        [Route("GetLinija/{id}/{dan}/{p}")]
-        public IHttpActionResult GetLinija(int id, string dan, string p)
-        {
-            using (StreamReader r = new StreamReader("C:/Users/MIJAT/Desktop/JGSP stanice/1a.json"))
-            {   
-                string json = "", linijaPodela = "";
-                string[] linije, linijaNiz;
-                Stanica s = new Stanica();
-                //Linija l = new Linija();
-
-                while (r.ReadLine() != null)
-                {
-                    json = r.ReadLine();
-                    linijaPodela = json.Split('|')[0];
-                    linijaNiz = linijaPodela.Split(',', '[', ']');
-                    s.Adresa = json.Split('|')[3];
-                    s.X = double.Parse(json.Split('|')[1]);
-                    s.Y = double.Parse(json.Split('|')[2]);
-                    s.Naziv = s.Adresa = json.Split('|')[3];
-                    List<Linija> stanLinije = new List<Linija>();
-                    foreach (var lin in linijaNiz)
-                    {
-                        if (lin != "" && lin != "    \"")
-                        {
-                            List<Stanica> stan = new List<Stanica>();
-                            stan.Add(s);
-                            Linija l = new Linija() { RedniBroj = lin, Stanice = stan };
-                            stanLinije.Add(l);
-                            List<Linija> sveLinije = Db.Linija.GetAll().ToList();
-                            if (!sveLinije.Contains(l))
-                            {
-                                Db.Linija.Add(l);
-                            }
-                        }
-                    }
-                    List<Stanica> sveStanice = Db.Stanica.GetAll().ToList();
-                    if (!sveStanice.Contains(s))
-                    {
-                        Db.Stanica.Add(s);
-                    }
-                }
-                Db.Complete();
-                
-                
-            }
-
-            string retvalue = "n";
-            
-            if (retvalue == "n")
-            {
-                return NotFound();
-            }
-
-
             return Ok(retvalue);
         }
 
