@@ -17,6 +17,7 @@ import { LinijeComponent } from './linije/linije.component';
 import { KartaComponent } from './karta/karta.component';
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
+import { KontrolorComponent } from './kontrolor/kontrolor.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
     RedVoznjeComponent,
     LinijeComponent,
     KartaComponent,
-    MapComponent
+    MapComponent,
+    KontrolorComponent
   ],
   imports: [
     BrowserModule,

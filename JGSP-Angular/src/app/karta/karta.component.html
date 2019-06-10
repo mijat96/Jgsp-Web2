@@ -5,12 +5,7 @@
           {{t}} 
         </option>
     </select><br>
-    Putnik:
-    <select [(ngModel)]="tipPutnika" >
-        <option *ngFor="let tp of tipoviPutnika">
-          {{tp}} 
-        </option>
-    </select><br>
+ <br>
     <button (click)="CenaKarte()" >Prikazi cenu ove karte! </button>
     <br>
     {{cena1}}
