@@ -39,10 +39,10 @@ namespace WebApp.Controllers
         // GET: api/Linijas/5   
         [AllowAnonymous]
         [ResponseType(typeof(string))]
-        [Route("GetLinija/{linija}")]
+        [Route("GetStanica/{linija}")]
         public IHttpActionResult GetStanica(string linija)
         {
-            
+            db.
 
             string retvalue = "n";
 
