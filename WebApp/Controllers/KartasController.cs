@@ -60,7 +60,31 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    odgovor = "ne vazi vam karta";
+                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
+                }
+                if (karta.Tip == "Mesecna" && (DateTime.UtcNow < karta.VaziDo.AddMonths(1)))
+                {
+                    odgovor = "vazi vam karta";
+                }
+                else
+                {
+                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
+                }
+                if (karta.Tip == "Godisnja" && (DateTime.UtcNow < karta.VaziDo.AddYears(1)))
+                {
+                    odgovor = "vazi vam karta";
+                }
+                else
+                {
+                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
+                }
+                if (karta.Tip == "Vremenska" && (DateTime.UtcNow < karta.VaziDo.AddHours(1)))
+                {
+                    odgovor = "vazi vam karta";
+                }
+                else
+                {
+                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
                 }
             }
             return Ok(odgovor);
