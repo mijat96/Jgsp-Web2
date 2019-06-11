@@ -1,19 +1,33 @@
 <p>
-  home works!
+  JGSP!
+
 </p>
+
 <div *ngIf="!jwtIsUndefined(); else logOut">
+    <br>
   <a routerLink="/login">Login</a>
+  <br>
   <a routerLink="/registracija">Registracija</a>
+  <br>
 </div>
 <ng-template #logOut>
   <a (click)="LogOut()">LogOut</a>
+
 <br>
 </ng-template>
 <a routerLink="/redVoznje">redVoznje</a>
 <br>
+
+<a routerLink="/cenovnik">Cenovnik!</a>
+<br>
 <a routerLink="/kupiKartu">Kupi kartu</a>
+
+<br>
+<a routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a>
+
 <br>
 <a routerLink="/kontrolor">Proveri kartu</a>
+
 
 <app-map></app-map>
 <!--<app-karta></app-karta>-->

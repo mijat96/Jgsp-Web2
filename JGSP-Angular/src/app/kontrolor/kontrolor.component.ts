@@ -15,7 +15,7 @@ export class KontrolorComponent implements OnInit {
   
   IdKorisnika :  ['', Validators.required],
   });
-  constructor(private http: AuthHttpService, private fb: FormBuilder,) { }
+  constructor(private http: AuthHttpService, private fb: FormBuilder) { }
 
   ngOnInit() {
   }

@@ -23,6 +23,21 @@ export class HomeComponent implements OnInit {
     
  
   }
+  DaLiJeKontrolor() {
+  
+            // let jwtData = localStorage.jwt.split('.')[1]
+            // let decodedJwtJsonData = window.atob(jwtData)
+            // let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+  
+            // let role = decodedJwtData.role
+            // if(role == "kontrolor"){
+            //   return true;
+            // }
+            // else{
+            //   return false;
+            // }
+  }
   ngOnInit() {
   }
 
