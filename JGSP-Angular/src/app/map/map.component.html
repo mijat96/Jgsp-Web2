@@ -26,5 +26,8 @@
     <agm-marker *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polyline.icon">
     </agm-marker>
 
+    <agm-marker *ngFor="let point of polylineMoje.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polylineMoje.icon">
+    </agm-marker>
   </agm-map>
+  <button (click)="ShowStanica()">Kordinate</button>
 </p>

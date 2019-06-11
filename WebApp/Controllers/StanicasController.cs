@@ -10,12 +10,21 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
 using WebApp.Persistence;
+using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/Stanicas")]
     public class StanicasController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        public IUnitOfWork Db { get; set; }
+
+        public StanicasController(IUnitOfWork db)
+        {
+            Db = db;
+        }
 
         // GET: api/Stanicas
         public IQueryable<Stanica> GetStanice()
@@ -39,20 +48,35 @@ namespace WebApp.Controllers
         // GET: api/Linijas/5   
         [AllowAnonymous]
         [ResponseType(typeof(string))]
-        [Route("GetStanica/{linija}")]
-        public IHttpActionResult GetStanica(string linija)
+        [Route("GetStanica/{linijaBroj}")]
+        public IHttpActionResult GetStanica(string linijaBroj)
         {
+            int idLinije;
+            List<Linija> sveLinije = Db.Linija.GetAll().ToList();
+            Linija izabranaLinija = null;
+
+            foreach(var l in sveLinije)
+            {
+                if(l.RedniBroj == linijaBroj)
+                {
+                    izabranaLinija = l;
+                    break;
+                }
+            }
             
-
-            string retvalue = "n";
-
-            if (retvalue == "n")
+            if (izabranaLinija == null)
             {
                 return NotFound();
             }
 
+            List<Kordinate> listaKordinata = new List<Kordinate>();
+            foreach(var stanica in izabranaLinija.Stanice)
+            {
+                Kordinate k = new Kordinate() { x = stanica.X, y = stanica.Y };
+                listaKordinata.Add(k);
+            }
 
-            return Ok(retvalue);
+            return Ok(listaKordinata);
         }
 
         // PUT: api/Stanicas/5
@@ -134,5 +158,11 @@ namespace WebApp.Controllers
         {
             return db.Stanice.Count(e => e.Id == id) > 0;
         }
+    }
+
+    class Kordinate
+    {
+        public double x { get; set; }
+        public double y { get; set; }
     }
 }
