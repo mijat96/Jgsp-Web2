@@ -92,17 +92,20 @@ namespace WebApp.Controllers
         // GET: api/Kartas/5
         [AllowAnonymous]
         [ResponseType(typeof(string))]
-        [Route("GetKarta/{tip}")]
-        public IHttpActionResult GetKartaCena(string tip)
+        [Route("GetKarta/{tipKarte}/{tipKupca}")]
+        public IHttpActionResult GetKartaCena(string tipKarte,string tipKupca)
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
 
-            string odg = "";
+            string odg = "Cena zeljene karte je : ";
             foreach(CenaKarte k in karte)
             {
-                odg += k.TipKupca + " " + k.TipKarte + " " + k.Cena + "rsd. ------" ;
+                if(k.TipKarte == tipKarte && tipKupca == k.TipKupca)
+                {
+                    odg += k.Cena.ToString();
+                }
             }
-
+            odg += " rsd.";
             if (karte == null)
             {
                 return NotFound();
@@ -112,8 +115,8 @@ namespace WebApp.Controllers
         }
        
         [ResponseType(typeof(string))]
-        [Route("GetKartaKupi2/{tipKarte}")]
-        public IHttpActionResult GetKarta(string tipKarte)
+        [Route("GetKartaKupi2/{tipKarte}/{mejl}")]
+        public IHttpActionResult GetKarta(string tipKarte, string mejl)
         {
             var userStore = new UserStore<ApplicationUser>(db);
             var userManager = new UserManager<ApplicationUser>(userStore);

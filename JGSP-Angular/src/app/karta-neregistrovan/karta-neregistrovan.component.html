@@ -1,0 +1,19 @@
+<p>
+
+  Tip karte:
+  <select [(ngModel)]="tip" >
+      <option *ngFor="let t of tipovi">
+        {{t}} 
+      </option>
+  </select>
+  <br>
+  
+<br>
+
+<form [formGroup]="regGroup" (ngSubmit)="KupiKartuNeregistrovan()">
+    <input Placeholder="Email" type="text" formControlName="mejl"> 
+  </form>
+  <button (click)="KupiKartuNeregistrovan()">Kupi kartu neregistrovani korisnice! </button>
+</p>
+  {{vaziDo1}}
+

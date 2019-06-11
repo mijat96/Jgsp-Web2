@@ -60,14 +60,17 @@ export class AuthHttpService{
     }
 
     GetCenaKarte(tip: string, tipPutnika: string): Observable<any>{
-        return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip);
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip + "/" + tipPutnika);
     }
     
-    GetKupiKartu(tipKarte: string): Observable<any>{
+    GetKupiKartu(tipKarte: string, mejl: string): Observable<any>{
        
-        return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte );
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte  + "/" + mejl);
     }
-
+    GetKupiKartuNeregistrovan(tipKarte: string, mejl :string): Observable<any>{
+       
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte + "/"  + mejl);
+    }
     GetStanicaCord(idStanice: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Stanicas/GetStanica/" + idStanice);
     }

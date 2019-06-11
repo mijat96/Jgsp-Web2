@@ -19,6 +19,8 @@ import { KartaComponent } from './karta/karta.component';
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { KontrolorComponent } from './kontrolor/kontrolor.component';
+import { CenovnikComponent } from './cenovnik/cenovnik.component';
+import { KartaNeregistrovanComponent } from './karta-neregistrovan/karta-neregistrovan.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -27,7 +29,9 @@ const routes: Routes = [
   { path: "registracija", component: RegistracijaComponent },
   { path: "redVoznje", component: RedVoznjeComponent },
   { path: "kupiKartu", component: KartaComponent },
+  { path: "kupiKartuNeregistrovan", component: KartaNeregistrovanComponent },
   { path: "kontrolor", component: KontrolorComponent },
+  { path: "cenovnik", component: CenovnikComponent },
   { path: "**", redirectTo: "home" }
 ]
 
@@ -42,7 +46,9 @@ const routes: Routes = [
     LinijeComponent,
     KartaComponent,
     MapComponent,
-    KontrolorComponent
+    KontrolorComponent,
+    CenovnikComponent,
+    KartaNeregistrovanComponent
   ],
   imports: [
     BrowserModule,

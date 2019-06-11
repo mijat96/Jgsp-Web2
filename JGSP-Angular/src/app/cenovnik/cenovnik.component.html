@@ -1,0 +1,18 @@
+<p>
+  Tip karte:
+  <select [(ngModel)]="tip" >
+      <option *ngFor="let t of tipovi">
+        {{t}} 
+      </option>
+  </select><br>
+  Tip karte:
+  <select [(ngModel)]="tipPutnika" >
+      <option *ngFor="let tP of tipoviPutnika">
+        {{tP}} 
+      </option>
+  </select><br>
+<br>
+<button (click)="CenaKarte()" >Prikazi trenutni cenovnik! </button>
+<br>
+{{cena1}}
+</p>
