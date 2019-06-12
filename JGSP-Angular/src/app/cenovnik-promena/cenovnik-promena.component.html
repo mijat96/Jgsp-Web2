@@ -1,0 +1,22 @@
+
+    <div>
+  Tip karte:
+  <select [(ngModel)]="tip" >
+      <option *ngFor="let t of tipovi">
+        {{t}} 
+      </option>
+  </select><br>
+  Tip karte:
+  <select [(ngModel)]="tipPutnika" >
+      <option *ngFor="let tP of tipoviPutnika">
+        {{tP}} 
+      </option>
+  </select><br>
+<br>
+<form [formGroup]="cenaGroup" (ngSubmit)="PromenaCene()">
+  <input Placeholder="Nova cena" type="text" formControlName="cenaNova"> 
+</form>
+<button (click)="PromenaCene()" >Promeni cenu za ovu kartu! </button>
+<br>
+    </div>
+{{cena1}}

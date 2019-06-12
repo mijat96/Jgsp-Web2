@@ -66,7 +66,9 @@ export class AuthHttpService{
     GetCenaKarte(tip: string, tipPutnika: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip + "/" + tipPutnika);
     }
-    
+    GetPromenaCene(tip: string, tipPutnika: string, cena : number): Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaPromenaCene/" + tip + "/" + tipPutnika + "/" + cena);
+    }
     GetKupiKartu(tipKarte: string, mejl: string): Observable<any>{
        
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte  + "/" + mejl);

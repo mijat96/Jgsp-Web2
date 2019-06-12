@@ -114,6 +114,39 @@ namespace WebApp.Controllers
             return Ok(odg);
         }
         [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetKartaPromenaCene/{tipKarte}/{tipKupca}/{cena}")]
+        public IHttpActionResult GetKartaCena(string tipKarte, string tipKupca, int cena)
+        {
+            List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
+     
+            string odg = "Cena zeljene karte je bila : ";
+            foreach (CenaKarte k in karte)
+            {
+                if (k.TipKarte == tipKarte && tipKupca == k.TipKupca)
+
+                {
+                    odg += k.Cena.ToString();
+                    k.Cena = cena;
+                    Db.CenaKarte.Update(k);
+                    Db.Complete();
+                 
+             
+                    
+                   
+                }
+            }
+            odg += " rsd.";
+
+            if (karte == null)
+            {
+                return NotFound();
+            }
+            odg += "Sada je promenjena na : " + cena.ToString() + " rsd.";
+        
+            return Ok(odg);
+        }
+        [AllowAnonymous]
         [ResponseType(typeof(Profil))]
         [Route("DobaviUsera")]
         public IHttpActionResult GetUsera()
