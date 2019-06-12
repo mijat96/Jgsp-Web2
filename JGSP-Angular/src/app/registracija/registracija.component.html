@@ -47,7 +47,7 @@ Datum rodjenja:<input type="date" formControlName="date" required> <br>
           <p ><span class="fa fa-user"></span><input Placeholder="Email" type="email" formControlName="email" required></p><br>
           <p><span class="fa fa-user"></span><input Placeholder="Date" type="date" formControlName="date" required></p><br>
           <p>
-            <select [(ngModel)]="tip" >
+            <select formControlName="tip"  >
               <option *ngFor="let t of tipovi">
                 {{t}} 
               </option>

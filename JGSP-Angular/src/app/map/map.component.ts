@@ -57,7 +57,8 @@ export class MapComponent implements OnInit {
       // g.latitude = this.nizKordinata[i][0];
       // g.longitude = this.nizKordinata[i][1];
       var g = new Cord();
-      g = this.nizKordinata[i];
+      g.x = this.nizKordinata[i][0];
+      g.y = this.nizKordinata[i][1];
       this.placeMarkerLinije(g.y, g.x);      
     }
   }

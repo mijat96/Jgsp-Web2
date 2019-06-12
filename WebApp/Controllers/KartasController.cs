@@ -113,7 +113,56 @@ namespace WebApp.Controllers
 
             return Ok(odg);
         }
-       
+        [AllowAnonymous]
+        [ResponseType(typeof(Profil))]
+        [Route("DobaviUsera")]
+        public IHttpActionResult GetUsera()
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(id);
+            if (u == null)
+            {
+                return Ok();
+            }
+            Profil p = new Profil();
+            p.Name = u.Name;
+            p.Password = u.Password;
+            p.Surname = u.Surname;
+            p.Tip = u.Tip;
+            p.Datum = u.Datum;
+            p.ConfirmPassword = u.ConfirmPassword;
+            p.Email = u.Email;
+            p.UserName = u.UserName;
+            return Ok(p);
+        }
+        [AllowAnonymous]
+        [Route("PromeniProfil")]
+        public IHttpActionResult PostKorisnika(RegisterBindingModel model)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(id);
+            if (u == null)
+            {
+                return Ok();
+            }
+            u.Email = model.Email;
+            u.Datum = model.Date;
+            u.ConfirmPassword = model.ConfirmPassword;
+            u.Password = model.Password;
+            u.Name = model.Name;
+            u.UserName = model.Email;
+            u.Surname = model.Surname;
+            u.Tip = model.Tip;
+      
+            db.Entry(u).State = EntityState.Modified;
+
+            db.SaveChanges();
+            return Ok();
+        }
         [ResponseType(typeof(string))]
         [Route("GetKartaKupi2/{tipKarte}/{mejl}")]
         public IHttpActionResult GetKarta(string tipKarte, string mejl)

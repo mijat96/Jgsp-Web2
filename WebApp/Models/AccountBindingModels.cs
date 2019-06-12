@@ -17,7 +17,7 @@ namespace WebApp.Models
         public int id { get; set; }
         public string dan { get; set; }
 
- 
+
     }
 
     public class ChangePasswordBindingModel
@@ -41,6 +41,7 @@ namespace WebApp.Models
 
     public class RegisterBindingModel
     {
+        public string Tip { get; set; }
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -101,5 +102,17 @@ namespace WebApp.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+    public class Profil{
+        public string Tip { get; set; }
+        public string Datum { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string ConfirmPassword { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+
+
     }
 }

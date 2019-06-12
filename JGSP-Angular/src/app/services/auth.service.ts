@@ -44,7 +44,9 @@ export class AuthHttpService{
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
-
+    Promeni(data: RegUser) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
+    }
  
     GetPolasci(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id +"/" + dan);
@@ -53,7 +55,9 @@ export class AuthHttpService{
     GetLinije() : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/");
     }
-
+    GetKorisnika() : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/Kartas/DobaviUsera");
+    }
     //samo da se iscita json na serveru i popuni baza
     ParsiranjeJson(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id + "/" + dan + "/" + "str");
