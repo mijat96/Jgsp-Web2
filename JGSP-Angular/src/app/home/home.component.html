@@ -1,43 +1,84 @@
-<p>
-  JGSP!
+Skip to content
+ 
+Search or jump to…
 
-</p>
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@mijat96 
+0
+0 0 mijat96/Jgsp-Web2
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
+Jgsp-Web2/JGSP-Angular/src/app/home/home.component.html
+@mijat96 mijat96 Merge branch 'master' of https://github.com/mijat96/Jgsp-Web2
+a6ffc33 1 hour ago
+@AndrejSimunovic @mijat96
+We found a potential security vulnerability in one of your dependencies.
+Only the owner of this repository can see this message. 
+Manage your notification settings or learn more about security alerts.
 
-<div *ngIf="!jwtIsUndefined(); else logOut">
-    <br>
-  <a routerLink="/login">Login</a>
-  <br>
-  <a routerLink="/registracija">Registracija</a>
-  <br>
-</div>
-<ng-template #logOut>
-  <a (click)="LogOut()">LogOut</a>
+61 lines (53 sloc)  2.74 KB
+    
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<br>
-</ng-template>
-<a routerLink="/redVoznje">redVoznje</a>
-<br>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
 
-<a routerLink="/cenovnik">Cenovnik!</a>
-<br>
-<a routerLink="/kupiKartu">Kupi kartu</a>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-<br>
-<a routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a>
+<div class="main">
+  <div class="container">
+  <div class="middle">
+        <div id="login">
+            <fieldset class="clearfix">
+          <div *ngIf="!jwtIsUndefined(); else logOut">
+              <br>
+              <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/login">Login</a></p>
+            <br>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/registracija">Registracija</a></p>
+            <br>
+          </div>
+          <ng-template #logOut>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" (click)="LogOut()">LogOut</a></p>
 
-<br>
-<a routerLink="/kontrolor">Proveri kartu</a>
+          <br>
+          </ng-template>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/redVoznje">redVoznje</a></p>
+          <br>
 
-<br>
-<a routerLink="/mojProfil">Moj Profil!</a>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/cenovnik">Cenovnik!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartu">Kupi kartu</a></p>
 
-<br>
-<a routerLink="/promenaCene">Promeni cenu karata!</a>
-<br>
-<a routerLink="/dodajCenovnik">Dodaj novi cenovnik!!</a>
-<br>
-<a routerLink="/obrisiCenovnik">Obrisite cenovnik!!</a>
-<br>
-<a routerLink="/dodajRedVoznje">Dodaj red voznje!</a>
-<app-map></app-map>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a></p>
+
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kontrolor">Proveri kartu</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/mojProfil">Moj Profil!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/promenaCene">Promeni cenu karata!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/dodajCenovnik">Dodaj novi cenovnik!!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/obrisiCenovnik">Obrisite cenovnik!!</a></p>
+        </fieldset>
+        <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="logo"> JGSP       
+          <div class="clearfix"></div>
+        </div>
+      </div>
+  </div>
 <!--<app-karta></app-karta>-->
+</div>
+
