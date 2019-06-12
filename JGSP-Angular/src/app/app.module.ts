@@ -25,6 +25,7 @@ import { MojProfilComponent } from './moj-profil/moj-profil.component';
 import { CenovnikPromenaComponent } from './cenovnik-promena/cenovnik-promena.component';
 import { CenovnikDodajComponent } from './cenovnik-dodaj/cenovnik-dodaj.component';
 import { CenovnikBrisanjeComponent } from './cenovnik-brisanje/cenovnik-brisanje.component';
+import { DodajRedVoznjeComponent } from './dodaj-red-voznje/dodaj-red-voznje.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: "mojProfil", component: MojProfilComponent },
   { path: "promenaCene", component: CenovnikPromenaComponent },
   { path: "dodajCenovnik", component: CenovnikDodajComponent },
+  { path: "dodajRedVoznje", component: DodajRedVoznjeComponent },
   { path: "obrisiCenovnik", component: CenovnikBrisanjeComponent },
   { path: "**", redirectTo: "home" }
 ]
@@ -60,7 +62,8 @@ const routes: Routes = [
     MojProfilComponent,
     CenovnikPromenaComponent,
     CenovnikDodajComponent,
-    CenovnikBrisanjeComponent
+    CenovnikBrisanjeComponent,
+    DodajRedVoznjeComponent
   ],
   imports: [
     BrowserModule,
