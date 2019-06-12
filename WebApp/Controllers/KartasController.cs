@@ -96,11 +96,13 @@ namespace WebApp.Controllers
         public IHttpActionResult GetKartaCena(string tipKarte,string tipKupca)
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
 
             string odg = "Cena zeljene karte je : ";
             foreach(CenaKarte k in karte)
             {
-                if(k.TipKarte == tipKarte && tipKupca == k.TipKupca)
+                if(k.TipKarte == tipKarte && tipKupca == k.TipKupca && cen.IdCenovnik == k.CenovnikId)
                 {
                     odg += k.Cena.ToString();
                 }
@@ -119,16 +121,19 @@ namespace WebApp.Controllers
         public IHttpActionResult GetKartaCena(string tipKarte, string tipKupca, int cena)
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
-     
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
+
             string odg = "Cena zeljene karte je bila : ";
             foreach (CenaKarte k in karte)
             {
-                if (k.TipKarte == tipKarte && tipKupca == k.TipKupca)
+                if (k.TipKarte == tipKarte && tipKupca == k.TipKupca && cen.IdCenovnik == k.CenovnikId)
 
                 {
                     odg += k.Cena.ToString();
                     k.Cena = cena;
                     Db.CenaKarte.Update(k);
+                   
                     Db.Complete();
                  
              
@@ -218,9 +223,12 @@ namespace WebApp.Controllers
             }
             float cena;
             string povratna = "";
-      
-           
-            CenaKarte ck = Db.CenaKarte.GetAll().Where(t => t.TipKarte == tipKarte && t.TipKupca == tipKorisnika).FirstOrDefault();
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
+
+
+
+            CenaKarte ck = Db.CenaKarte.GetAll().Where(t => t.TipKarte == tipKarte && t.TipKupca == tipKorisnika && t.CenovnikId ==cen.IdCenovnik).FirstOrDefault();
            // novaKarta.CenaKarte = ck;
             novaKarta.CenaKarteId = ck.IdCenaKarte;
 

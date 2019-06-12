@@ -42,7 +42,8 @@ export class MojProfilComponent implements OnInit {
      password  : this.profil1.Password,
      confirmPassword : this.profil1.ConfirmPassword,
     email : this.profil1.Email,
-    username : this.profil1.UserName
+    username : this.profil1.UserName,
+    tip : this. profil1.Tip
     });
   });
   }

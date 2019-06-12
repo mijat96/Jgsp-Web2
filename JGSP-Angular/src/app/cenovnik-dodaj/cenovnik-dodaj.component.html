@@ -1,0 +1,15 @@
+
+<form [formGroup]="cenovnikGroup" (ngSubmit)="NoviCenovnik()">
+<p ><span>Vremenska</span><input  type="number" formControlName="vremenska" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+<p><span >Mesecna</span><input  type="number" formControlName="mesecna" required></p> 
+<p><span >Godisnja</span><input type="number" formControlName="godisnja" required></p> 
+<p><span >Dnevna</span><input type="number" formControlName="dnevna" required></p> 
+<p><span >Popust studenti</span><input type="number" formControlName="popustStudent" required></p> 
+<p><span >popust penzija</span><input type="number" formControlName="popustPenzija" required></p> 
+<p><span >id</span><input type="number" formControlName="id" required></p> 
+<p><span >Datum od</span><input type="date" formControlName="vaziOd" required></p><br>
+
+
+<p ><span>Datum do</span><input  type="date" formControlName="vaziDo" required></p><br>
+</form>
+<button (click)="NapraviCenovnik()" >Napravi novi cenovnik!! </button>

@@ -115,4 +115,16 @@ namespace WebApp.Models
 
 
     }
+    public class CenovnikBindingModel
+    {
+        public int mesecna { get; set; }
+        public int godisnja { get; set; }
+        public int vremenska { get; set; }
+        public int dnevna { get; set; }
+        public string vaziDo { get; set; }
+        public string vaziOd { get; set; }
+        public int popustPenzija { get; set; }
+        public int popustStudent { get; set; }
+        public int id { get; set; }
+    }
 }

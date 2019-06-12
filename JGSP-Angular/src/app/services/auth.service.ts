@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegUser } from 'src/app/osoba';
+import { CenovnikBindingModel } from 'src/app/osoba';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
@@ -47,7 +48,9 @@ export class AuthHttpService{
     Promeni(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
     }
- 
+    DodajCenovnik(cenovnik: CenovnikBindingModel) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/PromeniCenovnik",  cenovnik);
+    }
     GetPolasci(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id +"/" + dan);
     }
