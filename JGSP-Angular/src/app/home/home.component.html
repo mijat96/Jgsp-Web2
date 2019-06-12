@@ -1,33 +1,52 @@
-<p>
-  JGSP!
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
 
-<div *ngIf="!jwtIsUndefined(); else logOut">
-    <br>
-  <a routerLink="/login">Login</a>
-  <br>
-  <a routerLink="/registracija">Registracija</a>
-  <br>
-</div>
-<ng-template #logOut>
-  <a (click)="LogOut()">LogOut</a>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-<br>
-</ng-template>
-<a routerLink="/redVoznje">redVoznje</a>
-<br>
+<div class="main">
+  <div class="container">
+  <div class="middle">
+        <div id="login">
+            <fieldset class="clearfix">
+          <div *ngIf="!jwtIsUndefined(); else logOut">
+              <br>
+              <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/login">Login</a></p>
+            <br>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/registracija">Registracija</a></p>
+            <br>
+          </div>
+          <ng-template #logOut>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" (click)="LogOut()">LogOut</a></p>
 
-<a routerLink="/cenovnik">Cenovnik!</a>
-<br>
-<a routerLink="/kupiKartu">Kupi kartu</a>
+          <br>
+          </ng-template>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/redVoznje">redVoznje</a></p>
+          <br>
 
-<br>
-<a routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/cenovnik">Cenovnik!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartu">Kupi kartu</a></p>
 
-<br>
-<a routerLink="/kontrolor">Proveri kartu</a>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a></p>
 
-
-<app-map></app-map>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kontrolor">Proveri kartu</a></p>
+        </fieldset>
+        <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="logo"> JGSP       
+          <div class="clearfix"></div>
+        </div>
+      </div>
+  </div>
 <!--<app-karta></app-karta>-->
+</div>

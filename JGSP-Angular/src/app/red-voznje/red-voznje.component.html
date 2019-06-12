@@ -1,5 +1,5 @@
 
-  <select [(ngModel)]="selectedLine" >
+  <!-- <select [(ngModel)]="selectedLine" >
     <option *ngFor="let lin of linijeZaView">
       <a title="{{text}}">{{lin}}</a>
     </option>
@@ -18,5 +18,57 @@
   {{ras.polasci}}
 </p>
 
-<button (click)="JsonParsiranje()" >Json</button>
+<app-map [linija]="selectedLine"></app-map> -->
 
+<!-- <button (click)="JsonParsiranje()" >Json</button> -->
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<div class="main">
+  <div class="container">
+  <div class="middle">
+        <div id="login">
+            <p ><span class="fa "></span>
+              <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
+                  <option *ngFor="let lin of linijeZaView">
+                    <a title="{{text}}">{{lin}}</a>
+                  </option>
+                </select>
+                <select id="ButtonsHomePage" [(ngModel)]="dan" >
+                    <option *ngFor="let d of dani">
+                      {{d}} 
+                    </option>
+                  </select>
+            </p>
+          <p ><span class="fa "></span><button id="ButtonsHomePage" (click)="OnGetLinije()" >Prikazi linije</button></p>
+          <br>
+
+          <p ><span class="fa "></span><button  id="ButtonsHomePage" (click)="OnGetPolasci()" >Red voznje</button></p>
+          <br>
+          iz baze:<br>
+          {{linija.linije}}
+          Polasci sa stanice:<br>
+          {{ras.polasci}}
+          
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="logo"> JGSP       
+          <div class="clearfix"></div>
+        </div>
+        <app-map id="mapaView" [linija]="selectedLine"></app-map>
+          </div>
+        </div>
+        <!--<app-karta></app-karta>-->
+      </div>

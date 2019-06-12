@@ -12,13 +12,15 @@ import { AuthHttpService } from '../services/auth.service';
 })
 
 export class MapComponent implements OnInit {
+  @Input()
+  linija: string;
 
   mrakerInfoMoj: MarkerInfo;
   markerInfo: MarkerInfo;
   public polyline: Polyline;
   public zoom: number;
   public polylineMoje: Polyline;
-  public nizKordinata: Geolocation[];
+  public nizKordinata: Cord[];
 
   ngOnInit() {
     this.markerInfo = new MarkerInfo(new GeoLocation(45.242268, 19.842954), 
@@ -34,7 +36,7 @@ export class MapComponent implements OnInit {
 
   placeMarker($event){
     this.polyline.addLocation(new GeoLocation($event.coords.lat, $event.coords.lng))
-    console.log(this.polyline)
+    //console.log(this.polyline)
   }
 
   placeMarkerLinije(x, y){
@@ -42,28 +44,48 @@ export class MapComponent implements OnInit {
       "assets/busicon.png",
       "Stanica" , "" , "JGSP");   
     this.polylineMoje.addLocation(new GeoLocation(x, y))
-    console.log(this.polyline)
+    console.log(this.polylineMoje)
   }
 
   ShowStanica(idStanice: string){
+    idStanice = this.linija;
     this.http.GetStanicaCord(idStanice).subscribe((raspored1)=>{
       this.nizKordinata = raspored1;
       err => console.log(err);
     }
     );
     
-    for(var i = 0; i <= this.nizKordinata.length; i++){
+    //for(var i = 0; i <= this.nizKordinata.length; i++){
       // var g = new GeoLocation(0,0);
       // g.latitude = this.nizKordinata[i][0];
       // g.longitude = this.nizKordinata[i][1];
-      var g = new Cord();
-      g = this.nizKordinata[i];
-      this.placeMarkerLinije(g.y, g.x);      
-    }
+      //console.log(this.nizKordinata)
+      //var g = new Cord();
+      //g = this.nizKordinata[i];
+      console.log(this.nizKordinata);
+      this.nizKordinata.forEach(station => {
+        let stationToPush: Cord = {
+          x: station.x,
+          y: station.y,
+          name: station.name,
+        };
+        this.placeMarkerLinije(stationToPush.y, stationToPush.x);      
+    });
+  }
+
+  HideStanica(){
+    this.nizKordinata = [];
+    this.markerInfo = new MarkerInfo(new GeoLocation(45.242268, 19.842954),
+      "assets/ftn.png",
+      "Jugodrvo", "", "http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka");
+    this.polyline = new Polyline([], 'blue', null);
+    this.polylineMoje = new Polyline([], 'blue', null);
+    //this.placeMarkerLinije(45.242268, 19.842954); 
   }
 }
 
 class Cord{
   x: number;
   y: number;
+  name: string;
 }

@@ -151,7 +151,7 @@ fieldset{
 }
 
 #login form input[type="submit"]:hover {
-	background-color: #d44179;
+	background-color: red;
 }
 
 #login > p {

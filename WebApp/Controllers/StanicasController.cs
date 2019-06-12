@@ -72,7 +72,7 @@ namespace WebApp.Controllers
             List<Kordinate> listaKordinata = new List<Kordinate>();
             foreach(var stanica in izabranaLinija.Stanice)
             {
-                Kordinate k = new Kordinate() { x = stanica.X, y = stanica.Y };
+                Kordinate k = new Kordinate() { x = stanica.X, y = stanica.Y, name = stanica.Naziv };
                 listaKordinata.Add(k);
             }
 
@@ -164,5 +164,6 @@ namespace WebApp.Controllers
     {
         public double x { get; set; }
         public double y { get; set; }
+        public string name { get; set; }
     }
 }
