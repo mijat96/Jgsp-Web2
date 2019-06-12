@@ -20,11 +20,12 @@ export class RegistracijaComponent implements OnInit {
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
     email: ['', Validators.required],
-    date: ['', Validators.required]
+    date: ['', Validators.required],
+    tip: ['', Validators.required]
   });
 
   constructor(private http: AuthHttpService, private fb: FormBuilder, private router: Router) { }
-  tipovi: string[] = ["Admin", "Studemt", "Penzioner", "Obican"];
+  tipovi: string[] = ["Admin", "Student", "Penzioner", "Obican"];
   tip: string;
   ngOnInit() {
   }

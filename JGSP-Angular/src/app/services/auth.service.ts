@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegUser } from 'src/app/osoba';
+import { CenovnikBindingModel } from 'src/app/osoba';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
@@ -44,8 +45,15 @@ export class AuthHttpService{
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
-
- 
+      obrisiCenovnik(id: number) : Observable<any>{
+        return this.http.delete<any>(this.base_url + "/api/Cenovniks/" + id);
+    }
+    Promeni(data: RegUser) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
+    }
+    DodajCenovnik(cenovnik: CenovnikBindingModel) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/PromeniCenovnik",  cenovnik);
+    }
     GetPolasci(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id +"/" + dan);
     }
@@ -53,7 +61,9 @@ export class AuthHttpService{
     GetLinije() : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/");
     }
-
+    GetKorisnika() : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/Kartas/DobaviUsera");
+    }
     //samo da se iscita json na serveru i popuni baza
     ParsiranjeJson(id: number, dan : string) : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/GetLinija/" + id + "/" + dan + "/" + "str");
@@ -62,7 +72,9 @@ export class AuthHttpService{
     GetCenaKarte(tip: string, tipPutnika: string): Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKarta/" + tip + "/" + tipPutnika);
     }
-    
+    GetPromenaCene(tip: string, tipPutnika: string, cena : number): Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaPromenaCene/" + tip + "/" + tipPutnika + "/" + cena);
+    }
     GetKupiKartu(tipKarte: string, mejl: string): Observable<any>{
        
         return this.http.get<any>(this.base_url + "/api/Kartas/GetKartaKupi2/" + tipKarte  + "/" + mejl);

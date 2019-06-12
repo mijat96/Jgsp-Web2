@@ -1,0 +1,67 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<div class="main">
+    
+    
+  <div class="container">
+
+<div class="middle">
+    <div id="login">
+     
+      <form [formGroup]="registacijaForm" (ngSubmit)="onSubmit()">
+
+        <fieldset class="clearfix">
+      
+          <p ><span class="fa fa-user"></span><input  type="text" formControlName="name" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+          <p><span class="fa fa-user"></span><input  type="text" formControlName="surname" required></p> 
+          <p><span class="fa fa-user"></span><input type="text" formControlName="username" required></p> 
+          <p><span class="fa fa-lock"></span><input type="password" formControlName="password" required></p> 
+          <p ><span class="fa fa-lock"></span><input type="password" formControlName="confirmPassword" required></p>
+          <p ><span class="fa fa-user"></span><input  type="email" formControlName="email" required></p><br>
+          <p><span class="fa fa-user"></span><input type="date" formControlName="date" required></p><br>
+          <p>
+            <select formControlName="tip" >
+              <option *ngFor="let t of tipovi">
+                {{t}} 
+              </option>
+          </select>
+          <br>
+          </p>
+           <div>
+
+                              <span style="width:100%; text-align:right;  display: inline-block;"><input type="submit" value="Promeni podatke"></span>
+                          </div>
+
+
+        </fieldset>
+      
+<div class="clearfix"></div>
+      </form>
+      <br>
+      <form action="/action_page.php">
+        <input type="file" name="pic" accept="image/*">
+        <span style="width:100%; text-align:right;  display: inline-block;"><input type="submit2" value="Submit"></span>
+      </form>
+      
+      <div class="clearfix"></div>
+
+    </div> <!-- end login -->
+    <div class="logo">JGSP
+        
+        <div class="clearfix"></div>
+    </div>
+    
+    </div>
+
+  </div>
+
+</div>

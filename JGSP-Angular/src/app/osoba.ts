@@ -31,3 +31,24 @@ export class klasaPodaci{
     id : number
     dan : string
 }
+export class Profil {
+    Tip : string 
+   Datum : string
+   Password : string
+    Name : string
+    Surname : string
+    ConfirmPassword : string
+    UserName : string 
+    Email : string
+}
+export class CenovnikBindingModel {
+   mesecna : number
+    godisnja : number
+  vremenska : number
+    dnevna : number
+  vaziDo : string
+    vaziOd: string
+    popustPenzija : number
+    popustStudent : number
+    id : number
+}

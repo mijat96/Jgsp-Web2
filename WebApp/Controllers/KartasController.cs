@@ -96,11 +96,13 @@ namespace WebApp.Controllers
         public IHttpActionResult GetKartaCena(string tipKarte,string tipKupca)
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
 
             string odg = "Cena zeljene karte je : ";
             foreach(CenaKarte k in karte)
             {
-                if(k.TipKarte == tipKarte && tipKupca == k.TipKupca)
+                if(k.TipKarte == tipKarte && tipKupca == k.TipKupca && cen.IdCenovnik == k.CenovnikId)
                 {
                     odg += k.Cena.ToString();
                 }
@@ -113,7 +115,92 @@ namespace WebApp.Controllers
 
             return Ok(odg);
         }
-       
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetKartaPromenaCene/{tipKarte}/{tipKupca}/{cena}")]
+        public IHttpActionResult GetKartaCena(string tipKarte, string tipKupca, int cena)
+        {
+            List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
+
+            string odg = "Cena zeljene karte je bila : ";
+            foreach (CenaKarte k in karte)
+            {
+                if (k.TipKarte == tipKarte && tipKupca == k.TipKupca && cen.IdCenovnik == k.CenovnikId)
+
+                {
+                    odg += k.Cena.ToString();
+                    k.Cena = cena;
+                    Db.CenaKarte.Update(k);
+                   
+                    Db.Complete();
+                 
+             
+                    
+                   
+                }
+            }
+            odg += " rsd.";
+
+            if (karte == null)
+            {
+                return NotFound();
+            }
+            odg += "Sada je promenjena na : " + cena.ToString() + " rsd.";
+        
+            return Ok(odg);
+        }
+        [AllowAnonymous]
+        [ResponseType(typeof(Profil))]
+        [Route("DobaviUsera")]
+        public IHttpActionResult GetUsera()
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(id);
+            if (u == null)
+            {
+                return Ok();
+            }
+            Profil p = new Profil();
+            p.Name = u.Name;
+            p.Password = u.Password;
+            p.Surname = u.Surname;
+            p.Tip = u.Tip;
+            p.Datum = u.Datum;
+            p.ConfirmPassword = u.ConfirmPassword;
+            p.Email = u.Email;
+            p.UserName = u.UserName;
+            return Ok(p);
+        }
+        [AllowAnonymous]
+        [Route("PromeniProfil")]
+        public IHttpActionResult PostKorisnika(RegisterBindingModel model)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(id);
+            if (u == null)
+            {
+                return Ok();
+            }
+            u.Email = model.Email;
+            u.Datum = model.Date;
+            u.ConfirmPassword = model.ConfirmPassword;
+            u.Password = model.Password;
+            u.Name = model.Name;
+            u.UserName = model.Email;
+            u.Surname = model.Surname;
+            u.Tip = model.Tip;
+      
+            db.Entry(u).State = EntityState.Modified;
+
+            db.SaveChanges();
+            return Ok();
+        }
         [ResponseType(typeof(string))]
         [Route("GetKartaKupi2/{tipKarte}/{mejl}")]
         public IHttpActionResult GetKarta(string tipKarte, string mejl)
@@ -136,9 +223,12 @@ namespace WebApp.Controllers
             }
             float cena;
             string povratna = "";
-      
-           
-            CenaKarte ck = Db.CenaKarte.GetAll().Where(t => t.TipKarte == tipKarte && t.TipKupca == tipKorisnika).FirstOrDefault();
+            List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
+
+
+
+            CenaKarte ck = Db.CenaKarte.GetAll().Where(t => t.TipKarte == tipKarte && t.TipKupca == tipKorisnika && t.CenovnikId ==cen.IdCenovnik).FirstOrDefault();
            // novaKarta.CenaKarte = ck;
             novaKarta.CenaKarteId = ck.IdCenaKarte;
 
