@@ -1,0 +1,4 @@
+<form [formGroup]="cenovnikGroup" (ngSubmit)="brisi()">
+  <p ><span >id</span><input type="number" formControlName="id" required></p>
+  <button (click)="brisi()" >Obrisi cenovnik sa ovim idom! </button>
+</form>

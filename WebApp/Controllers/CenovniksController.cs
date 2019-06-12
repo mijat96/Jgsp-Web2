@@ -29,18 +29,7 @@ namespace WebApp.Controllers
         {
             Db = db;
         }
-        // GET: api/Cenovniks/5
-        [ResponseType(typeof(Cenovnik))]
-        public IHttpActionResult GetCenovnik(int id)
-        {
-            Cenovnik cenovnik = db.Cenovnici.Find(id);
-            if (cenovnik == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(cenovnik);
-        }
+  
 
         // PUT: api/Cenovniks/5
         [ResponseType(typeof(void))]
@@ -179,7 +168,7 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/Cenovniks/5
-        [ResponseType(typeof(Cenovnik))]
+        [ResponseType(typeof(string))]
         public IHttpActionResult DeleteCenovnik(int id)
         {
             Cenovnik cenovnik = db.Cenovnici.Find(id);
@@ -191,7 +180,7 @@ namespace WebApp.Controllers
             db.Cenovnici.Remove(cenovnik);
             db.SaveChanges();
 
-            return Ok(cenovnik);
+            return Ok("obrisan cenovnik");
         }
 
         protected override void Dispose(bool disposing)

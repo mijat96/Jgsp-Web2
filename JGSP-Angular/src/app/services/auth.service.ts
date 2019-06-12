@@ -45,6 +45,9 @@ export class AuthHttpService{
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
+      obrisiCenovnik(id: number) : Observable<any>{
+        return this.http.delete<any>(this.base_url + "/api/Cenovniks/" + id);
+    }
     Promeni(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
     }

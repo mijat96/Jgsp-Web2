@@ -24,6 +24,7 @@ import { KartaNeregistrovanComponent } from './karta-neregistrovan/karta-neregis
 import { MojProfilComponent } from './moj-profil/moj-profil.component';
 import { CenovnikPromenaComponent } from './cenovnik-promena/cenovnik-promena.component';
 import { CenovnikDodajComponent } from './cenovnik-dodaj/cenovnik-dodaj.component';
+import { CenovnikBrisanjeComponent } from './cenovnik-brisanje/cenovnik-brisanje.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: "mojProfil", component: MojProfilComponent },
   { path: "promenaCene", component: CenovnikPromenaComponent },
   { path: "dodajCenovnik", component: CenovnikDodajComponent },
+  { path: "obrisiCenovnik", component: CenovnikBrisanjeComponent },
   { path: "**", redirectTo: "home" }
 ]
 
@@ -57,7 +59,8 @@ const routes: Routes = [
     KartaNeregistrovanComponent,
     MojProfilComponent,
     CenovnikPromenaComponent,
-    CenovnikDodajComponent
+    CenovnikDodajComponent,
+    CenovnikBrisanjeComponent
   ],
   imports: [
     BrowserModule,
