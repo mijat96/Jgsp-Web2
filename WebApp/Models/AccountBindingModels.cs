@@ -127,4 +127,9 @@ namespace WebApp.Models
         public int popustStudent { get; set; }
         public int id { get; set; }
     }
+    public class RedBinding {
+      public  string dan { get; set; }
+        public string red { get; set; }
+        public string linija { get; set; }
+    }
 }

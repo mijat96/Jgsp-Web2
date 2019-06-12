@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegUser } from 'src/app/osoba';
+import { RedVoznje } from 'src/app/osoba';
 import { CenovnikBindingModel } from 'src/app/osoba';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -44,6 +45,9 @@ export class AuthHttpService{
 
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
+    }
+    DodajRedVoznje1(red : RedVoznje) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/api/Redovi/dodajRed" , red);
     }
       obrisiCenovnik(id: number) : Observable<any>{
         return this.http.delete<any>(this.base_url + "/api/Cenovniks/" + id);

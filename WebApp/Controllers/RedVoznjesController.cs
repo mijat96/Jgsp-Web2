@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [RoutePrefix("api/Redovi")]
     public class RedVoznjesController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -29,13 +30,21 @@ namespace WebApp.Controllers
         {
             return Db.RedVoznje.GetAll().AsQueryable();
         }
-
+        [AllowAnonymous]
         // GET: api/RedVoznjes/5
+        [Route("dodajRed")]
         [ResponseType(typeof(string))]
-        public IHttpActionResult GetRedVoznje(int id)
+        public IHttpActionResult PostRedVoznje(RedBinding r)
         {
+            Linija lin = Db.Linija.GetAll().Where(t => t.RedniBroj == r.linija).FirstOrDefault();
+            RedVoznje redV = new RedVoznje();
+            redV.LinijaId = lin.Id;
+            redV.DanUNedelji = r.dan;
+            redV.Polasci = r.red;
+            Db.RedVoznje.Add(redV);
+            Db.Complete();
 
-            return Ok();
+            return Ok("ok");
         }
 
         // PUT: api/RedVoznjes/5

@@ -52,3 +52,8 @@ export class CenovnikBindingModel {
     popustStudent : number
     id : number
 }
+export class RedVoznje {
+    dan: string
+    polasci: string
+    linija : string
+}
