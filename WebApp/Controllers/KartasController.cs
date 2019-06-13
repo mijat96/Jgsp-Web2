@@ -238,14 +238,32 @@ namespace WebApp.Controllers
      
             //novaKarta.ApplicationUserId = User.Identity.GetUserId();
             novaKarta.VaziDo = DateTime.UtcNow;
-            if (u != null)
+            if (u != null && u.Odobren == true)
             {
                 novaKarta.ApplicationUserId = id;
-               // novaKarta.ApplicationUser = u;
+                // novaKarta.ApplicationUser = u;
                 //novaKarta.ApplicationUser = userManager.FindById(id);
                 // u.Karte.Add(novaKarta);
+                cena = ck.Cena;
+                povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
+
+
+                novaKarta.Cekirana = true;
+                db.Dispose();
+
+                Db.Karta.Add(novaKarta);
+
+                Db.Complete();
             }
-            else
+            else if (u != null && u.Odobren == false)
+            {
+       
+                povratna = "Kontrolor vas nije prihvatio";
+
+
+           
+            }
+            else if (u == null)
             {
                 MailMessage mail = new MailMessage("andrejs0901@gmail.com", "andrejs0901@gmail.com");
                 SmtpClient client = new SmtpClient();
@@ -262,6 +280,16 @@ namespace WebApp.Controllers
                 try
                 {
                     client.Send(mail);
+                    cena = ck.Cena;
+                    povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
+
+
+                    novaKarta.Cekirana = true;
+                    db.Dispose();
+
+                    Db.Karta.Add(novaKarta);
+
+                    Db.Complete();
                 }
                 catch (Exception e)
                 {
@@ -269,16 +297,7 @@ namespace WebApp.Controllers
                     return InternalServerError(e);
                 }
             }
-            cena = ck.Cena;
-            povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
-
-            
-            novaKarta.Cekirana = true;
-            db.Dispose();
-            
-            Db.Karta.Add(novaKarta);
-            
-            Db.Complete();
+      
             if (ck == null)
             {
                 return NotFound();

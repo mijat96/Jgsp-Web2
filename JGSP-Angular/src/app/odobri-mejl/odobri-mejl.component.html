@@ -1,0 +1,6 @@
+<select id="ButtonsHomePage" [(ngModel)]="selectedMejl" >
+  <option *ngFor="let s of mejloviZaView">
+    {{s}} 
+  </option>
+</select>
+  <button (click)="odobri()" >Odbori mejl! </button>

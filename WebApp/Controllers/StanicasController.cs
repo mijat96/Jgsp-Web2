@@ -33,16 +33,33 @@ namespace WebApp.Controllers
         }
 
         // GET: api/Stanicas/5
-        [ResponseType(typeof(Stanica))]
-        public IHttpActionResult GetStanica(int id)
+        [AllowAnonymous]
+        [Route("GetStanicee")]
+        public List<string> GetStanica()
         {
-            Stanica stanica = db.Stanice.Find(id);
-            if (stanica == null)
+            IQueryable<Stanica> stanice = Db.Stanica.GetAll().AsQueryable();
+            List<string> imena = new List<string>();
+            foreach(Stanica sta in stanice)
             {
-                return NotFound();
+                imena.Add(sta.Naziv);
             }
-
-            return Ok(stanica);
+            return imena;
+        }
+        [AllowAnonymous]
+        [Route("Spoji/{linija}/{stanica}")]
+        [ResponseType(typeof(string))]
+        public IHttpActionResult GetStanica(string linija, string stanica)
+        {
+            Linija lin = Db.Linija.GetAll().Where(x => x.RedniBroj == linija).FirstOrDefault();
+            Stanica sta = Db.Stanica.GetAll().Where(x => x.Naziv == stanica).FirstOrDefault();
+            lin.Stanice = new List<Stanica>();
+            lin.Stanice.Add(sta);
+            sta.Linije = new List<Linija>();
+            sta.Linije.Add(lin);
+            Db.Stanica.Update(sta);
+            Db.Linija.Update(lin);
+            Db.Complete();
+            return Ok("");
         }
 
         // GET: api/Linijas/5   
@@ -133,12 +150,12 @@ namespace WebApp.Controllers
             Db.Complete();
             return Ok("uspresno ste dodali novu stanicu!");
         }
-
+        [AllowAnonymous]
         // DELETE: api/Stanicas/5
-        [ResponseType(typeof(Stanica))]
-        public IHttpActionResult DeleteStanica(int id)
+        [Route("IzbrisiStanicu/{ime}/{nesto}/{nesto2}")]
+        public IHttpActionResult GetStanica(string ime, string nesto, string nesto2)
         {
-            Stanica stanica = db.Stanice.Find(id);
+            Stanica stanica = db.Stanice.Where(x=> x.Naziv == ime).FirstOrDefault();
             if (stanica == null)
             {
                 return NotFound();
@@ -147,7 +164,7 @@ namespace WebApp.Controllers
             db.Stanice.Remove(stanica);
             db.SaveChanges();
 
-            return Ok(stanica);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

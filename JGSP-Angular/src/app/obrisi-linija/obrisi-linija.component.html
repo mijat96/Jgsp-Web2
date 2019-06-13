@@ -1,0 +1,6 @@
+<select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
+  <option *ngFor="let lin of linijeZaView">
+    <a title="{{text}}">{{lin}}</a>
+  </option>
+</select>
+<button (click)="izbrisi()" >Izbrisi liniju! </button>
