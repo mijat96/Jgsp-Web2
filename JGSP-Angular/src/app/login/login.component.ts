@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   login(user: User, form: NgForm){
     let l = this.http.logIn(user.username, user.password);
     form.reset();
-    if(l){
-      this.router.navigate(["/home"]);
-    }
+  
+    this.router.navigate(["/home"]);
+ 
   }
 
   
