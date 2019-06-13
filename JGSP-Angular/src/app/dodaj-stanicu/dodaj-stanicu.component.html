@@ -1,0 +1,8 @@
+<form [formGroup]="StanicaGroup" (ngSubmit)="DodajStanicu()">
+ 
+<input Placeholder="Adresa" type="text" formControlName="adresa"> 
+<input Placeholder="Naziv" type="text" formControlName="naziv"> 
+<input Placeholder="x" type="number" formControlName="x"> 
+<input Placeholder="y" type="number" formControlName="y"> 
+</form>
+<button (click)="DodajStanicu()">Dodaj stanicu! </button>

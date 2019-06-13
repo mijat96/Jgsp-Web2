@@ -2,23 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { AuthHttpService } from 'src/app/services/auth.service';
 import { NgForm, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { RedVoznje } from 'src/app/osoba';
+import { Stanica } from 'src/app/osoba';
 @Component({
-  selector: 'app-dodaj-red-voznje',
-  templateUrl: './dodaj-red-voznje.component.html',
-  styleUrls: ['./dodaj-red-voznje.component.css']
+  selector: 'app-dodaj-stanicu',
+  templateUrl: './dodaj-stanicu.component.html',
+  styleUrls: ['./dodaj-stanicu.component.css']
 })
-export class DodajRedVoznjeComponent implements OnInit {
+export class DodajStanicuComponent implements OnInit {
   linijeZaView : number[];
   odgovor : string
-  linija : string
+ 
  
   constructor(private http: AuthHttpService, private fb: FormBuilder) { }
-  redGroup = this.fb.group({
+  StanicaGroup = this.fb.group({
   
-    dan :  ['', Validators.required],
-    linija :  ['', Validators.required],
-    red :  ['', Validators.required],
+    adresa :  ['', Validators.required],
+  
+    naziv :  ['', Validators.required],
+    x :  ['', Validators.required],
+    y :  ['', Validators.required],
+
     });
 
   ngOnInit() {
@@ -29,10 +32,10 @@ export class DodajRedVoznjeComponent implements OnInit {
       });
   }
 
-DodajRedVoznje(){
-  let zaslanje: RedVoznje = this.redGroup.value;
-  this.redGroup[2] = this.linija;
-  this.http.DodajRedVoznje1(zaslanje).subscribe((odgovor)=>{
+DodajStanicu(){
+  let zaslanje: Stanica = this.StanicaGroup.value;
+
+  this.http.DodajStanicu(zaslanje).subscribe((odgovor)=>{
     this.odgovor = odgovor;
     err => console.log(err);
   }

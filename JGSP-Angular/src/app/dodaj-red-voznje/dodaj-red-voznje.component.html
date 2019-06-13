@@ -2,7 +2,7 @@
 
 
 <form [formGroup]="redGroup" (ngSubmit)="DodajRedVoznje()">
-    <select [(ngModel)]="linija" >
+    <select [(ngModel)]="linija" formControlName="linija" >
         <option *ngFor="let lin of linijeZaView">
           <a title="{{text}}">{{lin}}</a>
         </option>

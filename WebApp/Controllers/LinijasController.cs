@@ -266,18 +266,20 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Linijas
-        [ResponseType(typeof(Linija))]
-        public IHttpActionResult PostLinija(Linija linija)
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetLinijaDodaj/{linija}")]
+        public IHttpActionResult GetLinija(string linija)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Linije.Add(linija);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = linija.Id }, linija);
+            Linija lin = new Linija();
+            lin.RedniBroj = linija;
+            Db.Linija.Add(lin);
+            Db.Complete();
+            return Ok("Dodali ste novu liniju!");
         }
 
         // DELETE: api/Linijas/5

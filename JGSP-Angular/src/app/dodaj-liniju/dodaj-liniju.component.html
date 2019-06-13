@@ -1,0 +1,4 @@
+<form [formGroup]="LinijaGroup" (ngSubmit)="dodaj()">
+  <p ><span >Redni broj linije</span><input type="number" formControlName="broj" required></p>
+  <button (click)="dodaj()" >Dodaj liniju! </button>
+</form>

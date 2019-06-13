@@ -26,6 +26,9 @@ import { CenovnikPromenaComponent } from './cenovnik-promena/cenovnik-promena.co
 import { CenovnikDodajComponent } from './cenovnik-dodaj/cenovnik-dodaj.component';
 import { CenovnikBrisanjeComponent } from './cenovnik-brisanje/cenovnik-brisanje.component';
 import { DodajRedVoznjeComponent } from './dodaj-red-voznje/dodaj-red-voznje.component';
+import { ObrisiRedVoznjeComponent } from './obrisi-red-voznje/obrisi-red-voznje.component';
+import { DodajLinijuComponent } from './dodaj-liniju/dodaj-liniju.component';
+import { DodajStanicuComponent } from './dodaj-stanicu/dodaj-stanicu.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -42,6 +45,9 @@ const routes: Routes = [
   { path: "dodajCenovnik", component: CenovnikDodajComponent },
   { path: "dodajRedVoznje", component: DodajRedVoznjeComponent },
   { path: "obrisiCenovnik", component: CenovnikBrisanjeComponent },
+  { path: "obrisiRedVoznje", component: ObrisiRedVoznjeComponent },
+  { path: "dodajLiniju", component: DodajLinijuComponent },
+  { path: "dodajStanicu", component: DodajStanicuComponent },
   { path: "**", redirectTo: "home" }
 ]
 
@@ -63,7 +69,10 @@ const routes: Routes = [
     CenovnikPromenaComponent,
     CenovnikDodajComponent,
     CenovnikBrisanjeComponent,
-    DodajRedVoznjeComponent
+    DodajRedVoznjeComponent,
+    ObrisiRedVoznjeComponent,
+    DodajLinijuComponent,
+    DodajStanicuComponent
   ],
   imports: [
     BrowserModule,

@@ -132,4 +132,12 @@ namespace WebApp.Models
         public string red { get; set; }
         public string linija { get; set; }
     }
+    public class StanicaBinding
+    {
+        public string naziv { get; set; }
+        public string adresa { get; set; }
+        public string linija { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+    }
 }

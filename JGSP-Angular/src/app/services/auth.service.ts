@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegUser } from 'src/app/osoba';
+import { Stanica } from 'src/app/osoba';
 import { RedVoznje } from 'src/app/osoba';
 import { CenovnikBindingModel } from 'src/app/osoba';
 import { Observable } from 'rxjs/internal/Observable';
@@ -49,9 +50,19 @@ export class AuthHttpService{
     DodajRedVoznje1(red : RedVoznje) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Redovi/dodajRed" , red);
     }
+    DodajStanicu(stanica : Stanica) : Observable<any>{
+        return this.http.post<any>(this.base_url + "/api/Stanicas" , stanica);
+    }
+    DodajLiniju(broj : string) : Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Linijas/GetLinijaDodaj/"  +broj);
+    }
       obrisiCenovnik(id: number) : Observable<any>{
         return this.http.delete<any>(this.base_url + "/api/Cenovniks/" + id);
     }
+    obrisiRedVoznje(id: number) : Observable<any>{
+        return this.http.delete<any>(this.base_url + "/api/RedVoznjes/" + id);
+    }
+    
     Promeni(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
     }

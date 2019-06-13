@@ -38,6 +38,7 @@ namespace WebApp.Controllers
         [Route("GetProveri/{IdKorisnika}")]
         public IHttpActionResult GetProveri(string IdKorisnika)
         {
+
             Karta karta = new Karta();
             List<Karta> karte = Db.Karta.GetAll().ToList();
             string odgovor = "";

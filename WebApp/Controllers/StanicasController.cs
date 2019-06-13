@@ -115,18 +115,23 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Stanicas
-        [ResponseType(typeof(Stanica))]
-        public IHttpActionResult PostStanica(Stanica stanica)
+        [ResponseType(typeof(string))]
+        [AllowAnonymous]
+        public IHttpActionResult PostStanica(StanicaBinding stanica)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Stanice.Add(stanica);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = stanica.Id }, stanica);
+            Stanica st = new Stanica();
+            st.Adresa = stanica.adresa;
+            st.Naziv = stanica.naziv;
+            st.X = stanica.x;
+            st.Y = stanica.y;
+            st.Linije = new List<Linija>();
+            Db.Stanica.Add(st);
+            Db.Complete();
+            return Ok("uspresno ste dodali novu stanicu!");
         }
 
         // DELETE: api/Stanicas/5
