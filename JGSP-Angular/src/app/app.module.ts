@@ -36,29 +36,32 @@ import { SpojiStanicaLinijaComponent } from './spoji-stanica-linija/spoji-stanic
 import { ObrisiStanicaComponent } from './obrisi-stanica/obrisi-stanica.component';
 import { ObrisiLinijaComponent } from './obrisi-linija/obrisi-linija.component';
 import { OdobriMejlComponent } from './odobri-mejl/odobri-mejl.component';
+import { AuthGuardControlor } from './services/auth.guard.controlor';
+import { AuthGuardUlogovan } from './services/auth.guard.ulogova';
+import { AuthGuardNeregistrovan } from './services/auth.guard.neregistrovan';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "registracija", component: RegistracijaComponent },
-  { path: "redVoznje", component: RedVoznjeComponent, canActivate: [AuthGuard]  },
-  { path: "kupiKartu", component: KartaComponent },
-  { path: "kupiKartuNeregistrovan", component: KartaNeregistrovanComponent },
-  { path: "kontrolor", component: KontrolorComponent },
+  { path: "login", component: LoginComponent, canActivate: [AuthGuardUlogovan] },
+  { path: "registracija", component: RegistracijaComponent, canActivate: [AuthGuardUlogovan] },
+  { path: "redVoznje", component: RedVoznjeComponent  },
+  { path: "kupiKartu", component: KartaComponent, canActivate: [AuthGuardNeregistrovan] },
+  { path: "kupiKartuNeregistrovan", component: KartaNeregistrovanComponent, canActivate: [AuthGuardUlogovan] },
+  { path: "kontrolor", component: KontrolorComponent, canActivate: [AuthGuardControlor] },
   { path: "cenovnik", component: CenovnikComponent },
-  { path: "mojProfil", component: MojProfilComponent },
-  { path: "promenaCene", component: CenovnikPromenaComponent },
-  { path: "dodajCenovnik", component: CenovnikDodajComponent },
-  { path: "dodajRedVoznje", component: DodajRedVoznjeComponent },
-  { path: "obrisiCenovnik", component: CenovnikBrisanjeComponent },
-  { path: "obrisiRedVoznje", component: ObrisiRedVoznjeComponent },
-  { path: "dodajLiniju", component: DodajLinijuComponent },
-  { path: "dodajStanicu", component: DodajStanicuComponent },
-    { path: "spojiStanicaLinija", component: SpojiStanicaLinijaComponent },
-    { path: "izbrisiStanicu", component: ObrisiStanicaComponent },
-    { path: "izbrisiLiniju", component: ObrisiLinijaComponent },
-    { path: "odobrimejl", component: OdobriMejlComponent },
+  { path: "mojProfil", component: MojProfilComponent, canActivate: [AuthGuardNeregistrovan] },
+  { path: "promenaCene", component: CenovnikPromenaComponent, canActivate: [AuthGuard] },
+  { path: "dodajCenovnik", component: CenovnikDodajComponent, canActivate: [AuthGuard] },
+  { path: "dodajRedVoznje", component: DodajRedVoznjeComponent, canActivate: [AuthGuard] },
+  { path: "obrisiCenovnik", component: CenovnikBrisanjeComponent, canActivate: [AuthGuard] },
+  { path: "obrisiRedVoznje", component: ObrisiRedVoznjeComponent, canActivate: [AuthGuard] },
+  { path: "dodajLiniju", component: DodajLinijuComponent, canActivate: [AuthGuard] },
+  { path: "dodajStanicu", component: DodajStanicuComponent, canActivate: [AuthGuard] },
+    { path: "spojiStanicaLinija", component: SpojiStanicaLinijaComponent, canActivate: [AuthGuard] },
+    { path: "izbrisiStanicu", component: ObrisiStanicaComponent, canActivate: [AuthGuard] },
+    { path: "izbrisiLiniju", component: ObrisiLinijaComponent, canActivate: [AuthGuard] },
+    { path: "odobrimejl", component: OdobriMejlComponent, canActivate: [AuthGuardControlor] },
   { path: "**", redirectTo: "home" }
 ]
 

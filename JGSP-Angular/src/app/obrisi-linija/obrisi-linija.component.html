@@ -1,8 +1,16 @@
-<select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
-  <option *ngFor="let lin of linijeZaView">
-    <a title="{{text}}">{{lin}}</a>
-  </option>
-</select>
-<button (click)="izbrisi()" >Izbrisi liniju! </button>
-<br>
-<p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+<div class="main">
+    <div class="container">
+        <div class="middle">
+              <div id="login">
+                <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
+                  <option *ngFor="let lin of linijeZaView">
+                    <a title="{{text}}">{{lin}}</a>
+                  </option>
+                </select>
+                <button (click)="izbrisi()" >Izbrisi liniju! </button>
+                <br>
+                <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+              </div>
+            </div>
+            </div>
+            </div>

@@ -9,23 +9,17 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuardNeregistrovan implements CanActivate, CanActivateChild {
   constructor(private router: Router) { }
   role : any;
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {    
-    let jwtData = localStorage.jwt.split('.')[1]
-    let decodedJwtJsonData = window.atob(jwtData)
-    let decodedJwtData = JSON.parse(decodedJwtJsonData)
-
-
-      this.role = decodedJwtData.nameid
-
-    if (this.role === 'admin') {
+    
+    if (localStorage.getItem('jwt') != "null" && localStorage.getItem('jwt') != "undefined" && localStorage.getItem('jwt') != "") {
       return true;
     }
     // not logged in so redirect to login page
     else {
-      console.error("Can't access, not admin");
+      console.error("Can't access, not login");
       this.router.navigate(['/home']);
       return false;
     }

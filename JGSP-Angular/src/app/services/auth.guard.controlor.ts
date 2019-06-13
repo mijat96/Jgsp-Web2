@@ -9,7 +9,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuardControlor implements CanActivate, CanActivateChild {
   constructor(private router: Router) { }
   role : any;
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {    
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
       this.role = decodedJwtData.nameid
 
-    if (this.role === 'admin') {
+    if (this.role === 'Kontrolor') {
       return true;
     }
     // not logged in so redirect to login page

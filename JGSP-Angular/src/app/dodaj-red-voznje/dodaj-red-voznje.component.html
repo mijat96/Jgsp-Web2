@@ -1,15 +1,22 @@
 
 
-
+<div class="main">
+    <div class="container">
+        <div class="middle">
+              <div id="login">
 <form [formGroup]="redGroup" (ngSubmit)="DodajRedVoznje()">
     <select [(ngModel)]="linija" formControlName="linija" >
         <option *ngFor="let lin of linijeZaView">
           <a title="{{text}}">{{lin}}</a>
         </option>
       </select>
-  <input Placeholder="DanUNedelji" type="text" formControlName="dan"> 
-  <input Placeholder="Red voznje" type="text" formControlName="red"> 
+    <br><input Placeholder="DanUNedelji" type="text" formControlName="dan"> <br>
+  <input Placeholder="Red voznje" type="text" formControlName="red"> <br>
 </form>
 <button (click)="DodajRedVoznje()">Dodaj red voznje </button>
 <br>
 <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+</div>
+</div>
+</div>
+</div>

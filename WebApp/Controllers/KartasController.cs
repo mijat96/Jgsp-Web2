@@ -63,6 +63,7 @@ namespace WebApp.Controllers
                 {
                     odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
                 }
+             
                 if (karta.Tip == "Mesecna" && (DateTime.UtcNow < karta.VaziDo.AddMonths(1)))
                 {
                     odgovor = "vazi vam karta";

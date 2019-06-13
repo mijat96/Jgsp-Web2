@@ -1,8 +1,16 @@
-<select id="ButtonsHomePage" [(ngModel)]="selectedMejl" >
-  <option *ngFor="let s of mejloviZaView">
-    {{s}} 
+<div class="main">
+    <div class="container">
+        <div class="middle">
+              <div id="login">
+                <select id="ButtonsHomePage" [(ngModel)]="selectedMejl" >
+                  <option *ngFor="let s of mejloviZaView">
+                    {{s}} 
   </option>
 </select>
-  <button (click)="odobri()" >Odbori mejl! </button>
+<button (click)="odobri()" >Odbori mejl! </button>
   <br>
   <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+</div>
+</div>
+</div>
+</div>
