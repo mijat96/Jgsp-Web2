@@ -25,9 +25,11 @@ export class RegistracijaComponent implements OnInit {
   });
 
   constructor(private http: AuthHttpService, private fb: FormBuilder, private router: Router) { }
-  tipovi: string[] = ["Admin", "Student", "Penzioner", "Obican"];
+  tipovi: string[] = [ "Student", "Penzioner", "Obican"];
   tip: string;
   ngOnInit() {
+
+    
   }
 
   onSubmit(){
@@ -35,7 +37,7 @@ export class RegistracijaComponent implements OnInit {
     this.http.reg(regModel).subscribe(
       
     )
-    
+   
     this.router.navigate(["/login"])
     //form.reset();
   }
