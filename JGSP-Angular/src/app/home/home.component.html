@@ -21,28 +21,41 @@
             <br>
             <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/registracija">Registracija</a></p>
             <br>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a></p>
+
           </div>
           <ng-template #logOut>
+            <br>
+            <br>
             <p ><span class="fa "></span><a id="ButtonsHomePage" (click)="LogOut()">LogOut</a></p>
-
-          <br>
-          </ng-template>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/redVoznje">redVoznje</a></p>
-          <br>
-
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/cenovnik">Cenovnik!</a></p>
-          <br>
+            <br>
+            <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/mojProfil">Moj Profil!</a></p>
+            <br>
           <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartu">Kupi kartu</a></p>
+          </ng-template>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/redVoznje">Red voznje</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/cenovnik">Cenovnik!</a></p>
 
-          <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kupiKartuNeregistrovan">Kupi kartu neregistrovan!</a></p>
 
+      
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kontrolor">Proveri kartu</a></p>
+          <div *ngIf="daLiJeKontrolor();">
+              <br>  
+              <b>Zdravo kontolore, ovo su vase metode!</b>
+              <br>
+              <br>
+              <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/odobrimejl">Odobri registraciju!!</a></p>
+              <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/kontrolor">Proveri kartu putniku!</a></p>
+      </div>
+            <br>
+
+         
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/mojProfil">Moj Profil!</a></p>
-          <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/promenaCene">Promeni cenu karata!</a></p>
+        <div *ngIf="DaLiJeAdmin();">
+            <b>Zdravo admire, ovo su vase metode!</b>
           <br>
           <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/dodajCenovnik">Dodaj novi cenovnik!!</a></p>
           <br>
@@ -57,12 +70,28 @@
           <br>
           <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/dodajStanicu">Dodaj stanicu!</a></p>
           
+										<br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/spojiStanicaLinija">Spoji stanicu sa linijom!</a></p>
+										<br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/izbrisiStanicu">Izbrisi stanicu!</a></p>
+										<br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/izbrisiLiniju">Izbrisi Liniju!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/promenaCene">Promeni cene karata!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/dodajCenovnik">Dodaj novi cenovnik!</a></p>
+          <br>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/obrisiCenovnik">Obrisite cenovnik!!</a></p>
+         
+							</div>			
         </fieldset>
         <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
         <div class="logo"> JGSP       
-          <div class="clearfix"></div>
+										<div class="clearfix"></div>
+										<br>
+     
         </div>
       </div>
   </div>

@@ -56,7 +56,7 @@ namespace WebApp.Migrations
             
             if (!context.Users.Any(u => u.UserName == "admin@yahoo.com"))
             {
-                var user = new ApplicationUser() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!"), Tip = "Student", Name = "dasdas", Surname = "dasdasda" };
+                var user = new ApplicationUser() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!"), Tip = "Student", Name = "dasdas", Surname = "dasdasda", Odobren=false};
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "Admin");
             }
@@ -65,9 +65,9 @@ namespace WebApp.Migrations
 
             if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
             { 
-                var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), Tip = "Penzioner", Name = "dasdas", Surname = "dasdasda" };
+                var user = new ApplicationUser() { Id = "Kontrolor", UserName = "kontrolor@yahoo.com", Email = "kontrolor@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), Tip = "Penzioner", Name = "kontrolor", Surname = "KontrolorPrezime", Odobren = false };
                 userManager.Create(user);
-                userManager.AddToRole(user.Id, "AppUser");
+                userManager.AddToRole(user.Id, "Controller");
             }
             if (!context.RedoviVoznje.Any(u => u.Linija.RedniBroj == "1"))
             {

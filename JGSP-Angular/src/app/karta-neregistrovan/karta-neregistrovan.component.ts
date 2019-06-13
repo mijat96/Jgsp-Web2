@@ -23,7 +23,7 @@ export class KartaNeregistrovanComponent implements OnInit {
     mejl :  ['', Validators.required],
     });
 
-  KupiKartu(){
+    KupiKartuNeregistrovan(){
     
     this.http.GetKupiKartu(this.tip, this.regGroup.get('mejl').value).subscribe((vaziDo)=>
     {

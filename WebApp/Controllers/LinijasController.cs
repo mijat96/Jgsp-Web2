@@ -283,10 +283,11 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/Linijas/5
-        [ResponseType(typeof(Linija))]
+        [AllowAnonymous]
+      
         public IHttpActionResult DeleteLinija(int id)
         {
-            Linija linija = db.Linije.Find(id);
+            Linija linija = db.Linije.Where(x=>x.RedniBroj== id.ToString()).FirstOrDefault();
             if (linija == null)
             {
                 return NotFound();
@@ -295,7 +296,7 @@ namespace WebApp.Controllers
             db.Linije.Remove(linija);
             db.SaveChanges();
 
-            return Ok(linija);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

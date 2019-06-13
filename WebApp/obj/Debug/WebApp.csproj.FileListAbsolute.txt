@@ -1356,3 +1356,4 @@ C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.pdb
 C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.novamigracija.resources
 C:\Users\MIJAT\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.novamigracija.resources
+C:\Users\Andrej\Desktop\Jgsp-Web2\WebApp\obj\Debug\WebApp.Migrations.nova.resources

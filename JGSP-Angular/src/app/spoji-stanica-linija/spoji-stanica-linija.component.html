@@ -1,0 +1,11 @@
+<select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
+  <option *ngFor="let lin of linijeZaView">
+    <a title="{{text}}">{{lin}}</a>
+  </option>
+</select>
+<select id="ButtonsHomePage" [(ngModel)]="slectedStanica" >
+    <option *ngFor="let s of staniceZaView">
+      {{s}} 
+    </option>
+  </select>
+    <button (click)="spoji()" >Spoji liniju sa stanicom! </button>

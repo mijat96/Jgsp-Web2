@@ -47,6 +47,12 @@ export class AuthHttpService{
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
+    GetMejlovi() : Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Values/GetZahtevi");
+    }
+    Odobri(mejl :string) : Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Values/Odobri/" + mejl);
+    }
     DodajRedVoznje1(red : RedVoznje) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Redovi/dodajRed" , red);
     }
@@ -62,6 +68,12 @@ export class AuthHttpService{
     obrisiRedVoznje(id: number) : Observable<any>{
         return this.http.delete<any>(this.base_url + "/api/RedVoznjes/" + id);
     }
+    DeleteLinija(id: number) : Observable<any>{
+        return this.http.delete<any>(this.base_url + "/api/Linijas/" + id);
+    }
+    DeleteStanica(ime: string) : Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Stanicas/IzbrisiStanicu/" + ime +"/a"+ "/a");
+    }
     
     Promeni(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Kartas/PromeniProfil", data);
@@ -75,6 +87,12 @@ export class AuthHttpService{
 
     GetLinije() : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Linijas/");
+    }
+    GetStanice() : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/Stanicas/GetStanicee");
+    }
+    GetSpoji(linija:string, stanica: string) : Observable<any> {
+        return this.http.get<any>(this.base_url + "/api/Stanicas/Spoji/" + linija + "/" + stanica );
     }
     GetKorisnika() : Observable<any> {
         return this.http.get<any>(this.base_url + "/api/Kartas/DobaviUsera");

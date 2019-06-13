@@ -32,6 +32,10 @@ import { DodajStanicuComponent } from './dodaj-stanicu/dodaj-stanicu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './services/auth.guard';
 
+import { SpojiStanicaLinijaComponent } from './spoji-stanica-linija/spoji-stanica-linija.component';
+import { ObrisiStanicaComponent } from './obrisi-stanica/obrisi-stanica.component';
+import { ObrisiLinijaComponent } from './obrisi-linija/obrisi-linija.component';
+import { OdobriMejlComponent } from './odobri-mejl/odobri-mejl.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -51,6 +55,10 @@ const routes: Routes = [
   { path: "obrisiRedVoznje", component: ObrisiRedVoznjeComponent },
   { path: "dodajLiniju", component: DodajLinijuComponent },
   { path: "dodajStanicu", component: DodajStanicuComponent },
+    { path: "spojiStanicaLinija", component: SpojiStanicaLinijaComponent },
+    { path: "izbrisiStanicu", component: ObrisiStanicaComponent },
+    { path: "izbrisiLiniju", component: ObrisiLinijaComponent },
+    { path: "odobrimejl", component: OdobriMejlComponent },
   { path: "**", redirectTo: "home" }
 ]
 
@@ -76,6 +84,10 @@ const routes: Routes = [
     ObrisiRedVoznjeComponent,
     DodajLinijuComponent,
     DodajStanicuComponent,
+    SpojiStanicaLinijaComponent,
+    ObrisiStanicaComponent,
+    ObrisiLinijaComponent,
+    OdobriMejlComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+<select id="ButtonsHomePage" [(ngModel)]="slectedStanica" >
+  <option *ngFor="let s of staniceZaView">
+    {{s}} 
+  </option>
+</select>
+  <button (click)="izbrisiS()" >Izbrisi stanicu! </button>
+  <br>
+  <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
