@@ -29,6 +29,9 @@ import { DodajRedVoznjeComponent } from './dodaj-red-voznje/dodaj-red-voznje.com
 import { ObrisiRedVoznjeComponent } from './obrisi-red-voznje/obrisi-red-voznje.component';
 import { DodajLinijuComponent } from './dodaj-liniju/dodaj-liniju.component';
 import { DodajStanicuComponent } from './dodaj-stanicu/dodaj-stanicu.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './services/auth.guard';
+
 import { SpojiStanicaLinijaComponent } from './spoji-stanica-linija/spoji-stanica-linija.component';
 import { ObrisiStanicaComponent } from './obrisi-stanica/obrisi-stanica.component';
 import { ObrisiLinijaComponent } from './obrisi-linija/obrisi-linija.component';
@@ -39,7 +42,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registracija", component: RegistracijaComponent },
-  { path: "redVoznje", component: RedVoznjeComponent },
+  { path: "redVoznje", component: RedVoznjeComponent, canActivate: [AuthGuard]  },
   { path: "kupiKartu", component: KartaComponent },
   { path: "kupiKartuNeregistrovan", component: KartaNeregistrovanComponent },
   { path: "kontrolor", component: KontrolorComponent },
@@ -88,6 +91,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
