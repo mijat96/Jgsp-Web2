@@ -63,13 +63,15 @@ Datum rodjenja:<input type="date" formControlName="date" required> <br>
         </fieldset>
       
 <div class="clearfix"></div>
-      </form>
-      <br>
-      <form action="/action_page.php">
-        <input type="file" name="pic" accept="image/*">
-        <span style="width:100%; text-align:right;  display: inline-block;"><input type="submit" value="Submit"></span>
-      </form>
-      
+</form>
+<div *ngIf="DaLiJeStudentILIPenzioner();">
+  <br>
+  <form action="/action_page.php" >
+    <input type="file" name="pic" accept="image/*" (change)="onFileSelected($event)">
+    <span style="width:100%; text-align:right;  display: inline-block;"><input type="submit" value="Submit"></span>
+  </form>
+  
+</div>
       <div class="clearfix"></div>
 
     </div> <!-- end login -->

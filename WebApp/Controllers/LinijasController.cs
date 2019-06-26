@@ -80,7 +80,7 @@ namespace WebApp.Controllers
         [Route("GetLinija/{id}/{dan}/{p}")]
         public IHttpActionResult GetLinija(int id, string dan, string p)
         {
-            using (StreamReader r = new StreamReader("C:/Users/Andrej/Desktop/Jgsp-Web2/sve.json"))
+            using (StreamReader r = new StreamReader("C:/Users/MIJAT/Desktop/w2/Jgsp-/sve.json"))
             {   
                 string json = "", linijaPodela = "";
                 string[] linije;

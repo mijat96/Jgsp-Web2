@@ -1,18 +1,17 @@
-import { Component, OnInit, Input, NgZone, Injectable } from '@angular/core';
-import { GeoLocation } from './map-model/geolocation';
-import { Polyline } from './map-model/polyline';
-import { MarkerInfo } from './map-model/marker-info.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { GeoLocation } from '../map/map-model/geolocation';
+import { MarkerInfo } from '../map/map-model/marker-info.model';
 import { AuthHttpService } from '../services/auth.service';
-
+import { Polyline } from '../map/map-model/polyline';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
-  styles: ['agm-map {height: 500px; width: 700px;}'] //postavljamo sirinu i visinu mape
+  selector: 'app-lokacija-vozila',
+  templateUrl: './lokacija-vozila.component.html',
+  styleUrls: ['./lokacija-vozila.component.css'],
+  styles: ['agm-map {height: 500px; width: 700px;}']
 })
+export class LokacijaVozilaComponent implements OnInit {
 
-export class MapComponent implements OnInit {
   @Input()
   linija: string;
   x: number;
@@ -37,7 +36,7 @@ export class MapComponent implements OnInit {
     this.polylineMoje = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
   }
 
-  constructor(private ngZone: NgZone, private http: AuthHttpService){
+  constructor(private http: AuthHttpService){
   }
 
   placeMarker($event){

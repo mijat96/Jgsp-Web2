@@ -27,7 +27,9 @@ export class KartaComponent implements OnInit {
       this.http.GetKupiKartu(this.tip, "prazno").subscribe((vaziDo)=>
       {
         this.vaziDo1 = vaziDo;
+        alert(vaziDo);
         err => console.log(err);
+        
       });
 
   }

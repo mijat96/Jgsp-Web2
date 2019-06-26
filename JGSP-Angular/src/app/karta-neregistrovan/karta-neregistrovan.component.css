@@ -51,7 +51,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-input {
+.inputEmail {
 	border: none;
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-size: 14px;
@@ -163,4 +163,9 @@ fieldset{
 
 #mapaView{
   
+}
+
+.paragraf_text{
+  color:white;
+  font-size:20px;
 }

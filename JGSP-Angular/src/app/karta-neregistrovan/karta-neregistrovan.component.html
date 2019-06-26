@@ -32,9 +32,9 @@
 <div class="main">
   <div class="container">
   <div class="middle">
-        <div id="login">
-            <p ><span class="fa "></span>
-                Tip karte:
+        <div >
+            <p class="paragraf_text">
+                Tip karte:<br>
                 <select id="ButtonsHomePage" [(ngModel)]="tip" >
                     <option *ngFor="let t of tipovi">
                       {{t}} 
@@ -42,29 +42,26 @@
                 </select>
             </p>
             <form [formGroup]="regGroup" (ngSubmit)="KupiKartuNeregistrovan()">
-
                 <fieldset class="clearfix">
-        
-                  <br><p ><span class="b "></span><input Placeholder="Email" type="text" formControlName="mejl"></p><br> <!-- JS because of IE support; better: placeholder="Username" -->
-                  
-                  
+                  <br><p class="paragraf_text">Email:</p>
+                    <input Placeholder="Email" type="text" formControlName="mejl"><br> <!-- JS because of IE support; better: placeholder="Username" -->
                 </fieldset>
                 <div class="clearfix"></div>
-              </form>
-                  <div>
-                    <span style="width:50%; text-align:right;  display: inline-block;"><button id="ButtonsHomePage" (click)="KupiKartuNeregistrovan()">Kupi kartu</button></span>
-                </div>
+            </form><br>
+              <button id="ButtonsHomePage" (click)="KupiKartuNeregistrovan()">Kupi kartu</button>
+                
           <br>
-          {{vaziDo1}}
+          <p class="paragraf_text">{{vaziDo1}}</p>
+          
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
         <div class="logo"> JGSP       
           <div class="clearfix"></div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
         </div>
-          </div>
+      </div>
         </div>
         <!--<app-karta></app-karta>-->
       </div>

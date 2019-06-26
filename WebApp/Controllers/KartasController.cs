@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,9 +18,11 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Kartas")]
     public class KartasController : ApiController
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
         public IUnitOfWork Db { get; set; }
 
@@ -27,6 +30,7 @@ namespace WebApp.Controllers
         {
             Db = db;
         }
+
 
         // GET: api/Kartas
         public IQueryable<Karta> GetKarte()
@@ -38,13 +42,18 @@ namespace WebApp.Controllers
         [Route("GetProveri/{IdKorisnika}")]
         public IHttpActionResult GetProveri(string IdKorisnika)
         {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            ApplicationUser u = userManager.FindByName(IdKorisnika);
 
             Karta karta = new Karta();
             List<Karta> karte = Db.Karta.GetAll().ToList();
+            //var user = UserManager.FindByName(IdKorisnika);
+
             string odgovor = "";
             foreach(Karta k1 in karte)
             {
-                if(k1.ApplicationUserId == IdKorisnika)
+                if(k1.ApplicationUserId == u.Id)//user.Id)
                 {
                     karta = k1;
                 }
@@ -55,39 +64,72 @@ namespace WebApp.Controllers
             }
             else
             {
-                if (karta.Tip == "Dnevna" && (DateTime.UtcNow < karta.VaziDo.AddDays(1)))
+                if (karta.Tip == "Dnevna") //&& (DateTime.UtcNow < karta.VaziDo.AddDays(1)))
                 {
-                    odgovor = "vazi vam karta";
+
+                    var datumKarte = karta.VaziDo;
+                    var pocetakSledecegDana = new DateTime(datumKarte.Year, datumKarte.Month, datumKarte.AddDays(1).Day);
+
+                    if(pocetakSledecegDana > DateTime.UtcNow)
+                    {
+                        odgovor = "Vazi vam karta";
+                    }
+                    else
+                    {
+                        odgovor = "Ovom korisniku ne vazi karta, hapsi stoku!";
+                    }
+                }
+                else if (karta.Tip == "Mesecna") //&& (DateTime.UtcNow < karta.VaziDo.AddMonths(1)))
+                {
+                    var datumKarte = karta.VaziDo;
+                    var startOfMonth = new DateTime(datumKarte.Year, datumKarte.Month, 1);
+                    var DaysInMonth = DateTime.DaysInMonth(datumKarte.Year, datumKarte.Month);
+                    var lastDay = new DateTime(datumKarte.Year, datumKarte.Month, DaysInMonth);
+
+                    if (lastDay > DateTime.UtcNow)
+                    {
+                        odgovor = "Vazi vam karta";
+                    }
+                    else
+                    {
+                        odgovor = "Ovom korisniku ne vazi karta, hapsi stoku!";
+                    }
+                }
+                else if (karta.Tip == "Godisnja") //&& (DateTime.UtcNow < karta.VaziDo.AddYears(1)))
+                {
+                    var now = karta.VaziDo;
+                    var startOfYear = new DateTime(now.Year, 1, 1);
+                    var nextYear = new DateTime(startOfYear.AddYears(1).Year, 1, 1);
+
+                    if (nextYear > DateTime.UtcNow)
+                    {
+                        odgovor = "Vazi vam karta";
+                    }
+                    else
+                    {
+                        odgovor = "Ovom korisniku ne vazi karta, hapsi stoku!";
+                    }
+                }
+                else if (karta.Tip == "Vremenska") //&& (DateTime.UtcNow < karta.VaziDo.AddHours(1)))
+                {
+
+                    var vremeKarte = karta.VaziDo.Hour;
+                    var nextHour = vremeKarte + 1;
+
+                    if (nextHour > DateTime.UtcNow.Hour)
+                    {
+                        odgovor = "Vazi vam karta";
+                    }
+                    else
+                    {
+                        odgovor = "Ovom korisniku ne vazi karta, hapsi stoku!";
+                    }
                 }
                 else
                 {
-                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
+                    odgovor = "Ovom korisniku ne vazi karta, hapsi stoku!";
                 }
-             
-                if (karta.Tip == "Mesecna" && (DateTime.UtcNow < karta.VaziDo.AddMonths(1)))
-                {
-                    odgovor = "vazi vam karta";
-                }
-                else
-                {
-                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
-                }
-                if (karta.Tip == "Godisnja" && (DateTime.UtcNow < karta.VaziDo.AddYears(1)))
-                {
-                    odgovor = "vazi vam karta";
-                }
-                else
-                {
-                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
-                }
-                if (karta.Tip == "Vremenska" && (DateTime.UtcNow < karta.VaziDo.AddHours(1)))
-                {
-                    odgovor = "vazi vam karta";
-                }
-                else
-                {
-                    odgovor = "ovom korisniku ne vazi karta, hapsi stoku!";
-                }
+
             }
             return Ok(odgovor);
         }
@@ -99,6 +141,7 @@ namespace WebApp.Controllers
         {
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
             List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
+
             Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
 
             string odg = "Cena zeljene karte je : ";
@@ -122,6 +165,7 @@ namespace WebApp.Controllers
         [Route("GetKartaPromenaCene/{tipKarte}/{tipKupca}/{cena}")]
         public IHttpActionResult GetKartaCena(string tipKarte, string tipKupca, int cena)
         {
+            //POTREBNO JE PRAVITI NOVI CENOVNIK KADA SE PROMENI CENA KARTE
             List<CenaKarte> karte = Db.CenaKarte.GetAll().ToList();
             List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
             Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
@@ -137,10 +181,6 @@ namespace WebApp.Controllers
                     Db.CenaKarte.Update(k);
                    
                     Db.Complete();
-                 
-             
-                    
-                   
                 }
             }
             odg += " rsd.";

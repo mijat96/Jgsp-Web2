@@ -1,16 +1,20 @@
 <div class="main">
-    <div class="container">
-        <div class="middle">
-              <div id="login">
-                <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
-                  <option *ngFor="let lin of linijeZaView">
-                    <a title="{{text}}">{{lin}}</a>
-                  </option>
-                </select>
-                <button (click)="izbrisi()" >Izbrisi liniju! </button>
-                <br>
-                <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-              </div>
-            </div>
-            </div>
-            </div>
+  <div class="container">
+    <div class="middle">
+      <div id="login">
+        <p class="paragraf_text">Izabrei Liniju:</p>
+        <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
+          <option *ngFor="let lin of linijeZaView">
+          <a title="{{text}}">{{lin}}</a>
+          </option>
+        </select><br>
+        <br><button id="ButtonsHomePage" (click)="izbrisi()" >Izbrisi liniju! </button>
+        <br>
+      </div>
+      <div class="logo"> JGSP       
+          <div class="clearfix"></div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+        </div>
+    </div>
+  </div>
+</div>

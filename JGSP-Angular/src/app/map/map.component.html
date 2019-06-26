@@ -1,4 +1,16 @@
-<p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
   <!-- Kreiramo mapu -->
   <agm-map [latitude]="markerInfo.location.latitude" [longitude]="markerInfo.location.longitude" [zoom]="18" (mapClick)="placeMarker($event)">  
 
@@ -29,6 +41,6 @@
     <agm-marker *ngFor="let point of polylineMoje.path" [latitude]="point.latitude" [longitude]="point.longitude" [iconUrl]="polylineMoje.icon">
     </agm-marker>
   </agm-map>
-  <button (click)="ShowStanica()">Kordinate</button>
-  <button (click)="HideStanica()">Ukloni</button>
-</p>
+  <button id="ButtonsHomePage" (click)="ShowStanica()">Kordinate</button>
+  <button id="ButtonsHomePage" (click)="HideStanica()">Ukloni</button>
+

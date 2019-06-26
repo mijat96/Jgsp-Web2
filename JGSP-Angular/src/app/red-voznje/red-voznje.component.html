@@ -39,31 +39,32 @@
   <div class="container">
   <div class="middle">
         <div id="login">
-            <p ><span class="fa "></span>
+            
+              <p class="paragraf_text">Linija:<br>
               <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
                   <option *ngFor="let lin of linijeZaView">
                     <a title="{{text}}">{{lin}}</a>
                   </option>
                 </select>
+                <br>
+                Dan:<br>
                 <select id="ButtonsHomePage" [(ngModel)]="dan" >
                     <option *ngFor="let d of dani">
                       {{d}} 
                     </option>
                   </select>
-            </p>
-          <p ><span class="fa "></span><button id="ButtonsHomePage" (click)="OnGetLinije()" >Prikazi linije</button></p>
+                </p><br>
           <br>
 
           <p ><span class="fa "></span><button  id="ButtonsHomePage" (click)="OnGetPolasci()" >Red voznje</button></p>
           <br>
-          iz baze:<br>
+          <p class="paragraf_text">
+          <!-- iz baze:<br> -->
           {{linija.linije}}
           Polasci sa stanice:<br>
           {{ras.polasci}}
-          <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-          <br>
-          <button (click)="JsonParsiranje()" >Json</button>
+          </p>
+          <!-- <button (click)="JsonParsiranje()" >Json</button> -->
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
@@ -72,6 +73,9 @@
         </div>
         <app-map id="mapaView" [linija]="selectedLine"></app-map>
           </div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+          <br>
         </div>
+        <br>
         <!--<app-karta></app-karta>-->
       </div>

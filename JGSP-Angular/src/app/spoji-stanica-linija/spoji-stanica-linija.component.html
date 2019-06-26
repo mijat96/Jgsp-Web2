@@ -27,31 +27,32 @@
   <div class="container">
   <div class="middle">
         <div id="login">
-            <p ><span class="fa "></span>
+            <p class="paragraf_text">Linija:</p>
                   <select id="ButtonsHomePage" [(ngModel)]="selectedLine" >
                     <option *ngFor="let lin of linijeZaView">
                       <a title="{{text}}">{{lin}}</a>
                     </option>
                   </select>
+                  <p class="paragraf_text">Stanica:</p>
                   <select id="ButtonsHomePage" [(ngModel)]="slectedStanica" >
                       <option *ngFor="let s of staniceZaView">
                         {{s}} 
                       </option>
-                    </select>
-            </p>
-          <p ><span class="fa "></span><button id="ButtonsHomePage" (click)="spoji()" >Spoji liniju sa stanicom! </button></p>
+                    </select><br>
+            
+          <br><button id="ButtonsHomePage" (click)="spoji()" >Spoji liniju sa stanicom! </button>
           <br>
 
           
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
           <br>
           
-          <div class="clearfix"></div>
+       
         </div>
-        <div class="clearfix"></div>
-        <div class="logo"> JGSP       
-          <div class="clearfix"></div>
+
+        <div class="logo" style="position: absolute; right: -30%;"> JGSP       
+          
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
         
         </div>
         <!--<app-karta></app-karta>-->

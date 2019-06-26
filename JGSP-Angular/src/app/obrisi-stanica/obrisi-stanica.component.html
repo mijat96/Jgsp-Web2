@@ -1,16 +1,20 @@
 <div class="main">
-    <div class="container">
-        <div class="middle">
-              <div id="login">
-<select id="ButtonsHomePage" [(ngModel)]="slectedStanica" >
-  <option *ngFor="let s of staniceZaView">
-    {{s}} 
-  </option>
-</select>
-  <button (click)="izbrisiS()" >Izbrisi stanicu! </button>
-  <br>
-  <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="middle">
+      <div id="login">
+        <p class="paragraf_text">Izaberi Stanicu:</p>
+        <select id="ButtonsHomePage" [(ngModel)]="slectedStanica" >
+          <option *ngFor="let s of staniceZaView">
+          {{s}} 
+          </option>
+        </select><br>
+        <br><button id="ButtonsHomePage" (click)="izbrisiS()" >Izbrisi stanicu! </button>
+        <br>
+      </div>
+          <div class="logo" style="position: absolute; right: -30%;"> JGSP       
+              <div class="clearfix"></div>
+              <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+          </div>
+    </div>
+  </div>
 </div>

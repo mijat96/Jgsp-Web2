@@ -1,18 +1,19 @@
 <div class="main">
-        <div class="container">
-            <div class="middle">
-                  <div id="login">
-<form [formGroup]="StanicaGroup" (ngSubmit)="DodajStanicu()">
- 
-<input Placeholder="Adresa" type="text" formControlName="adresa"> 
-<input Placeholder="Naziv" type="text" formControlName="naziv"> 
-<input Placeholder="x" type="number" formControlName="x"> 
-<input Placeholder="y" type="number" formControlName="y"> 
-</form>
-<button (click)="DodajStanicu()">Dodaj stanicu! </button> <br>
-<p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="middle">
+            <div id="login">
+                <form [formGroup]="StanicaGroup" (ngSubmit)="DodajStanicu()">
+                    <p class="paragraf_text">Adresa:</p><input Placeholder="Adresa" type="text" formControlName="adresa"/> <br>
+                    <br><p class="paragraf_text">Naziv Stanice:</p><input Placeholder="Naziv" type="text" formControlName="naziv"/> <br>
+                    <br><p class="paragraf_text">X kordinata:</p><input Placeholder="x" type="number" formControlName="x"/> <br>
+                    <br><p class="paragraf_text">Y kordinata:</p><input Placeholder="y" type="number" formControlName="y"/> <br>
+                </form>
+                <br><button id="ButtonsHomePage" (click)="DodajStanicu()">Dodaj stanicu! </button> <br>
+            </div>
+            <div class="logo"> JGSP       
+                <div class="clearfix"></div>
+                <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+            </div>
+        </div>
+    </div>
 </div>

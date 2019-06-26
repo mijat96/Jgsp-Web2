@@ -1,14 +1,18 @@
 <div class="main">
-    <div class="container">
-        <div class="middle">
-              <div id="login">
-<form [formGroup]="RedGroup" (ngSubmit)="brisi()">
-  <p ><span >id</span><input type="number" formControlName="id" required></p>
-  <button (click)="brisi()" >Obrisi red voznje sa ovim idom! </button>
-</form>
-<br>
-<p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="middle">
+      <div id="login">
+        <form [formGroup]="RedGroup" (ngSubmit)="brisi()">
+          <p class="paragraf_text">Unesi Id Reda Voznje:</p><br><input type="number" formControlName="id" required><br>
+          <br><button id="ButtonsHomePage" (click)="brisi()" >Obrisi red voznje! </button>
+        </form>
+      <br>
+
+      </div>
+      <div class="logo"> JGSP       
+        <div class="clearfix"></div>
+        <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+      </div>
+    </div>
+  </div>
 </div>

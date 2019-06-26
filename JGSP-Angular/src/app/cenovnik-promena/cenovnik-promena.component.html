@@ -38,20 +38,19 @@
   <div class="container">
   <div class="middle">
         <div id="login">
-            <p ><span class="fa "></span>
-                Tip karte:
+                <p class="paragraf_text">Tip karte:</p>
                 <select id="ButtonsHomePage" [(ngModel)]="tip" >
                     <option *ngFor="let t of tipovi">
                       {{t}} 
                     </option>
                 </select><br>
-                Tip karte:
+                <p class="paragraf_text">Tip korisnika:</p>
                 <select id="ButtonsHomePage" [(ngModel)]="tipPutnika" >
                     <option *ngFor="let tP of tipoviPutnika">
                       {{tP}} 
                     </option>
                 </select><br>
-            </p>
+            
             <form [formGroup]="cenaGroup" (ngSubmit)="PromenaCene()">
 
                 <fieldset class="clearfix">
@@ -68,12 +67,12 @@
           <br>
           {{cena1}}
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
         <div class="logo"> JGSP       
           <div class="clearfix"></div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
         </div>
           </div>
         </div>

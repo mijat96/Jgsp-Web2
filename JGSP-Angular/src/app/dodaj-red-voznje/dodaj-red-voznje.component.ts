@@ -12,6 +12,8 @@ export class DodajRedVoznjeComponent implements OnInit {
   linijeZaView : number[];
   odgovor : string
   linija : string
+  dani: string[]=["Radni","Subota","Nedelja"];
+  
  
   constructor(private http: AuthHttpService, private fb: FormBuilder) { }
   redGroup = this.fb.group({

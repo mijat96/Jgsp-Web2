@@ -23,7 +23,11 @@ export class RedVoznjeComponent implements OnInit {
   text: string = "Klisa";
 
   ngOnInit() {
-      
+    this.http.GetLinije().subscribe((linijesabekenda)=>{
+      this.linijeZaView = linijesabekenda;
+      err => console.log(err);
+    }
+    );
   }
 
 

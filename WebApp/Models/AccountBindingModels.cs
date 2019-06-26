@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using Newtonsoft.Json;
 
 namespace WebApp.Models
@@ -72,6 +73,8 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+
+        public Image Img { get; set; }
 
     }
 

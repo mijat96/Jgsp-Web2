@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegUser } from 'src/app/osoba';
+import { RegUser, RegUserImg } from 'src/app/osoba';
 import { Stanica } from 'src/app/osoba';
 import { RedVoznje } from 'src/app/osoba';
 import { CenovnikBindingModel } from 'src/app/osoba';
 import { Observable } from 'rxjs/internal/Observable';
+
 
 @Injectable()
 export class AuthHttpService{
@@ -47,6 +48,9 @@ export class AuthHttpService{
     reg(data: RegUser) : Observable<any>{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
+    regImg(data: any, username: string) : Observable<any>{    
+        return this.http.post<any>(this.base_url + "/api/Account/UploadImage/" + username, data);
+    }
     GetMejlovi() : Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Values/GetZahtevi");
     }
@@ -60,7 +64,7 @@ export class AuthHttpService{
         return this.http.post<any>(this.base_url + "/api/Stanicas" , stanica);
     }
     DodajLiniju(broj : string) : Observable<any>{
-        return this.http.get<any>(this.base_url + "/api/Linijas/GetLinijaDodaj/"  +broj);
+        return this.http.get<any>(this.base_url + "/api/Linijas/GetLinijaDodaj/"  + broj);
     }
       obrisiCenovnik(id: number) : Observable<any>{
         return this.http.delete<any>(this.base_url + "/api/Cenovniks/" + id);

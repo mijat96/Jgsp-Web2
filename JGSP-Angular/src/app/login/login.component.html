@@ -26,8 +26,9 @@
       <form #f="ngForm" (submit)="login(f.value, f)">
 
         <fieldset class="clearfix">
-
+            <p class="paragraf_text">Username or mail:</p>
           <p ><span class="fa fa-user"></span><input Placeholder="Username" name="username" ngModel></p><br> <!-- JS because of IE support; better: placeholder="Username" -->
+          <p class="paragraf_text">Password:</p>
           <p><span class="fa fa-lock"></span><input Placeholder="Password" name="password" type="password" ngModel></p> <!-- JS because of IE support; better: placeholder="Password" -->
           
            <div>

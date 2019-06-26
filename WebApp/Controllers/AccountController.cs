@@ -18,6 +18,7 @@ using WebApp.Providers;
 using WebApp.Results;
 using WebApp.Persistence.UnitOfWork;
 using System.Web.Http.Description;
+using System.IO;
 
 namespace WebApp.Controllers
 {
@@ -387,6 +388,65 @@ namespace WebApp.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        [Route("UploadImage/{username}")]
+        [AllowAnonymous]
+        public IHttpActionResult UploadImage(string username)
+        {
+            var httpRequest = HttpContext.Current.Request;
+
+            try
+            {
+                if (httpRequest.Files.Count > 0)
+                {
+                    foreach (string file in httpRequest.Files)
+                    {
+                        var user = UserManager.FindByName(username);
+                        //Sacuvati sliku u bazi i povezati je sa registrovanim userom
+
+
+                        //Passenger passenger = UnitOfWork.PassengerRepository.Get(id);
+
+                        //if (passenger == null)
+                        //{
+                        //    return BadRequest("User does not exists.");
+                        //}
+
+                        //if (passenger.ImageUrl != null)
+                        //{
+                        //    File.Delete(HttpContext.Current.Server.MapPath("~/UploadFile/" + passenger.ImageUrl));
+                        //}
+
+
+
+                        var postedFile = httpRequest.Files[file];
+                        //string fileName = id + "_" + postedFile.FileName;
+                        //var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
+
+
+
+
+                        //UnitOfWork.PassengerRepository.Update(passenger);
+                        //UnitOfWork.Complete();
+
+
+                        //postedFile.SaveAs(filePath);
+                    }
+
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+
         }
 
         #region Helpers

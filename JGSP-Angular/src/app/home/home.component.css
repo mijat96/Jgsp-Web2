@@ -160,3 +160,8 @@ fieldset{
   display: flex;
   width: 600px;
 }
+
+.paragraf_text{
+  color:white;
+  font-size:20px;
+}

@@ -1,14 +1,17 @@
 <div class="main">
-    <div class="container">
-        <div class="middle">
-              <div id="login">
-<form [formGroup]="LinijaGroup" (ngSubmit)="dodaj()">
-  <p ><span >Redni broj linije</span><input type="number" formControlName="broj" required></p>
-  <button (click)="dodaj()" >Dodaj liniju! </button>
-</form>
-<br>
-<p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="middle">
+      <div id="login">
+        <form [formGroup]="LinijaGroup" (ngSubmit)="dodaj()">
+          <p  class="paragraf_text">Redni broj linije:</p><br><input type="number" formControlName="broj" required><br>
+          <br><button id="ButtonsHomePage" (click)="dodaj()" >Dodaj liniju! </button>
+        </form>
+        <br>
+      </div>
+      <div class="logo"> JGSP       
+          <div class="clearfix"></div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
+      </div>
+    </div>
+  </div>
 </div>

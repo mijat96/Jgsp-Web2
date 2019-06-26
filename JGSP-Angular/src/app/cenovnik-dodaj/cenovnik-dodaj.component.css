@@ -125,7 +125,7 @@ font-size:50px;
 }
 
 #login form input {
-	height: 50px;
+	height: 30px;
 }
 fieldset{
     padding:0;
@@ -165,6 +165,7 @@ fieldset{
   width: 600px;
 }
 
-#mapaView{
-  
+.paragraf_text{
+  color:white;
+  font-size:20px;
 }

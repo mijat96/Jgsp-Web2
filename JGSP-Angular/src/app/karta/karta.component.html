@@ -29,25 +29,27 @@
   <div class="container">
   <div class="middle">
         <div id="login">
+          <p class="paragraf_text">Tip karte:</p><br>
             <p ><span class="fa "></span>
-                Tip karte:
                 <select id="ButtonsHomePage" [(ngModel)]="tip" >
                     <option *ngFor="let t of tipovi">
                       {{t}} 
                     </option>
                 </select><br>
             </p>
-          <p ><span class="fa "></span><button id="ButtonsHomePage" (click)="KupiKartu()">Kupi kartu!</button></p>
+            <br><p ><span class="fa "></span><button id="ButtonsHomePage" (click)="KupiKartu()">Kupi kartu!</button></p>
           <br>
+          <p class="paragraf_text">
           {{vaziDo1}}
+          </p>
           <br>
           <br>
-          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
         <div class="logo"> JGSP       
           <div class="clearfix"></div>
+          <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/home">Home!</a></p>
         </div>
           </div>
         </div>
