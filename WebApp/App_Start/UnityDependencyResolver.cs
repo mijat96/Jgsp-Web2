@@ -76,7 +76,8 @@ namespace WebApp.App_Start
             container.RegisterType<IRepositoryStanica, StanicaRepository>();
             container.RegisterType<IRepositoryRedVoznje, RedVoznjeRepository>();
             container.RegisterType<IRepositoryCenovnik, CenovnikRepository>();
-      
+            container.RegisterType<IRepositorySlika, SlikaRepository>();
+
 
             //container.RegisterType<IProductRepositry, ProductRepository>();
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();

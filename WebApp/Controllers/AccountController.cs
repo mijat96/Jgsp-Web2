@@ -19,6 +19,7 @@ using WebApp.Results;
 using WebApp.Persistence.UnitOfWork;
 using System.Web.Http.Description;
 using System.IO;
+using System.Data.Entity;
 
 namespace WebApp.Controllers
 {
@@ -36,10 +37,11 @@ namespace WebApp.Controllers
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IUnitOfWork db)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            Db = db;
         }
 
         public ApplicationUserManager UserManager
@@ -397,8 +399,6 @@ namespace WebApp.Controllers
         {
             var httpRequest = HttpContext.Current.Request;
 
-            try
-            {
                 if (httpRequest.Files.Count > 0)
                 {
                     foreach (string file in httpRequest.Files)
@@ -421,18 +421,64 @@ namespace WebApp.Controllers
 
 
 
-                        var postedFile = httpRequest.Files[file];
-                        //string fileName = id + "_" + postedFile.FileName;
-                        //var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
+                        var postedFile = httpRequest.Files[file]; 
+                        string fileName = postedFile.FileName;
+                        var filePath = HttpContext.Current.Server.MapPath("~/SlikeKorisnika/" + fileName);
 
+                        Slika slika = null;
+                        IEnumerable<Slika> sveSlike = null;
+                        try
+                        {
+                            sveSlike = Db.Slika.GetAll();
+                        }
+                        catch (Exception e)
+                        {
 
+                        }
+
+                        bool korisnikImaSliku = false;
+
+                        if(sveSlike != null)
+                        {
+                            foreach(var s in sveSlike)
+                            {
+                                if(s.Korisnik == user.Id)
+                                {
+                                    korisnikImaSliku = true;
+                                    slika = s;
+                                    break;
+                                }
+                            }
+
+                            if (korisnikImaSliku)
+                            {
+                                Db.Slika.Update(slika);
+                                Db.Complete();
+                            }
+                            else
+                            {
+                                slika = new Slika() { ImageUrl = filePath, Korisnik = user.Id };
+                                Db.Slika.Add(slika);
+                                Db.Complete();
+                            }
+                        }
+                        else
+                        {
+                            slika = new Slika() { ImageUrl = filePath, Korisnik = user.Id };
+                        try
+                        {
+                            
+                            Db.Slika.Add(slika);
+                            Db.Complete();
+                        }catch(Exception e) { }
+                        }
 
 
                         //UnitOfWork.PassengerRepository.Update(passenger);
                         //UnitOfWork.Complete();
 
 
-                        //postedFile.SaveAs(filePath);
+                        postedFile.SaveAs(filePath);
                     }
 
                     return Ok();
@@ -441,12 +487,6 @@ namespace WebApp.Controllers
                 {
                     return BadRequest();
                 }
-            }
-            catch (Exception e)
-            {
-                return InternalServerError(e);
-            }
-
         }
 
         #region Helpers

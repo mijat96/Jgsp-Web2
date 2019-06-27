@@ -15,6 +15,7 @@ namespace WebApp.Models
         public DateTime VaziOd { get; set; }
         [Column(TypeName = "datetime2")]
         public DateTime VaziDo { get; set; }
+        public bool Aktuelan { get; set; }
 
         public virtual ICollection<CenaKarte> CeneKarti { get; set; }
 

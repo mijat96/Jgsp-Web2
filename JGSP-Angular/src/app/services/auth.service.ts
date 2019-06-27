@@ -49,7 +49,7 @@ export class AuthHttpService{
         return this.http.post<any>(this.base_url + "/api/Account/Register", data);
     }
     regImg(data: any, username: string) : Observable<any>{    
-        return this.http.post<any>(this.base_url + "/api/Account/UploadImage/" + username, data);
+        return this.http.post<any>(this.base_url + "/api/Slikas/UploadImage/" + username, data);
     }
     GetMejlovi() : Observable<any>{
         return this.http.get<any>(this.base_url + "/api/Values/GetZahtevi");
@@ -127,4 +127,11 @@ export class AuthHttpService{
        
         return this.http.get<any>(this.base_url + "/api/Kartas/GetProveri/" + idKorisnika );
     }
+    GetSlika(idKorisnika: string): Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Slikas/GetSlika/" + idKorisnika);
+    }
+    Verifikovan(): Observable<any>{
+        return this.http.get<any>(this.base_url + "/api/Values/Verifikovan");
+    }
+
 }

@@ -18,6 +18,7 @@ namespace WebApp.Persistence
         public DbSet<Stanica> Stanice { get; set; }
         public DbSet<RedVoznje> RedoviVoznje { get; set; }
         public DbSet<Linija> Linije { get; set; }
+        public DbSet<Slika> Slike { get; set; }
 
 
         public ApplicationDbContext()

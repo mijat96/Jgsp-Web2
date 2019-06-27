@@ -1507,3 +1507,5 @@ C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.dll
 C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.pdb
 C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.Migrations.migracijaNaKraju.resources
+C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.Migrations.slikaMigracija.resources
+C:\Users\MIJAT\Desktop\w2\Jgsp-\WebApp\obj\Debug\WebApp.Migrations.CenovnikAktuelan.resources

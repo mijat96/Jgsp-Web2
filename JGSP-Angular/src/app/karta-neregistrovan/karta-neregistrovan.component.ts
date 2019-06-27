@@ -32,7 +32,6 @@ export class KartaNeregistrovanComponent implements OnInit {
     this.http.GetKupiKartu(this.tip, this.regGroup.get('mejl').value).subscribe((vaziDo)=>
     {
       this.vaziDo1 = vaziDo;
-      err => console.log(err);
     });
 
 

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   providers: [AuthHttpService]
 })
 export class HomeComponent implements OnInit {
+  verifikovan: string;
   role : any;
   bul :boolean
   constructor(private service: AuthHttpService, private ruter: Router) { }
@@ -40,6 +41,11 @@ export class HomeComponent implements OnInit {
        return false;
      }
   }
+  DaLiJeVerifikovan(){
+    this.service.Verifikovan().subscribe((response) =>{
+      this.verifikovan = response;
+    });
+  }
   ngOnInit() {
     if(localStorage.getItem('jwt') != "null" && localStorage.getItem('jwt') != "undefined" && localStorage.getItem('jwt') != ""){
             let jwtData = localStorage.jwt.split('.')[1]
@@ -50,6 +56,7 @@ export class HomeComponent implements OnInit {
              this.role = decodedJwtData.nameid
           
   }
+  this.verifikovan = null;
 }
 
 }

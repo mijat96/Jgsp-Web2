@@ -15,7 +15,7 @@
   <div class="middle">
         <div id="login">
             <fieldset class="clearfix">
-
+              <p ><span class="fa "></span><a id="ButtonsHomePage" (click)="DaLiJeVerifikovan()">Verifikovan?</a><label class="paragraf_text">{{verifikovan}}</label></p>
           <div *ngIf="!jwtIsUndefined(); else logOut">
               <br>
               <p ><span class="fa "></span><a id="ButtonsHomePage" routerLink="/login">Login</a></p>

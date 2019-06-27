@@ -243,6 +243,7 @@ namespace WebApp.Controllers
             db.SaveChanges();
             return Ok();
         }
+        [AllowAnonymous]
         [ResponseType(typeof(string))]
         [Route("GetKartaKupi2/{tipKarte}/{mejl}")]
         public IHttpActionResult GetKarta(string tipKarte, string mejl)
@@ -266,7 +267,7 @@ namespace WebApp.Controllers
             float cena;
             string povratna = "";
             List<Cenovnik> cenovnici = Db.Cenovnik.GetAll().ToList();
-            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow).FirstOrDefault();
+            Cenovnik cen = Db.Cenovnik.GetAll().Where(t => t.VaziDo > DateTime.UtcNow && t.VaziOd < DateTime.UtcNow && t.Aktuelan == true).FirstOrDefault();
 
 
 
@@ -306,18 +307,19 @@ namespace WebApp.Controllers
             }
             else if (u == null)
             {
-                MailMessage mail = new MailMessage("andrejs0901@gmail.com", "andrejs0901@gmail.com");
+                string email = mejl.Replace('-', '.');
+                MailMessage mail = new MailMessage("marko.mijatovic.1996@gmail.com", email);
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = true;
-                client.Credentials = new NetworkCredential("andrejs0901@gmail.com", "andrej996");
+                client.Credentials = new NetworkCredential("marko.mijatovic.1996@gmail.com", "qcfu xays czwu bopw");    //iymr rzbn gpfs bpbg
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.EnableSsl = true;
                 client.Host = "smtp.gmail.com";
              
-                mail.Subject = "Public City Transport Serbia";
-                mail.Body = $"You successfully bought ticket at {DateTime.Now}. {Environment.NewLine} Your ticket id is: {novaKarta.IdKarte} {Environment.NewLine}Thank you!";
+                mail.Subject = "JGSP";
+                mail.Body = $"Uspesno ste kupili kartu za {DateTime.Now}. {Environment.NewLine} Broj karte: {novaKarta.IdKarte} {Environment.NewLine}Hvala na poverenju, JGSP!";
                 try
                 {
                     client.Send(mail);

@@ -34,7 +34,9 @@ namespace WebApp.Persistence.UnitOfWork
         public IRepositoryRedVoznje RedVoznje { get; set; }
         [Dependency]
         public IRepositoryStanica Stanica { get; set; }
-        
+        [Dependency]
+        public IRepositorySlika Slika { get; set; }
+
 
         public int Complete()
         {

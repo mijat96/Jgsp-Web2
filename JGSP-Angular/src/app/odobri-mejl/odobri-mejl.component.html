@@ -2,13 +2,17 @@
     <div class="container">
         <div class="middle">
               <div id="login">
-                  <p class="paragraf_text">Izaberi mejl korisnika:</p>
+                  <p class="paragraf_text">Izaberi username korisnika:</p>
                 <select id="ButtonsHomePage" [(ngModel)]="selectedMejl" >
                   <option *ngFor="let s of mejloviZaView">
                     {{s}} 
   </option>
 </select><br>
-<br><button id="ButtonsHomePage" (click)="odobri()" >Odbori mejl! </button>
+<br><button id="ButtonsHomePage" (click)="odobri()" >Odbori mejl! </button><br>
+<label class="paragraf_text">{{odgovor}}</label>
+<button id="ButtonsHomePage" (click)="DobaviSliku()" >Slika!</button><br>
+<img class="slikaKorisnika" [src] = "slika">
+
   <br>
 </div>
 <div class="logo">JGSP

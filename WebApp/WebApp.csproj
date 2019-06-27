@@ -255,6 +255,7 @@
     <Compile Include="Controllers\KartasController.cs" />
     <Compile Include="Controllers\LinijasController.cs" />
     <Compile Include="Controllers\RedVoznjesController.cs" />
+    <Compile Include="Controllers\SlikasController.cs" />
     <Compile Include="Controllers\StanicasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -268,6 +269,14 @@
     <Compile Include="Migrations\201906140100596_migracijaNaKraju.Designer.cs">
       <DependentUpon>201906140100596_migracijaNaKraju.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906262358480_slikaMigracija.cs" />
+    <Compile Include="Migrations\201906262358480_slikaMigracija.Designer.cs">
+      <DependentUpon>201906262358480_slikaMigracija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906271811486_CenovnikAktuelan.cs" />
+    <Compile Include="Migrations\201906271811486_CenovnikAktuelan.Designer.cs">
+      <DependentUpon>201906271811486_CenovnikAktuelan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,6 +286,7 @@
     <Compile Include="Models\Karta.cs" />
     <Compile Include="Models\Linija.cs" />
     <Compile Include="Models\RedVoznje.cs" />
+    <Compile Include="Models\Slika.cs" />
     <Compile Include="Models\Stanica.cs" />
     <Compile Include="Models\Vozilo.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -288,12 +298,14 @@
     <Compile Include="Persistence\Repository\IRepositoryKarta.cs" />
     <Compile Include="Persistence\Repository\IRepositoryLinija.cs" />
     <Compile Include="Persistence\Repository\IRepositoryRedVoznje.cs" />
+    <Compile Include="Persistence\Repository\IRepositorySlika.cs" />
     <Compile Include="Persistence\Repository\IRepositoryStanica.cs" />
     <Compile Include="Persistence\Repository\IRepositoryVozlio.cs" />
     <Compile Include="Persistence\Repository\KartaRepository.cs" />
     <Compile Include="Persistence\Repository\LinijaRepository.cs" />
     <Compile Include="Persistence\Repository\RedVoznjeRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
+    <Compile Include="Persistence\Repository\SlikaRepository.cs" />
     <Compile Include="Persistence\Repository\StanicaRepository.cs" />
     <Compile Include="Persistence\Repository\VoziloRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
@@ -401,6 +413,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906140100596_migracijaNaKraju.resx">
       <DependentUpon>201906140100596_migracijaNaKraju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906262358480_slikaMigracija.resx">
+      <DependentUpon>201906262358480_slikaMigracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906271811486_CenovnikAktuelan.resx">
+      <DependentUpon>201906271811486_CenovnikAktuelan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

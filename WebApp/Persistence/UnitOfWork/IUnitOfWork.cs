@@ -17,7 +17,8 @@ namespace WebApp.Persistence.UnitOfWork
         IRepositoryLinija Linija { get; set; }
         IRepositoryRedVoznje RedVoznje { get; set; }
         IRepositoryStanica Stanica { get; set; }
-        
+        IRepositorySlika Slika { get; set; }
+
 
         int Complete();
     }

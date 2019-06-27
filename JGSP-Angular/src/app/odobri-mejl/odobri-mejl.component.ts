@@ -14,6 +14,8 @@ export class OdobriMejlComponent implements OnInit {
   selectedLine : string;
   selectedMejl : string;
   odgovor : string;
+  slika: string;
+
   constructor(private http: AuthHttpService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -27,5 +29,19 @@ export class OdobriMejlComponent implements OnInit {
       this.odgovor = stanicesa;
       err => console.log(err);
     });
+  }
+
+  DobaviSliku(){
+    //potrebno je poslati id korisnika i primiti sa servera sliku ako postoji
+    this.http.GetSlika(this.selectedMejl).subscribe((slika) =>
+      {
+        this.slika = 'data:image/jpeg;base64,' + slika;
+      }, err =>{
+        if(err.status === 400) {
+          this.slika = null;
+          alert("Korisnik nije dostavio sliku!");
+        }
+      }
+    );
   }
 }

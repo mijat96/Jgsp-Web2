@@ -10,7 +10,9 @@ import { FormBuilder } from '@angular/forms';
 export class KontrolorComponent implements OnInit {
 
   Odgovor : string;
-  nesto : string
+  nesto : string;
+  
+
   kontrolorGroup = this.fb.group({
   
   IdKorisnika :  ['', Validators.required],
@@ -29,5 +31,7 @@ export class KontrolorComponent implements OnInit {
       err => console.log(err);
     });
 
-}
+  }
+
+  
 }

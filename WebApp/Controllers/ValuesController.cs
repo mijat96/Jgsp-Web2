@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -78,7 +80,50 @@ namespace WebApp.Controllers
             db.Entry(app).State = EntityState.Modified;
 
             db.SaveChanges();
-            return Ok("Odobrili ste mu kupovinu!");
+            string email = mejl.Replace('-', '.');
+            MailMessage mail = new MailMessage("marko.mijatovic.1996@gmail.com", app.Email);
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = true;
+            client.Credentials = new NetworkCredential("marko.mijatovic.1996@gmail.com", "qcfu xays czwu bopw");    //iymr rzbn gpfs bpbg
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+
+            mail.Subject = "JGSP";
+            mail.Body = $"Vasa registracija je odobrena {DateTime.Now}. {Environment.NewLine} Sada mozete kupovati karte na nasem servisu. {Environment.NewLine}Hvala na poverenju, JGSP!";
+
+            client.Send(mail);
+            return Ok("Odobrili ste mu registraciju!");
+        }
+
+        [AllowAnonymous]
+
+        [Route("Verifikovan")]
+        [ResponseType(typeof(string))]
+        public IHttpActionResult GetVerifikovan()
+        {
+            IQueryable<ApplicationUser> acounti;
+            acounti = db.Users.AsQueryable();
+            ApplicationUser app = new ApplicationUser();
+            var id = User.Identity.GetUserId();
+
+            foreach (ApplicationUser a in acounti)
+            {
+                if (a.Id == id)
+                {
+                    app = a;
+                    break;
+                }
+            }
+
+            if (app.Odobren)
+                return Ok("Verifikovan");
+            else
+                return Ok("Nije Verifikovan");
+            
+            //return Ok("Odobrili ste mu kupovinu!");
         }
     }
 }
