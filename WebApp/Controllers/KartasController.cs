@@ -287,7 +287,7 @@ namespace WebApp.Controllers
                 //novaKarta.ApplicationUser = userManager.FindById(id);
                 // u.Karte.Add(novaKarta);
                 cena = ck.Cena;
-                povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
+                povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od |" + cena.ToString() + "| rsd, hvala vam, vas gsp!";
 
 
                 novaKarta.Cekirana = true;
@@ -324,7 +324,7 @@ namespace WebApp.Controllers
                 {
                     client.Send(mail);
                     cena = ck.Cena;
-                    povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od " + cena.ToString() + " rsd, hvala vam, vas gsp!";
+                    povratna = "Uspesno ste kupili " + tipKarte + "-u" + " kartu, po ceni od |" + cena.ToString() + "| rsd, hvala vam, vas gsp!";
 
 
                     novaKarta.Cekirana = true;

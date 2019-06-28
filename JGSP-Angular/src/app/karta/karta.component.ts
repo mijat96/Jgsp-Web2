@@ -8,10 +8,10 @@ import { AuthHttpService } from 'src/app/services/auth.service';
   styleUrls: ['./karta.component.css']
 })
 export class KartaComponent implements OnInit {
-
+  
   constructor(private http: AuthHttpService) { }
   tipovi: string[] = ["Dnevna", "Mesecna", "Godisnja", "Vremenska"];
-
+  cenaKarte: number = 15;
   tip: string;
   tipPutnika: string;
   cena1: number;

@@ -40,6 +40,7 @@ import { AuthGuardControlor } from './services/auth.guard.controlor';
 import { AuthGuardUlogovan } from './services/auth.guard.ulogova';
 import { AuthGuardNeregistrovan } from './services/auth.guard.neregistrovan';
 import { LokacijaVozilaComponent } from './lokacija-vozila/lokacija-vozila.component';
+import { PaypalComponent } from './paypal/paypal.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -93,7 +94,8 @@ const routes: Routes = [
     ObrisiStanicaComponent,
     ObrisiLinijaComponent,
     OdobriMejlComponent,
-    LokacijaVozilaComponent
+    LokacijaVozilaComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
